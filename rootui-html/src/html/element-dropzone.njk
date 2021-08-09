@@ -1,0 +1,75 @@
+{% set page_title = 'Dropzone' %}
+{% set header_title = 'Dropzone' %}
+{% extends 'layouts/layout-container.njk' %}
+
+{% set breadcrumbs = [
+    ['Home', 'dashboard.html'],
+    ['Forms', '#'],
+    ['Advanced', '#']
+] %}
+
+{% block content %}
+
+{% from "macros/snippet.njk" import snippet %}
+{% from "macros/sidebar.njk" import sidebar %}
+
+{% call snippet('Dropzone', 'no-frame-preview') %}
+<!--
+    Additional attributiones:
+        data-dz-url (number)
+        data-dz-max-mb (number)
+        data-dz-max-files (number)
+        data-dz-remove-link (boolean)
+-->
+<form class="rui-dropzone dropzone" action="#" data-dz-max-mb="0.5" data-dz-max-files="2" data-dz-remove-link="true">
+    <input type="file" name="file" class="rui-dropzone-input">
+    <!-- Your File-image -->
+    <div class="rui-dropzone-images">
+        <img src="{{ img_file.rar }}" alt="" data-dz-type="rar">
+        <img src="{{ img_file.zip }}" alt="" data-dz-type="zip">
+        <img src="{{ img_file.html }}" alt="" data-dz-type="html">
+        <img src="{{ img_file.php }}" alt="" data-dz-type="php">
+        <img src="{{ img_file.css }}" alt="" data-dz-type="css">
+        <img src="{{ img_file.js }}" alt="" data-dz-type="js">
+        <img src="{{ img_file.doc }}" alt="" data-dz-type="doc">
+        <img src="{{ img_file.txt }}" alt="" data-dz-type="txt">
+        <img src="{{ img_file.pdf }}" alt="" data-dz-type="pdf">
+        <img src="{{ img_file.xls }}" alt="" data-dz-type="xls">
+        <img src="{{ img_file.empty }}" alt="" data-dz-type="empty">
+    </div>
+    <!-- Your Remove-icon -->
+    <span data-feather="x" class="rui-icon rui-icon-stroke-1_5 rui-dropzone-remove-icon"></span>
+
+    <div class="dz-message">
+        <span class="rui-dropzone-icon">
+            <span data-feather="upload-cloud" class="rui-icon rui-icon-stroke-0_5"></span>
+        </span>
+        <span class="rui-dropzone-text">
+            Drop files here or click to upload.
+        </span>
+    </div>
+</form>
+{%- endcall %}
+
+{% endblock %}
+
+
+{% block vendor_css %}
+
+    <!-- Highlight -->
+    <link rel="stylesheet" href="./assets/vendor/highlightjs/styles/default.css">
+
+    <!-- Dropzone -->
+    <link rel="stylesheet" href="./assets/vendor/dropzone/dist/dropzone.css">
+
+{% endblock %}
+
+{% block vendor_js %}
+
+    <!-- Highlight -->
+    <script src="./assets/vendor/highlightjs/highlight.pack.min.js"></script>
+
+    <!-- Dropzone -->
+    <script src="./assets/vendor/dropzone/dist/min/dropzone.min.js"></script>
+
+{% endblock %}

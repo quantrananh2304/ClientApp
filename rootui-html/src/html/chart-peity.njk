@@ -1,0 +1,111 @@
+{% set page_title = 'Peity' %}
+{% set header_title = 'Peity' %}
+{% set with_sidebar = true %}
+{% extends 'layouts/layout-container.njk' %}
+
+{% set breadcrumbs = [
+    ['Home', 'dashboard.html'],
+    ['Components', '#'],
+    ['Advanced', '#'],
+    ['Charts', '#']
+] %}
+
+{% block content %}
+
+{% from "macros/snippet.njk" import snippet, snippetMacro %}
+{% from "macros/sidebar.njk" import sidebar %}
+
+<h2 id="chartLine">Line</h2>
+{{ snippetMacro(
+    'ChartLine',
+    '<p class="mnb-5">Stars open <span class="peity-line peity-brand">0,9,15,10,30,15,25,18,20</span> bring Cattle life void night sixth give firmament.</p>',
+    '<span class="peity-line">0,9,15,10,30,15,25,18,20</span>',
+    "
+const options = {
+    strokeWidth: 0,
+};
+$('.peity-line').peity('line', options);
+    "
+)}}
+
+<div class="rui-gap-4" id="chartBar"></div>
+<h2>Bar</h2>
+{{ snippetMacro(
+    'ChartBar',
+    '<p class="mnb-5">Stars open <span class="peity-bar peity-brand">0,9,15,10,30,15,25,18,20</span> bring Cattle life void night sixth give firmament.</p>',
+    '<span class="peity-bar">0,9,15,10,30,15,25,18,20</span>',
+    "
+const options = {
+    strokeWidth: 0,
+};
+$('.peity-bar').peity('bar', options);
+    "
+)}}
+
+<div class="rui-gap-4" id="chartPie"></div>
+<h2>Pie</h2>
+{{ snippetMacro(
+    'ChartPie',
+    "<p class=\"mnb-5\">Stars open <span class=\"peity-pie\" data-peity='{ \"fill\": [\"rgba(114, 94, 195, 0.8)\", \"rgba(114, 94, 195, 0.6)\", \"rgba(114, 94, 195, 0.4)\"] }'>5,3,4</span> bring Cattle life void night sixth give firmament.</p>",
+    "<span class=\"peity-pie\" data-peity='{ \"fill\": [\"rgba(114, 94, 195, 0.8)\", \"rgba(114, 94, 195, 0.6)\", \"rgba(114, 94, 195, 0.4)\"] }'>5,3,4</span>",
+    "
+const options = {
+    strokeWidth: 0,
+};
+$('.peity-pie').peity('pie', options);
+    "
+)}}
+
+<div class="rui-gap-4" id="chartColors"></div>
+<h2>Colors</h2>
+{% call snippet('ChartColors') %}
+<span class="peity-line peity-brand">0,9,15,10,30,15,25,18,20</span>
+<span class="peity-line peity-primary">0,9,15,10,30,15,25,18,20</span>
+<span class="peity-line peity-secondary">0,9,15,10,30,15,25,18,20</span>
+<span class="peity-line peity-success">0,9,15,10,30,15,25,18,20</span>
+<span class="peity-line peity-danger">0,9,15,10,30,15,25,18,20</span>
+<span class="peity-line peity-warning">0,9,15,10,30,15,25,18,20</span>
+<span class="peity-line peity-info">0,9,15,10,30,15,25,18,20</span>
+<span class="peity-line peity-light">0,9,15,10,30,15,25,18,20</span>
+<span class="peity-line peity-dark">0,9,15,10,30,15,25,18,20</span>
+{%- endcall %}
+
+{% endblock %}
+
+
+{% block content_sidebar %}
+{% call sidebar() %}
+    <li><a class="nav-link" href="#chartLine">Line</a></li>
+    <li><a class="nav-link" href="#chartBar">Bar</a></li>
+    <li><a class="nav-link" href="#chartPie">Pie</a></li>
+    <li><a class="nav-link" href="#chartColors">Colors</a></li>
+{% endcall %}
+{% endblock %}
+
+
+{% block vendor_css %}
+
+    <!-- Highlight -->
+    <link rel="stylesheet" href="./assets/vendor/highlightjs/styles/default.css">
+
+{% endblock %}
+
+{% block vendor_js %}
+
+    <!-- Highlight -->
+    <script src="./assets/vendor/highlightjs/highlight.pack.min.js"></script>
+
+    <!-- Peity -->
+    <script src="./assets/vendor/peity/jquery.peity.min.js"></script>
+
+    <script class="rui-page-additional-js">
+        (function(){
+            const options = {
+                strokeWidth: 0,
+            };
+            $('.peity-line').peity('line', options);
+            $('.peity-bar').peity('bar', options);
+            $('.peity-pie').peity('pie', options);
+        }());
+    </script>
+{% endblock %}

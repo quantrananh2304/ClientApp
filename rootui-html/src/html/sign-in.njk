@@ -1,0 +1,77 @@
+{% set page_title = 'Sign In' %}
+{% extends 'layouts/layout-sign.njk' %}
+
+{% block content %}
+
+<div class="rui-sign align-items-center justify-content-center">
+    <div class="bg-image">
+        <div class="bg-grey-1"></div>
+    </div>
+    <div class="form rui-sign-form rui-sign-form-cloud">
+        <div class="row vertical-gap sm-gap justify-content-center">
+            <div class="col-12">
+                <h1 class="display-4 mb-10 text-center">Sign In</h1>
+            </div>
+            <div class="col-12">
+                <input type="email" class="form-control" id="email" placeholder="Email">
+            </div>
+            <div class="col-12">
+                <input type="password" class="form-control" id="password" placeholder="Password">
+            </div>
+            <div class="col-sm-6">
+                <div class="custom-control custom-checkbox d-flex justify-content-start">
+                    <input type="checkbox" class="custom-control-input" id="rememberMe">
+                    <label class="custom-control-label fs-13" for="rememberMe">Remember me</label>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="d-flex justify-content-end">
+                    <a href="#" class="fs-13">Forget password?</a>
+                </div>
+            </div>
+            <div class="col-12">
+                <a href="dashboard.html" class="btn btn-brand btn-block text-center">Sign in</a>
+            </div>
+            <div class="col-12">
+                <div class="rui-sign-or mt-2 mb-5">or</div>
+            </div>
+            <div class="col-12">
+                <ul class="rui-social-links">
+                    <li>
+                        <a href="dashboard.html" class="rui-social-github">
+                            <span class="fab fa-github"></span>
+                            Github
+                        </a>
+                    </li>
+                    <li>
+                        <a href="dashboard.html" class="rui-social-facebook">
+                            <span class="fab fa-facebook-f"></span>
+                            Facebook
+                        </a>
+                    </li>
+                    <li>
+                        <a href="dashboard.html" class="rui-social-google">
+                            <span class="fab fa-google"></span>
+                            Google
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="mt-20 text-grey-5">
+        Don't you have an account? <a href="sign-up.html" class="text-2">Sign Up</a>
+    </div>
+</div>
+
+
+{% endblock %}
+
+
+{% block vendor_js %}
+
+    <!-- FontAwesome -->
+    <script src="./assets/vendor/fontawesome-free/js/all.js"></script>
+    <script src="./assets/vendor/fontawesome-free/js/v4-shims.js"></script>
+
+{% endblock %}

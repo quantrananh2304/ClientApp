@@ -1,0 +1,55 @@
+{% set page_title = 'Sweet Alert' %}
+{% set header_title = 'Sweet Alert' %}
+{% extends 'layouts/layout-container.njk' %}
+
+{% set breadcrumbs = [
+    ['Home', 'dashboard.html'],
+    ['Components', '#'],
+    ['Advanced', '#']
+] %}
+
+{% block content %}
+
+{% from "macros/snippet.njk" import snippet, snippetMacro %}
+{% from "macros/sidebar.njk" import sidebar %}
+
+{{ snippetMacro(
+    'SweetalertBase',
+    '
+<button type="button" class="btn btn-success rui-sweetalert" data-swal-type="success" data-swal-title="Success" data-swal-content="You clicked the <strong>Success</strong> button!">Success</button>&nbsp;
+<button type="button" class="btn btn-danger rui-sweetalert" data-swal-type="error" data-swal-title="Error" data-swal-content="You clicked the <strong>Error</strong> button!">Error</button>&nbsp;
+<button type="button" class="btn btn-warning rui-sweetalert" data-swal-type="warning" data-swal-title="Warning" data-swal-content="You clicked the <strong>Warning</strong> button!">Warning</button>&nbsp;
+<button type="button" class="btn btn-info rui-sweetalert" data-swal-type="info" data-swal-title="Info" data-swal-content="You clicked the <strong>Info</strong> button!">Info</button>
+    ',
+    '
+<button type="button" class="btn btn-success rui-sweetalert" data-swal-type="success" data-swal-title="Success" data-swal-content="You clicked the <strong>Success</strong> button!">Success</button>
+<button type="button" class="btn btn-danger rui-sweetalert" data-swal-type="error" data-swal-title="Error" data-swal-content="You clicked the <strong>Error</strong> button!">Error</button>
+<button type="button" class="btn btn-warning rui-sweetalert" data-swal-type="warning" data-swal-title="Warning" data-swal-content="You clicked the <strong>Warning</strong> button!">Warning</button>
+<button type="button" class="btn btn-info rui-sweetalert" data-swal-type="info" data-swal-title="Info" data-swal-content="You clicked the <strong>Info</strong> button!">Info</button>
+    ',
+    '',
+    'no-frame-preview'
+)}}
+
+{% endblock %}
+
+
+{% block vendor_css %}
+
+    <!-- Highlight -->
+    <link rel="stylesheet" href="./assets/vendor/highlightjs/styles/default.css">
+
+    <!-- SweetAlert -->
+    <link rel="stylesheet" href="./assets/vendor/sweetalert2/dist/sweetalert2.css">
+
+{% endblock %}
+
+{% block vendor_js %}
+
+    <!-- Highlight -->
+    <script src="./assets/vendor/highlightjs/highlight.pack.min.js"></script>
+
+    <!-- SweetAlert -->
+    <script src="./assets/vendor/sweetalert2/dist/sweetalert2.min.js"></script>
+
+{% endblock %}

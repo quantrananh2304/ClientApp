@@ -1,0 +1,623 @@
+{% macro submenu(nav) -%}
+    {% for file, item in nav %}
+        {%- if item.sub -%}
+        <li{% if isActiveMenuItem(file, item, filename) or item.mega or item.sub %} class="dropdown dropdown-hover dropdown-keep-open{{ ' active' if isActiveMenuItem(file, item, filename) }}{{ ' dropdown-triangle' if dropdown_triangle }}"{% endif %}>
+            <a href="{{ file | safe }}" class="dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {% if item.icon %}
+                <span data-feather="{{ item.icon }}" class="rui-icon rui-icon-stroke-1_5"></span>
+                <span>{{ item.name | safe }}</span>
+                <span class="rui-dropdown-circle"></span>
+                {% else %}
+                {{ item.name | safe }}
+                {% endif %}
+            </a>
+            <ul class="nav dropdown-menu">
+                {{ submenu(item.sub) }}
+            </ul>
+        </li>
+        {% else %}
+        <li{% if isActiveMenuItem(file, item, filename) or item.mega or item.sub %} class="nav-item{{ ' active' if isActiveMenuItem(file, item, filename) }}"{% endif %}>
+            <a href="{{ file | safe }}" class="nav-link">
+                {% if item.icon %}
+                <span data-feather="{{ item.icon }}" class="rui-icon rui-icon-stroke-1_5"></span>
+                <span>{{ item.name | safe }}</span>
+                <span class="rui-nav-circle"></span>
+                {% else %}
+                {{ item.name | safe }}
+                {% endif %}
+            </a>
+        </li>
+        {%- endif %}
+    {%- endfor %}
+{%- endmacro %}
+{% macro submenuMobile(nav) -%}
+    {% for file, item in nav %}
+        {%- if item.sub -%}
+        <li{% if isActiveMenuItem(file, item, filename) or item.mega or item.sub %} class="dropdown dropdown-keep-open{{ ' active' if isActiveMenuItem(file, item, filename) }}"{% endif %}>
+            <a href="{{ file | safe }}" class="dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {% if item.icon %}
+                <span data-feather="{{ item.icon }}" class="rui-icon rui-icon-stroke-1_5"></span>
+                <span>{{ item.name | safe }}</span>
+                <span class="rui-dropdown-circle"></span>
+                {% else %}
+                {{ item.name | safe }}
+                {% endif %}
+            </a>
+            <ul class="nav dropdown-menu">
+                {{ submenuMobile(item.sub) }}
+            </ul>
+        </li>
+        {% else %}
+        <li{% if isActiveMenuItem(file, item, filename) or item.mega or item.sub %} class="nav-item{{ ' active' if isActiveMenuItem(file, item, filename) }}"{% endif %}>
+            <a href="{{ file | safe }}" class="nav-link">
+                {% if item.icon %}
+                <span data-feather="{{ item.icon }}" class="rui-icon rui-icon-stroke-1_5"></span>
+                <span>{{ item.name | safe }}</span>
+                <span class="rui-nav-circle"></span>
+                {% else %}
+                {{ item.name | safe }}
+                {% endif %}
+            </a>
+        </li>
+        {%- endif %}
+    {%- endfor %}
+{%- endmacro %}
+{% macro submenuSidebar(nav) -%}
+    {% for file, item in nav %}
+        {% if item.label %}
+        <li class="yay-label">{{ item.label }}</li>
+        {% endif %}
+        {%- if item.sub -%}
+        <li{% if isActiveMenuItem(file, item, filename) or item.mega or item.sub %} class="{{ ' yay-item-active yay-submenu-open' if isActiveMenuItem(file, item, filename) }}"{% endif %}>
+            {% if item.name %}
+            <a href="{{file | safe}}" class="yay-sub-toggle">
+                {% if item.icon %}
+                <span class="yay-icon"><span data-feather="{{ item.icon }}" class="rui-icon rui-icon-stroke-1_5"></span></span>
+                <span>{{ item.name | safe }}</span>
+                <span class="rui-yaybar-circle"></span>
+                {% else %}
+                {{ item.name | safe }}
+                {% endif %}
+                <span class="yay-icon-collapse"><span data-feather="chevron-right" class="rui-icon rui-icon-collapse rui-icon-stroke-1_5"></span></span>
+            </a>
+            {% endif %}
+            <ul class="yay-submenu{{ ' dropdown-triangle' if dropdown_triangle }}">
+                {{ submenuSidebar(item.sub) }}
+            </ul>
+        </li>
+        {% else %}
+        <li{% if isActiveMenuItem(file, item, filename) or item.mega or item.sub %} class="{{ ' yay-item-active' if isActiveMenuItem(file, item, filename) }}"{% endif %}>
+            {% if item.name %}
+            <a href="{{file | safe}}">
+                {% if item.icon %}
+                <span class="yay-icon"><span data-feather="{{ item.icon }}" class="rui-icon rui-icon-stroke-1_5"></span></span>
+                <span>{{ item.name | safe }}</span>
+                <span class="rui-yaybar-circle"></span>
+                {% else %}
+                {{ item.name | safe }}
+                {% endif %}
+            </a>
+            {% endif %}
+        </li>
+        {%- endif %}
+    {%- endfor %}
+{%- endmacro %}
+
+<!--
+    START: Yaybar
+
+    Additional Classes:
+        .rui-yaybar-dark
+-->
+<div class="yaybar yay-hide-to-small yay-shrink yay-gestures rui-yaybar{% if yaybar %} {{ yaybar }}{% endif %}">
+    <div class="yay-wrap-menu">
+        <div class="yaybar-wrap">
+            <ul>
+                <li>
+                    <a href="./react">
+                        <span class="yay-icon">
+                            ${require('!!svg-inline-loader!../../../common-assets/images/logo-react-inherit.svg')}
+                        </span>
+                        <span>Switch to React</span>
+                        <span class="rui-yaybar-circle"></span>
+                    </a>
+                </li>
+                <li class="yay-label">Get Started</li>
+                {{ submenuSidebar(navigation_sidebar) }}
+            </ul>
+        </div>
+    </div>
+    <div class="rui-yaybar-icons">
+        <div class="row no-gutters justify-content-around">
+            <div class="col-auto">
+                <a class="btn btn-custom-round" href="#"><span data-feather="settings" class="rui-icon"></span rui-icon-stroke-1_5></a>
+            </div>
+            <div class="col-auto">
+                <a class="btn btn-custom-round" href="#"><span data-feather="bell" class="rui-icon"></span rui-icon-stroke-1_5></a>
+            </div>
+            <div class="col-auto d-flex">
+                <div class="dropdown dropdown-hover{{ ' dropdown-triangle' if dropdown_triangle }} dropdown-keep-open dropup">
+                    <a class="btn btn-custom-round dropdown-item" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="-30">
+                        <span data-feather="plus-circle" class="rui-icon rui-icon-stroke-1_5"></span>
+                    </a>
+                    <ul class="dropdown-menu nav">
+                        <li>
+                            <a href="#" class="nav-link"><span data-feather="plus-circle" class="rui-icon rui-icon-stroke-1_5"></span>
+                                <span>Create new Post</span>
+                                <span class="rui-nav-circle"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-link"><span data-feather="book" class="rui-icon rui-icon-stroke-1_5"></span>
+                                <span>Project</span>
+                                <span class="rui-nav-circle"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-link"><span data-feather="message-circle" class="rui-icon rui-icon-stroke-1_5"></span>
+                                <span>Message</span>
+                                <span class="rui-nav-circle"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-link"><span data-feather="mail" class="rui-icon rui-icon-stroke-1_5"></span>
+                                <span>Mail</span>
+                                <span class="rui-nav-circle"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-auto">
+                <a class="btn btn-custom-round" href="#"><span data-feather="clock" class="rui-icon rui-icon-stroke-1_5"></span></a>
+            </div>
+            <div class="col-auto">
+                <a class="btn btn-custom-round" href="#"><span data-feather="heart" class="rui-icon rui-icon-stroke-1_5"></span></a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="rui-yaybar-bg"></div>
+<!-- END: Yaybar -->
+
+<!--
+    START: Navbar
+
+    Additional Classes:
+        .rui-navbar-sticky
+        .rui-navbar-autohide
+        .rui-navbar-dark
+-->
+<nav class="rui-navbar rui-navbar-top{% if navbar %} {{ navbar }}{% endif %}{{ ' rui-navbar-sticky' if nav_sticky }}{{ ' rui-navbar-fixed' if nav_fixed }}">
+    <div class="rui-navbar-brand">
+        {% if nav_logo_img %}
+        <a href="{{ nav_logo_url }}" class="rui-navbar-logo">
+            <img src="{{ nav_logo_path }}" data-src-night="{{ nav_logo_white_path }}" data-src-day="{{ nav_logo_path }}" alt="" width="{{ nav_logo_width }}">
+        </a>
+        {% else %}
+        <a href="{{ nav_logo_url }}" class="rui-nav-logo">{{ nav_logo }}</a>
+        {% endif %}
+
+        <button class="yay-toggle rui-yaybar-toggle" type="button">
+            <span></span>
+        </button>
+    </div>
+    <div class="container{{ '-fluid' if nav_container_fluid }}">
+        <div class="rui-navbar-content">
+            <ul class="nav">
+                {{ submenu(navigation) }}
+            </ul>
+            <ul class="nav rui-navbar-right">
+                <li class="nav-item">
+                    <a class="d-flex" data-fancybox data-touch="false" data-close-existing="true" data-src="#search" data-auto-focus="true" href="javascript:;">
+                        <span class="btn btn-custom-round">
+                            <span data-feather="search" class="rui-icon rui-icon-stroke-1_5"></span>
+                        </span>
+                    </a>
+                </li>
+                <li class="dropdown dropdown-hover{{ ' dropdown-triangle' if dropdown_triangle }} dropdown-keep-open">
+                    <a class="dropdown-item" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="0,12">
+                        <span class="btn btn-custom-round">
+                            <span data-feather="flag" class="rui-icon rui-icon-stroke-1_5"></span>
+                        </span>
+                    </a>
+                    <ul class="nav dropdown-menu rui-navbar-dropdown-language">
+                        <li>
+                            <a href="#" class="rui-navbar-language active"><span class="rui-navbar-language-img"><img src="{{ img_country.usa }}" alt=""></span> USA</a>
+                        </li>
+                        <li>
+                            <a href="#" class="rui-navbar-language"><span class="rui-navbar-language-img"><img src="{{ img_country.china }}" alt=""></span> China</a>
+                        </li>
+                        <li>
+                            <a href="#" class="rui-navbar-language"><span class="rui-navbar-language-img"><img src="{{ img_country.germany }}" alt=""></span> Germany</a>
+                        </li>
+                        <li>
+                            <a href="#" class="rui-navbar-language"><span class="rui-navbar-language-img"><img src="{{ img_country.japan }}" alt=""></span> Japan</a>
+                        </li>
+                        <li>
+                            <a href="#" class="rui-navbar-language"><span class="rui-navbar-language-img"><img src="{{ img_country.spain }}" alt=""></span> Spain</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown dropdown-hover{{ ' dropdown-triangle' if dropdown_triangle }} dropdown-keep-open">
+                    <a class="dropdown-item" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="0,12">
+                        <span class="btn btn-custom-round">
+                            <span data-feather="bell" class="rui-icon rui-icon-stroke-1_5 mr-0"></span>
+                            <span class="badge badge-circle badge-brand">3</span>
+                        </span>
+                    </a>
+                    <ul class="nav dropdown-menu rui-navbar-dropdown-notice">
+                        <li class="rui-navbar-dropdown-title mb-10">
+                            <div class="d-flex align-items-center">
+                                <h2 class="h4 mb-0 mr-auto">Notifications</h2>
+                                <a class="btn btn-custom-round" href="profile.html"><span data-feather="link-2" class="rui-icon rui-icon-stroke-1_5"></span></a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="media media-success media-filled mnl-30 mnr-30">
+                                <a href="profile.html" class="media-link">
+                                    <span class="media-img"><img src="{{ user_5.img }}" alt=""></span>
+                                    <span class="media-body">
+                                        <span class="media-title">{{ user_5.name }}</span>
+                                        <small class="media-subtitle">Bring abundantly creature great...</small>
+                                    </span>
+                                </a>
+                                <a href="#" class="media-icon"><span data-feather="x" class="rui-icon rui-icon-stroke-1_5"></span></a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="media media-filled mnl-30 mnr-30">
+                                <a href="profile.html" class="media-link">
+                                    <span class="media-img">C</span>
+                                    <span class="media-body">
+                                        <span class="media-title">Change Design</span>
+                                        <small class="media-subtitle">Design</small>
+                                    </span>
+                                </a>
+                                <a href="#" class="media-icon"><span data-feather="x" class="rui-icon rui-icon-stroke-1_5"></span></a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="media media-filled mnl-30 mnr-30">
+                                <a href="profile.html" class="media-link">
+                                    <span class="media-img bg-transparent"><img src="../../../common-assets/images/icon-zip.svg" class="icon-file" alt=""></span>
+                                    <span class="media-body">
+                                        <span class="media-title">Added banner archive</span>
+                                        <small class="media-subtitle">Commerce</small>
+                                    </span>
+                                </a>
+                                <a href="#" class="media-icon"><span data-feather="x" class="rui-icon rui-icon-stroke-1_5"></span></a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="d-flex" data-fancybox data-keyboard="false" data-auto-focus="false" data-touch="false" data-close-existing="true" data-src="#messenger" href="javascript:;">
+                        <span class="btn btn-custom-round">
+                            <span data-feather="message-circle" class="rui-icon rui-icon-stroke-1_5"></span>
+                        </span>
+                    </a>
+                </li>
+                <li class="dropdown dropdown-hover{{ ' dropdown-triangle' if dropdown_triangle }} dropdown-keep-open">
+                    <a class="dropdown-item rui-navbar-avatar mnr-6" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="{{ user_1.img }}" alt="">
+                    </a>
+                    <ul class="nav dropdown-menu">
+                        <li>
+                            <a href="profile.html" class="nav-link"><span data-feather="plus-circle" class="rui-icon rui-icon-stroke-1_5"></span>
+                                <span>Create new Post</span>
+                                <span class="rui-nav-circle"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="profile.html" class="nav-link"><span data-feather="users" class="rui-icon rui-icon-stroke-1_5"></span>
+                                <span>Manage Users</span>
+                                <span class="rui-nav-circle"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="profile.html" class="nav-link"><span data-feather="check-circle" class="rui-icon rui-icon-stroke-1_5"></span>
+                                <span>Check Updates</span>
+                                <span class="rui-nav-circle"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="profile.html" class="nav-link"><span data-feather="log-out" class="rui-icon rui-icon-stroke-1_5"></span>
+                                <span>Exit</span>
+                                <span class="rui-nav-circle"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown dropdown-hover{{ ' dropdown-triangle' if dropdown_triangle }} dropdown-keep-open">
+                    <a class="dropdown-item mnr-5" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="0,12">
+                        <span class="btn btn-custom-round">
+                            <span data-feather="more-vertical" class="rui-icon rui-icon-stroke-1_5"></span>
+                        </span>
+                    </a>
+                    <ul class="nav dropdown-menu">
+                        <li>
+                            <div class="custom-control custom-switch dropdown-item-switch">
+                                <input type="checkbox" class="custom-control-input rui-nightmode-toggle" id="toggleNightMode">
+                                <label class="dropdown-item custom-control-label" for="toggleNightMode">
+                                    <span data-feather="moon" class="rui-icon rui-icon-stroke-1_5"></span>
+                                    <span>Night Mode</span>
+                                    <span class="rui-dropdown-circle"></span>
+                                </label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="custom-control custom-switch dropdown-item-switch">
+                                <input type="checkbox" class="custom-control-input rui-spotlightmode-toggle" id="toggleSpotlightMode">
+                                <label class="dropdown-item custom-control-label" for="toggleSpotlightMode">
+                                    <span data-feather="square" class="rui-icon rui-icon-stroke-1_5"></span>
+                                    <span>Spotlight Mode</span>
+                                    <span class="rui-dropdown-circle"></span>
+                                </label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="custom-control custom-switch dropdown-item-switch">
+                                <input type="checkbox" class="custom-control-input rui-sectionLines-toggle" id="toggleSectionLines">
+                                <label class="dropdown-item custom-control-label" for="toggleSectionLines">
+                                    <span data-feather="layout" class="rui-icon rui-icon-stroke-1_5"></span>
+                                    <span>Show section lines</span>
+                                    <span class="rui-dropdown-circle"></span>
+                                </label>
+                            </div>
+                        </li>
+                        <li class="dropdown-menu-label">Sidebar</li>
+                        <li>
+                            <div class="custom-control custom-switch dropdown-item-switch">
+                                <input type="checkbox" class="custom-control-input rui-darkSidebar-toggle" id="toggleDarkSidebar">
+                                <label class="dropdown-item custom-control-label" for="toggleDarkSidebar">
+                                    <span data-feather="sidebar" class="rui-icon rui-icon-stroke-1_5"></span>
+                                    <span>Dark</span>
+                                    <span class="rui-dropdown-circle"></span>
+                                </label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="custom-control custom-switch dropdown-item-switch">
+                                <input type="checkbox" class="custom-control-input rui-staticSidebar-toggle" id="toggleStaticSidebar">
+                                <label class="dropdown-item custom-control-label" for="toggleStaticSidebar">
+                                    <span data-feather="sidebar" class="rui-icon rui-icon-stroke-1_5"></span>
+                                    <span>Static</span>
+                                    <span class="rui-dropdown-circle"></span>
+                                </label>
+                            </div>
+                        </li>
+                        <li class="dropdown-menu-label">Navbar</li>
+                        <li>
+                            <div class="custom-control custom-switch dropdown-item-switch">
+                                <input type="checkbox" class="custom-control-input rui-darkNavbar-toggle" id="toggleDarkNavbar">
+                                <label class="dropdown-item custom-control-label" for="toggleDarkNavbar">
+                                    <span data-feather="menu" class="rui-icon rui-icon-stroke-1_5"></span>
+                                    <span>Dark</span>
+                                    <span class="rui-dropdown-circle"></span>
+                                </label>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- END: Navbar -->
+
+<!-- START: Navbar Mobile -->
+<div class="rui-navbar rui-navbar-mobile">
+    <div class="rui-navbar-head">
+        <button class="rui-yaybar-toggle rui-yaybar-toggle-inverse yay-toggle" type="button" aria-label="Toggle side navigation">
+            <span></span>
+        </button>
+        <a class="rui-navbar-logo mr-auto" href="{{ nav_logo_url }}">
+            <img src="{{ nav_logo_path }}" data-src-night="{{ nav_logo_white_path }}" data-src-day="{{ nav_logo_path }}" alt="" width="{{ nav_logo_width }}">
+        </a>
+        <div class="dropdown{{ ' dropdown-triangle' if dropdown_triangle }}">
+            <a class="dropdown-item rui-navbar-avatar" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="{{ user_1.img }}" alt="">
+            </a>
+            <ul class="dropdown-menu nav">
+                <li>
+                    <a href="profile.html" class="nav-link"><span data-feather="plus-circle" class="rui-icon rui-icon-stroke-1_5"></span>
+                        <span>Create new Post</span>
+                        <span class="rui-nav-circle"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="profile.html" class="nav-link"><span data-feather="users" class="rui-icon rui-icon-stroke-1_5"></span>
+                        <span>Manage Users</span>
+                        <span class="rui-nav-circle"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="profile.html" class="nav-link"><span data-feather="check-circle" class="rui-icon rui-icon-stroke-1_5"></span>
+                        <span>Check Updates</span>
+                        <span class="rui-nav-circle"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="profile.html" class="nav-link"><span data-feather="log-out" class="rui-icon rui-icon-stroke-1_5"></span>
+                        <span>Exit</span>
+                        <span class="rui-nav-circle"></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <button class="navbar-toggler rui-navbar-toggle" type="button" data-toggle="collapse" data-target="#navbarMobile" aria-controls="navbarMobile" aria-expanded="false" aria-label="Toggle navigation">
+            <span></span>
+        </button>
+    </div>
+    <div class="collapse navbar-collapse rui-navbar-collapse" id="navbarMobile">
+        <div class="rui-navbar-content">
+            <ul class="nav">
+                {{ submenuMobile(navigation) }}
+                <li class="nav-item">
+                    <a class="nav-link d-flex" data-fancybox data-touch="false" data-close-existing="true" data-src="#search" data-auto-focus="true" href="javascript:;">
+                        <span data-feather="search" class="rui-icon rui-icon-stroke-1_5"></span>
+                        <span>Search</span>
+                        <span class="rui-nav-circle"></span>
+                    </a>
+                </li>
+                <li class="dropdown dropdown-keep-open">
+                    <a class="dropdown-item" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span data-feather="flag" class="rui-icon rui-icon-stroke-1_5"></span>
+                        <span>Language</span>
+                        <span class="rui-dropdown-circle"></span>
+                    </a>
+                    <ul class="nav dropdown-menu rui-navbar-dropdown-language">
+                        <li>
+                            <a href="#" class="rui-navbar-language active"><span class="rui-navbar-language-img"><img src="{{ img_country.usa }}" alt=""></span> USA</a>
+                        </li>
+                        <li>
+                            <a href="#" class="rui-navbar-language"><span class="rui-navbar-language-img"><img src="{{ img_country.china }}" alt=""></span> China</a>
+                        </li>
+                        <li>
+                            <a href="#" class="rui-navbar-language"><span class="rui-navbar-language-img"><img src="{{ img_country.germany }}" alt=""></span> Germany</a>
+                        </li>
+                        <li>
+                            <a href="#" class="rui-navbar-language"><span class="rui-navbar-language-img"><img src="{{ img_country.japan }}" alt=""></span> Japan</a>
+                        </li>
+                        <li>
+                            <a href="#" class="rui-navbar-language"><span class="rui-navbar-language-img"><img src="{{ img_country.spain }}" alt=""></span> Spain</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown dropdown-keep-open">
+                    <a class="dropdown-item nav-link" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span data-feather="bell" class="rui-icon rui-icon-stroke-1_5"></span>
+                        <span>Notifications</span>
+                        <span class="badge badge-circle badge-brand">3</span>
+                        <span class="rui-dropdown-circle"></span>
+                    </a>
+                    <ul class="nav dropdown-menu rui-navbar-dropdown-notice">
+                        <li class="rui-navbar-dropdown-title mb-10">
+                            <div class="d-flex align-items-center">
+                                <h2 class="h4 mb-0 mr-auto">Notifications</h2>
+                                <a class="btn btn-custom-round" href="profile.html"><span data-feather="link-2" class="rui-icon rui-icon-stroke-1_5"></span></a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="media media-success media-filled mnl-30 mnr-30">
+                                <a href="profile.html" class="media-link">
+                                    <span class="media-img"><img src="{{ user_5.img }}" alt=""></span>
+                                    <span class="media-body">
+                                        <span class="media-title">{{ user_5.name }}</span>
+                                        <small class="media-subtitle">Bring abundantly creature great...</small>
+                                    </span>
+                                </a>
+                                <a href="#" class="media-icon"><span data-feather="x" class="rui-icon rui-icon-stroke-1_5"></span></a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="media media-filled mnl-30 mnr-30">
+                                <a href="profile.html" class="media-link">
+                                    <span class="media-img">C</span>
+                                    <span class="media-body">
+                                        <span class="media-title">Change Design</span>
+                                        <small class="media-subtitle">Design</small>
+                                    </span>
+                                </a>
+                                <a href="#" class="media-icon"><span data-feather="x" class="rui-icon rui-icon-stroke-1_5"></span></a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="media media-filled mnl-30 mnr-30">
+                                <a href="profile.html" class="media-link">
+                                    <span class="media-img bg-transparent"><img src="../../../common-assets/images/icon-zip.svg" class="icon-file" alt=""></span>
+                                    <span class="media-body">
+                                        <span class="media-title">Added banner archive</span>
+                                        <small class="media-subtitle">Commerce</small>
+                                    </span>
+                                </a>
+                                <a href="#" class="media-icon"><span data-feather="x" class="rui-icon rui-icon-stroke-1_5"></span></a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link d-flex" data-fancybox data-keyboard="false" data-auto-focus="false" data-touch="false" data-close-existing="true" data-src="#messenger" href="javascript:;">
+                        <span data-feather="message-circle" class="rui-icon rui-icon-stroke-1_5"></span>
+                        <span>Messenger</span>
+                        <span class="rui-nav-circle"></span>
+                    </a>
+                </li>
+                <li class="dropdown dropdown-keep-open">
+                    <a class="dropdown-item" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span data-feather="more-vertical" class="rui-icon rui-icon-stroke-1_5"></span>
+                        <span>More</span>
+                        <span class="rui-dropdown-circle"></span>
+                    </a>
+                    <ul class="nav dropdown-menu">
+                        <li>
+                            <div class="custom-control custom-switch dropdown-item-switch">
+                                <input type="checkbox" class="custom-control-input rui-nightmode-toggle" id="toggleMobileNightMode">
+                                <label class="dropdown-item custom-control-label" for="toggleMobileNightMode">
+                                    <span data-feather="moon" class="rui-icon rui-icon-stroke-1_5"></span>
+                                    <span>Night Mode</span>
+                                    <span class="rui-dropdown-circle"></span>
+                                </label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="custom-control custom-switch dropdown-item-switch">
+                                <input type="checkbox" class="custom-control-input rui-spotlightmode-toggle" id="toggleMobileSpotlightMode">
+                                <label class="dropdown-item custom-control-label" for="toggleMobileSpotlightMode">
+                                    <span data-feather="square" class="rui-icon rui-icon-stroke-1_5"></span>
+                                    <span>Spotlight Mode</span>
+                                    <span class="rui-dropdown-circle"></span>
+                                </label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="custom-control custom-switch dropdown-item-switch">
+                                <input type="checkbox" class="custom-control-input rui-sectionLines-toggle" id="toggleMobileSectionLines">
+                                <label class="dropdown-item custom-control-label" for="toggleMobileSectionLines">
+                                    <span data-feather="layout" class="rui-icon rui-icon-stroke-1_5"></span>
+                                    <span>Show section lines</span>
+                                    <span class="rui-dropdown-circle"></span>
+                                </label>
+                            </div>
+                        </li>
+                        <li class="dropdown-menu-label">Sidebar</li>
+                        <li>
+                            <div class="custom-control custom-switch dropdown-item-switch">
+                                <input type="checkbox" class="custom-control-input rui-darkSidebar-toggle" id="toggleMobileDarkSidebar">
+                                <label class="dropdown-item custom-control-label" for="toggleMobileDarkSidebar">
+                                    <span data-feather="sidebar" class="rui-icon rui-icon-stroke-1_5"></span>
+                                    <span>Dark</span>
+                                    <span class="rui-dropdown-circle"></span>
+                                </label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="custom-control custom-switch dropdown-item-switch">
+                                <input type="checkbox" class="custom-control-input rui-staticSidebar-toggle" id="toggleMobileStaticSidebar">
+                                <label class="dropdown-item custom-control-label" for="toggleMobileStaticSidebar">
+                                    <span data-feather="sidebar" class="rui-icon rui-icon-stroke-1_5"></span>
+                                    <span>Static</span>
+                                    <span class="rui-dropdown-circle"></span>
+                                </label>
+                            </div>
+                        </li>
+                        <li class="dropdown-menu-label">Navbar</li>
+                        <li>
+                            <div class="custom-control custom-switch dropdown-item-switch">
+                                <input type="checkbox" class="custom-control-input rui-darkNavbar-toggle" id="toggleMobileDarkNavbar">
+                                <label class="dropdown-item custom-control-label" for="toggleMobileDarkNavbar">
+                                    <span data-feather="menu" class="rui-icon rui-icon-stroke-1_5"></span>
+                                    <span>Dark</span>
+                                    <span class="rui-dropdown-circle"></span>
+                                </label>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="rui-navbar-bg"></div>
+<!-- END: Navbar Mobile -->

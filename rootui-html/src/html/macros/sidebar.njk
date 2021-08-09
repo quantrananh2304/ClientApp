@@ -1,0 +1,7 @@
+{% macro sidebar() %}
+<nav class="rui-page-sidebar">
+    <ul class="nav">
+        {{ caller() | trim }}
+    </ul>
+</nav>
+{% endmacro %}

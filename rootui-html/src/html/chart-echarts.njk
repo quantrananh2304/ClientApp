@@ -1,0 +1,674 @@
+{% set page_title = 'eCharts' %}
+{% set header_title = 'eCharts' %}
+{% set with_sidebar = true %}
+{% extends 'layouts/layout-container.njk' %}
+
+{% set breadcrumbs = [
+    ['Home', 'dashboard.html'],
+    ['Components', '#'],
+    ['Advanced', '#'],
+    ['Charts', '#']
+] %}
+
+{% block content %}
+
+{% from "macros/snippet.njk" import snippet, snippetMacro %}
+{% from "macros/sidebar.njk" import sidebar %}
+
+<h2 id="chartLine">Line</h2>
+{{ snippetMacro(
+    'ChartLine',
+    '<div id="echarts" class="echarts"></div>',
+    '<div id="echarts" class="echarts"></div>',
+    "
+const data = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'];
+const chartOne = [0, 10, 10, 13, 10, 20, 10, 10, 25];
+const chartTwo = [0, 9, 15, 10, 30, 15, 25, 18, 20];
+const options = {
+    tooltip: {
+        trigger: 'axis',
+        backgroundColor: '#393f49',
+        padding: [
+            5, 10, 5, 10,
+        ],
+        axisPointer: {
+            type: 'none',
+        },
+        textStyle: {
+            fontSize: 12,
+        },
+    },
+    xAxis: {
+        type: 'category',
+        data: data,
+        splitLine: {
+            show: false,
+        },
+        axisTick: {
+            show: false
+        },
+        axisLine: {
+            show: false
+        },
+        boundaryGap: false,
+        nameTextStyle: {
+            fontFamily: \"'Open Sans', sans-serif\",
+        },
+    },
+    yAxis: {
+        type: 'value',
+        splitLine: {
+            show: false,
+        },
+        axisTick: {
+            show: false
+        },
+        axisLine: {
+            show: false
+        },
+        boundaryGap: false,
+        nameTextStyle: {
+            fontFamily: \"'Open Sans', sans-serif\",
+        },
+    },
+    textStyle: {
+        color: '#bcbec0',
+        fontFamily: \"'Open Sans', sans-serif\",
+    },
+    grid: {
+        top: 20,
+        right: 30,
+        bottom: 20,
+        left: 30,
+    },
+    series: [
+        {
+            data: chartOne,
+            type: 'line',
+            name: 'Chart 1',
+            smooth: true,
+            areaStyle: {
+                normal: {
+                    color: 'rgba(171, 184, 255, 0.8)',
+                    opacity: 1,
+                },
+            },
+            lineStyle: {
+                normal: {
+                    width: 0,
+                },
+            },
+            symbol: 'circle',
+            symbolSize: 1,
+            symbolOffset: [0, 1],
+            itemStyle: {
+                normal: {
+                    borderWidth: 0,
+                    color: 'rgba(171, 184, 255, 1)',
+                },
+            },
+        },
+        {
+            data: chartTwo,
+            type: 'line',
+            name: 'Chart 2',
+            smooth: true,
+            areaStyle: {
+                normal: {
+                    color: 'rgba(94, 119, 255, 0.8)',
+                    opacity: 1,
+                },
+            },
+            lineStyle: {
+                normal: {
+                    width: 0,
+                },
+            },
+            symbol: 'circle',
+            symbolSize: 1,
+            symbolOffset: [0, 1],
+            itemStyle: {
+                normal: {
+                    borderWidth: 0,
+                    color: 'rgba(94, 119, 255, 1)',
+                },
+            },
+        },
+    ],
+};
+echarts.init(document.getElementById('echarts')).setOption(options);
+    "
+) }}
+
+<div class="rui-gap-4" id="chartBar"></div>
+<h2>Bar</h2>
+{{ snippetMacro(
+    'ChartBar',
+    '<div id="echartsBar" class="echarts"></div>',
+    '<div id="echartsBar" class="echarts"></div>',
+    "
+const data = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'];
+const chartOne = [0, 10, 10, 13, 10, 20, 10, 10, 25];
+const chartTwo = [0, 9, 15, 10, 30, 15, 25, 18, 20];
+const options = {
+    tooltip: {
+        trigger: 'item',
+        backgroundColor: '#393f49',
+        padding: [
+            5, 10, 5, 10,
+        ],
+        axisPointer: {
+            type: 'none',
+        },
+        textStyle: {
+            fontSize: 12,
+        },
+    },
+    xAxis: {
+        type: 'category',
+        data: data,
+        splitLine: {
+            show: false,
+        },
+        axisTick: {
+            show: false
+        },
+        axisLine: {
+            show: false
+        },
+        nameTextStyle: {
+            fontFamily: \"'Open Sans', sans-serif\",
+        },
+    },
+    yAxis: {
+        type: 'value',
+        splitLine: {
+            show: false,
+        },
+        axisTick: {
+            show: false
+        },
+        axisLine: {
+            show: false
+        },
+        nameTextStyle: {
+            fontFamily: \"'Open Sans', sans-serif\",
+        },
+    },
+    textStyle: {
+        color: '#bcbec0',
+        fontFamily: \"'Open Sans', sans-serif\",
+    },
+    grid: {
+        top: 20,
+        right: 60,
+        bottom: 20,
+        left: 30,
+    },
+    series: [
+        {
+            data: chartTwo,
+            type: 'bar',
+            name: 'Chart 1',
+            barGap: '10%',
+            barCategoryGap: '20%',
+            itemStyle: {
+                normal: {
+                    borderWidth: 0,
+                    color: 'rgba(94, 119, 255, 0.8)',
+                },
+            },
+        },
+        {
+            data: chartOne,
+            type: 'bar',
+            name: 'Chart 2',
+            barGap: '10%',
+            barCategoryGap: '20%',
+            itemStyle: {
+                normal: {
+                    borderWidth: 0,
+                    color: 'rgba(171, 184, 255, 0.8)',
+                },
+            },
+        },
+    ],
+};
+echarts.init(document.getElementById('echartsBar')).setOption(options);
+    "
+)}}
+
+<div class="rui-gap-4" id="chartPie"></div>
+<h2>Pie</h2>
+{{ snippetMacro(
+    'ChartPie',
+    '<div id="echartsPie" class="echarts"></div>',
+    '<div id="echartsPie" class="echarts"></div>',
+    "
+const options = {
+    tooltip: {
+        trigger: 'item',
+        backgroundColor: '#393f49',
+        padding: [
+            5, 10, 5, 10,
+        ],
+        axisPointer: {
+            type: 'none',
+        },
+        textStyle: {
+            fontSize: 12,
+        },
+    },
+    xAxis: {
+        type: 'category',
+        splitLine: {
+            show: false,
+        },
+        axisTick: {
+            show: false
+        },
+        axisLine: {
+            show: false
+        },
+    },
+    yAxis: {
+        type: 'value',
+        splitLine: {
+            show: false,
+        },
+        axisTick: {
+            show: false
+        },
+        axisLine: {
+            show: false
+        },
+        nameTextStyle: {
+            fontFamily: \"'Open Sans', sans-serif\",
+        },
+    },
+    textStyle: {
+        color: '#bcbec0',
+        fontFamily: \"'Open Sans', sans-serif\",
+    },
+    grid: {
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0,
+    },
+    series: {
+        type: 'pie',
+        hoverAnimation: false,
+        data: [
+            {
+                value: 5,
+                name: 'Jan',
+                itemStyle: {
+                    normal: {
+                        borderWidth: 0,
+                        color: 'rgba(94, 119, 255, 0.8)',
+                    },
+                },
+            },
+            {
+                value: 3,
+                name: 'Feb',
+                itemStyle: {
+                    normal: {
+                        borderWidth: 0,
+                        color: 'rgba(94, 119, 255, 0.6)',
+                    },
+                },
+            },
+            {
+                value: 4,
+                name: 'Mar',
+                itemStyle: {
+                    normal: {
+                        borderWidth: 0,
+                        color: 'rgba(94, 119, 255, 0.4)',
+                    },
+                },
+            },
+        ],
+        label: {
+            normal: {
+                show: false,
+            },
+        },
+    },
+};
+echarts.init(document.getElementById('echartsPie')).setOption(options);
+    "
+)}}
+
+{% endblock %}
+
+
+{% block content_sidebar %}
+{% call sidebar() %}
+    <li><a class="nav-link" href="#chartLine">Line</a></li>
+    <li><a class="nav-link" href="#chartBar">Bar</a></li>
+    <li><a class="nav-link" href="#chartPie">Pie</a></li>
+{% endcall %}
+{% endblock %}
+
+
+{% block vendor_css %}
+
+    <!-- Highlight -->
+    <link rel="stylesheet" href="./assets/vendor/highlightjs/styles/default.css">
+
+{% endblock %}
+
+{% block vendor_js %}
+
+    <!-- Highlight -->
+    <script src="./assets/vendor/highlightjs/highlight.pack.min.js"></script>
+
+    <!-- eCharts -->
+    <script src="./assets/vendor/echarts/dist/echarts.min.js"></script>
+
+    <script class="rui-page-additional-js">
+        (function(){
+            const data = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'];
+            const chartOne = [0, 10, 10, 13, 10, 20, 10, 10, 25];
+            const chartTwo = [0, 9, 15, 10, 30, 15, 25, 18, 20];
+            const optionsLine = {
+                tooltip: {
+                    trigger: 'axis',
+                    backgroundColor: '#393f49',
+                    padding: [
+                        5, 10, 5, 10,
+                    ],
+                    axisPointer: {
+                        type: 'none',
+                    },
+                    textStyle: {
+                        fontSize: 12,
+                    },
+                },
+                xAxis: {
+                    type: 'category',
+                    data: data,
+                    splitLine: {
+                        show: false,
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    axisLine: {
+                        show: false
+                    },
+                    boundaryGap: false,
+                    nameTextStyle: {
+                        fontFamily: "'Open Sans', sans-serif",
+                    },
+                },
+                yAxis: {
+                    type: 'value',
+                    splitLine: {
+                        show: false,
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    axisLine: {
+                        show: false
+                    },
+                    boundaryGap: false,
+                    nameTextStyle: {
+                        fontFamily: "'Open Sans', sans-serif",
+                    },
+                },
+                textStyle: {
+                    color: '#bcbec0',
+                    fontFamily: "'Open Sans', sans-serif",
+                },
+                grid: {
+                    top: 20,
+                    right: 30,
+                    bottom: 20,
+                    left: 30,
+                },
+                series: [
+                    {
+                        data: chartOne,
+                        type: 'line',
+                        name: 'Chart 1',
+                        smooth: true,
+                        areaStyle: {
+                            normal: {
+                                color: 'rgba(171, 184, 255, 0.8)',
+                                opacity: 1,
+                            },
+                        },
+                        lineStyle: {
+                            normal: {
+                                width: 0,
+                            },
+                        },
+                        symbol: 'circle',
+                        symbolSize: 1,
+                        symbolOffset: [0, 1],
+                        itemStyle: {
+                            normal: {
+                                borderWidth: 0,
+                                color: 'rgba(171, 184, 255, 1)',
+                            },
+                        },
+                    },
+                    {
+                        data: chartTwo,
+                        type: 'line',
+                        name: 'Chart 2',
+                        smooth: true,
+                        areaStyle: {
+                            normal: {
+                                color: 'rgba(94, 119, 255, 0.8)',
+                                opacity: 1,
+                            },
+                        },
+                        lineStyle: {
+                            normal: {
+                                width: 0,
+                            },
+                        },
+                        symbol: 'circle',
+                        symbolSize: 1,
+                        symbolOffset: [0, 1],
+                        itemStyle: {
+                            normal: {
+                                borderWidth: 0,
+                                color: 'rgba(94, 119, 255, 1)',
+                            },
+                        },
+                    },
+                ],
+            };
+
+            const optionsBar = {
+                tooltip: {
+                    trigger: 'item',
+                    backgroundColor: '#393f49',
+                    padding: [
+                        5, 10, 5, 10,
+                    ],
+                    axisPointer: {
+                        type: 'none',
+                    },
+                    textStyle: {
+                        fontSize: 12,
+                    },
+                },
+                xAxis: {
+                    type: 'category',
+                    data: data,
+                    splitLine: {
+                        show: false,
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    axisLine: {
+                        show: false
+                    },
+                    nameTextStyle: {
+                        fontFamily: "'Open Sans', sans-serif",
+                    },
+                },
+                yAxis: {
+                    type: 'value',
+                    splitLine: {
+                        show: false,
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    axisLine: {
+                        show: false
+                    },
+                    nameTextStyle: {
+                        fontFamily: "'Open Sans', sans-serif",
+                    },
+                },
+                textStyle: {
+                    color: '#bcbec0',
+                    fontFamily: "'Open Sans', sans-serif",
+                },
+                grid: {
+                    top: 20,
+                    right: 60,
+                    bottom: 20,
+                    left: 30,
+                },
+                series: [
+                    {
+                        data: chartTwo,
+                        type: 'bar',
+                        name: 'Chart 1',
+                        barGap: '10%',
+                        barCategoryGap: '20%',
+                        itemStyle: {
+                            normal: {
+                                borderWidth: 0,
+                                color: 'rgba(94, 119, 255, 0.8)',
+                            },
+                        },
+                    },
+                    {
+                        data: chartOne,
+                        type: 'bar',
+                        name: 'Chart 2',
+                        barGap: '10%',
+                        barCategoryGap: '20%',
+                        itemStyle: {
+                            normal: {
+                                borderWidth: 0,
+                                color: 'rgba(171, 184, 255, 0.8)',
+                            },
+                        },
+                    },
+                ],
+            };
+
+            const optionsPie = {
+                tooltip: {
+                    trigger: 'item',
+                    backgroundColor: '#393f49',
+                    padding: [
+                        5, 10, 5, 10,
+                    ],
+                    axisPointer: {
+                        type: 'none',
+                    },
+                    textStyle: {
+                        fontSize: 12,
+                    },
+                },
+                xAxis: {
+                    type: 'category',
+                    splitLine: {
+                        show: false,
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    axisLine: {
+                        show: false
+                    },
+                },
+                yAxis: {
+                    type: 'value',
+                    splitLine: {
+                        show: false,
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    axisLine: {
+                        show: false
+                    },
+                    nameTextStyle: {
+                        fontFamily: "'Open Sans', sans-serif",
+                    },
+                },
+                textStyle: {
+                    color: '#bcbec0',
+                    fontFamily: "'Open Sans', sans-serif",
+                },
+                grid: {
+                    top: 0,
+                    right: 0,
+                    bottom: 0,
+                    left: 0,
+                },
+                series: {
+                    type: 'pie',
+                    hoverAnimation: false,
+                    data: [
+                        {
+                            value: 5,
+                            name: 'Jan',
+                            itemStyle: {
+                                normal: {
+                                    borderWidth: 0,
+                                    color: 'rgba(94, 119, 255, 0.8)',
+                                },
+                            },
+                        },
+                        {
+                            value: 3,
+                            name: 'Feb',
+                            itemStyle: {
+                                normal: {
+                                    borderWidth: 0,
+                                    color: 'rgba(94, 119, 255, 0.6)',
+                                },
+                            },
+                        },
+                        {
+                            value: 4,
+                            name: 'Mar',
+                            itemStyle: {
+                                normal: {
+                                    borderWidth: 0,
+                                    color: 'rgba(94, 119, 255, 0.4)',
+                                },
+                            },
+                        },
+                    ],
+                    label: {
+                        normal: {
+                            show: false,
+                        },
+                    },
+                },
+            };
+
+            echarts.init(document.getElementById('echarts')).setOption(optionsLine);
+            echarts.init(document.getElementById('echartsBar')).setOption(optionsBar);
+            echarts.init(document.getElementById('echartsPie')).setOption(optionsPie);
+        }());
+    </script>
+{% endblock %}

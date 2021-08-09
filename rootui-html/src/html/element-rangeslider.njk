@@ -1,0 +1,63 @@
+{% set page_title = 'Range Slider' %}
+{% set header_title = 'Range Slider' %}
+{% set with_sidebar = true %}
+{% extends 'layouts/layout-container.njk' %}
+
+{% set breadcrumbs = [
+    ['Home', 'dashboard.html'],
+    ['Forms', '#'],
+    ['Advanced', '#']
+] %}
+
+{% block content %}
+
+{% from "macros/snippet.njk" import snippet %}
+{% from "macros/sidebar.njk" import sidebar %}
+
+<h2 id="rangeslider">Base</h2>
+{% call snippet('Rangeslider') %}
+<div class="rui-irs">
+    <input type="text" value="" min="0" max="1000" step="1" data-irs-from="500">
+    <span class="rui-irs-value"></span>
+</div>
+{%- endcall %}
+
+<div class="rui-gap-4" id="rangesliderDouble"></div>
+<h2>Double</h2>
+{% call snippet('RangesliderDouble') %}
+<div class="rui-irs">
+    <input type="text" value="" min="10" max="1000" step="10" data-irs-from="250" data-irs-to="750" data-irs-separator=" - ">
+    <span class="rui-irs-value"></span>
+</div>
+{%- endcall %}
+
+{% endblock %}
+
+
+{% block content_sidebar %}
+{% call sidebar() %}
+    <li><a class="nav-link" href="#rangeslider">Base</a></li>
+    <li><a class="nav-link" href="#rangesliderDouble">Double</a></li>
+{% endcall %}
+{% endblock %}
+
+
+{% block vendor_css %}
+
+    <!-- Highlight -->
+    <link rel="stylesheet" href="./assets/vendor/highlightjs/styles/default.css">
+
+    <!-- Ion Rangeslider -->
+    <link rel="stylesheet" href="./assets/vendor/ion-rangeslider/css/ion.rangeSlider.css">
+
+{% endblock %}
+
+{% block vendor_js %}
+
+    <!-- Highlight -->
+    <script src="./assets/vendor/highlightjs/highlight.pack.min.js"></script>
+
+    <!-- Ion Rangeslider -->
+    <script src="./assets/vendor/ion-rangeslider/js/ion.rangeSlider.min.js"></script>
+
+{% endblock %}

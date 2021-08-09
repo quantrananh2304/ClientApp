@@ -1,0 +1,93 @@
+{% set page_title = 'Element Modal' %}
+{% set header_title = 'Modal' %}
+{% set with_sidebar = true %}
+{% extends 'layouts/layout-container.njk' %}
+
+{% set breadcrumbs = [
+    ['Home', 'dashboard.html'],
+    ['Components', '#'],
+    ['Base', '#']
+] %}
+
+{% block content %}
+
+{% from "macros/snippet.njk" import snippet %}
+{% from "macros/sidebar.njk" import sidebar %}
+
+<h2 id="modalBase">Base</h2>
+{% call snippet('ModalBase', 'no-frame-preview') %}
+<div class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title h2">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span data-feather="x" class="rui-icon rui-icon-stroke-1_5"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p class="mnb-2">Modal body text goes here.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-brand">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+{%- endcall %}
+
+<div class="rui-gap-4" id="modalLive"></div>
+<h2>Live demo</h2>
+{% call snippet('ModalLive', 'no-frame-preview') %}
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-brand" data-toggle="modal" data-target="#exampleModal">
+    Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalExample" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span data-feather="x" class="rui-icon rui-icon-stroke-1_5"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-brand">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+{%- endcall %}
+
+{% endblock %}
+
+
+{% block content_sidebar %}
+{% call sidebar() %}
+    <li><a class="nav-link" href="#modalBase">Base</a></li>
+    <li><a class="nav-link" href="#modalLive">Live demo</a></li>
+{% endcall %}
+{% endblock %}
+
+
+{% block vendor_css %}
+
+    <!-- Highlight -->
+    <link rel="stylesheet" href="./assets/vendor/highlightjs/styles/default.css">
+
+{% endblock %}
+
+{% block vendor_js %}
+
+    <!-- Highlight -->
+    <script src="./assets/vendor/highlightjs/highlight.pack.min.js"></script>
+
+{% endblock %}

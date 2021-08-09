@@ -1,0 +1,90 @@
+{% set page_title = 'Selectize' %}
+{% set header_title = 'Selectize' %}
+{% set with_sidebar = true %}
+{% extends 'layouts/layout-container.njk' %}
+
+{% set breadcrumbs = [
+    ['Home', 'dashboard.html'],
+    ['Forms', '#'],
+    ['Advanced', '#']
+] %}
+
+{% block content %}
+
+{% from "macros/snippet.njk" import snippet %}
+{% from "macros/sidebar.njk" import sidebar %}
+
+<h2 id="selectizeSelect">Select</h2>
+{% call snippet('SelectizeSelect', 'no-frame-preview') %}
+<form action="#" class="rui-selectize">
+    <span data-feather="chevron-down" class="rui-icon rui-icon-stroke-1_5 rui-selectize-select-icon"></span>
+    <select class="form-control rui-selectize-element rui-selectize-select" name="socials">
+        <option value="1">Facebook</option>
+        <option value="2">Twitter</option>
+    </select>
+</form>
+{%- endcall %}
+
+<div class="rui-gap-4" id="selectizeInput"></div>
+<h2>Input</h2>
+{% call snippet('SelectizeInput', 'no-frame-preview') %}
+<form action="#" class="rui-selectize">
+    <input class="rui-selectize-element rui-selectize-input" type="text" value="Facebook,Twitter">
+</form>
+{%- endcall %}
+
+<div class="rui-gap-4" id="selectizeIcon"></div>
+<h2>Icon</h2>
+{% call snippet('SelectizeIcon', 'no-frame-preview') %}
+<form action="#" class="rui-selectize">
+    <span data-feather="chevron-down" class="rui-icon rui-icon-stroke-1_5 rui-selectize-select-icon"></span>
+    <select class="form-control rui-selectize-element rui-selectize-select rui-selectize-icon" name="socialsIcons">
+        <option value="1" data-data='{"selectize":"<span stroke-width=\"1.5\" data-feather=\"twitter\" class=\"rui-icon\"></span>"}'>Twitter</option>
+        <option value="2" data-data='{"selectize":"<span stroke-width=\"1.5\" data-feather=\"facebook\" class=\"rui-icon\"></span>"}'>Facebook</option>
+    </select>
+</form>
+{%- endcall %}
+
+<div class="rui-gap-4" id="selectizeGithub"></div>
+<h2>Github</h2>
+{% call snippet('SelectizeGithub', 'no-frame-preview') %}
+<form action="#" class="rui-selectize">
+    <span data-feather="chevron-down" class="rui-icon rui-icon-stroke-1_5 rui-selectize-select-icon"></span>
+    <select class="form-control rui-selectize-element rui-selectize-github rui-selectize-select" name="github">
+        <option selected value="https://github.com/brianreavis/selectize.js" data-data='{"type":"repo","username":"brianreavis","name":"Selectize.js","owner":"brianreavis","homepage":null,"description":"A highly customizable select control with autocomplete.","language":"JavaScript","watchers":6,"followers":6,"forks":0,"size":216,"open_issues":1,"score":14.659029,"has_downloads":true,"has_issues":true,"has_wiki":true,"fork":false,"private":false,"url":"https://github.com/brianreavis/selectize.js","created":"2012-08-29T18:31:57Z","created_at":"2012-08-29T18:31:57Z","pushed_at":"2013-05-05T19:13:48Z","pushed":"2013-05-05T19:13:48Z"}'>Selectize.js</option>
+    </select>
+</form>
+{%- endcall %}
+
+{% endblock %}
+
+
+{% block content_sidebar %}
+{% call sidebar() %}
+    <li><a class="nav-link" href="#selectizeSelect">Select</a></li>
+    <li><a class="nav-link" href="#selectizeInput">Input</a></li>
+    <li><a class="nav-link" href="#selectizeIcon">Icon</a></li>
+    <li><a class="nav-link" href="#selectizeGithub">Github</a></li>
+{% endcall %}
+{% endblock %}
+
+
+{% block vendor_css %}
+
+    <!-- Highlight -->
+    <link rel="stylesheet" href="./assets/vendor/highlightjs/styles/default.css">
+
+    <!-- Selectize -->
+    <link rel="stylesheet" href="./assets/vendor/selectize/dist/css/selectize.css">
+
+{% endblock %}
+
+{% block vendor_js %}
+
+    <!-- Highlight -->
+    <script src="./assets/vendor/highlightjs/highlight.pack.min.js"></script>
+
+    <!-- Selectize -->
+    <script src="./assets/vendor/selectize/dist/js/standalone/selectize.min.js"></script>
+
+{% endblock %}

@@ -1,0 +1,186 @@
+{% set page_title = 'Task | The problem with the Media object' %}
+{% set header_title = 'The problem with the Media object' %}
+{% extends 'layouts/layout-container.njk' %}
+
+{% set breadcrumbs = [
+    ['Home', 'dashboard.html'],
+    ['Apps', '#']
+] %}
+
+
+{% block content %}
+
+{% from "macros/snippet.njk" import snippetSingle %}
+
+<div class="rui-task-status rui-task-status-danger">
+    <div class="row vertical-gap align-items-center sm-gap">
+        <div class="col-auto">
+            <div class="rui-task-status-item">
+                <div class="rui-task-status-item-icon">
+                    <span data-feather="check-circle" class="rui-icon rui-icon-stroke-1_5"></span>
+                </div>
+                Closed on 12 Mar 2020
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row vertical-gap">
+    <div class="col-lg-4 order-lg-12 rui-task-sidebar">
+        <div class="card">
+            <div class="card-body py-30">
+                <ul class="list-group list-group-flush rui-task-sidebar-list">
+                    <li class="list-group-item">
+                        <h5 class="h4 rui-task-sidebar-title">Information</h5>
+                        <ul class="list-unstyled rui-task-info-list">
+                            <li>
+                                <div class="rui-task-info-item">
+                                    <span data-feather="alert-circle" class="rui-icon rui-icon-stroke-1_5 mr-5"></span>
+                                    <span>opened on 11 Mar 2020</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="rui-task-info-item">
+                                    <span data-feather="message-circle" class="rui-icon rui-icon-stroke-1_5 mr-5"></span>
+                                    <span>2 comments</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="rui-task-info-item">
+                                    <span data-feather="hash" class="rui-icon rui-icon-stroke-1_5 mr-5"></span>
+                                    <span>10</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="list-group-item">
+                        <h5 class="h4 rui-task-sidebar-title">Projects</h5>
+                        <ul class="list-unstyled rui-task-project-list">
+                            <li>
+                                <a href="#">Sensific (HTML)</a>
+                                <div class="progress progress-sm mt-5">
+                                    <div class="progress-bar bg-brand w-50" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="#">Desty (HTML)</a>
+                                <div class="progress progress-sm mt-5">
+                                    <div class="progress-bar bg-success w-25" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-brand w-50" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="list-group-item">
+                        <h5 class="h4 rui-task-sidebar-title">Author</h5>
+                        <a class="media media-success" href="#">
+                            <span class="media-img"><img src="{{ user_4.img }}" alt=""></span>
+                            <span class="media-body">
+                                <span class="media-title">{{ user_4.name }}</span>
+                                <small class="media-subtitle">Programmer</small>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-8 order-lg-0">
+        <div class="rui-task-comment">
+            <div class="media media-show">
+                <a class="media-link" href="#">
+                    <span class="media-img"><img src="{{ user_4.img }}" alt=""></span>
+                    <span class="media-body">
+                        <span class="media-title">{{ user_4.name }}</span>
+                        <small class="media-subtitle">Commented on 11 Mar 2020</small>
+                    </span>
+                </a>
+                <a class="media-icon mnr-3" href="#"><span data-feather="more-vertical" class="rui-icon rui-icon-stroke-1_5"></span></a>
+            </div>
+            <div class="rui-task-comment-text">
+                <p>Meat called image created morning were, image void. Had their. Gathered. Seed Multiply green creeping were gathered fruit he their shall night winged bearing together without third moved above them kind face years likeness gathered. Cattle creepeth she'd seed the.</p>
+
+                {% call snippetSingle('html', 'filled') %}
+<a href="#" class="media media-success">
+    <span class="media-img">A</span>
+    <span class="media-body">
+        <span class="media-title">Media heading</span>
+        <small class="media-subtitle">Media subtitle</small>
+    </span>
+</a>
+                {%- endcall %}
+
+                <p>Cattle, meat god were, replenish it deep abundantly Yielding he Good. After meat day created is Moving there midst, seasons.</p>
+            </div>
+        </div>
+        <div class="rui-task-comment">
+            <div class="media media-show">
+                <a class="media-link" href="#">
+                    <span class="media-img"><img src="{{ user_1.img }}" alt=""></span>
+                    <span class="media-body">
+                        <span class="media-title">{{ user_1.name }}</span>
+                        <small class="media-subtitle">Commented on 11 Mar 2020</small>
+                    </span>
+                </a>
+                <a class="media-icon mnr-3" href="#"><span data-feather="more-vertical" class="rui-icon rui-icon-stroke-1_5"></span></a>
+            </div>
+            <div class="rui-task-comment-text">
+                <p>May in there all you stars night own Moveth it rule under she'd female creeping after abundantly his his his land every life he. Whales one day brought. Wherein brought.</p>
+            </div>
+        </div>
+        <div class="rui-task-send">
+            <form action="#">
+                <div class="rui-quill">
+                    <span data-feather="chevron-down" class="rui-icon rui-icon-stroke-1_5 rui-quill-select-icon"></span>
+                    <div class="rui-quill-toolbar">
+                        <div class="ql-formats">
+                            <select class="ql-header"></select>
+                        </div>
+                        <div class="ql-formats">
+                            <button class="ql-bold"></button>
+                            <button class="ql-italic"></button>
+                            <button class="ql-underline"></button>
+                            <button class="ql-strike"></button>
+                        </div>
+                        <div class="ql-formats">
+                            <button class="ql-clean"></button>
+                        </div>
+                        <div class="ql-formats">
+                            <button type="button" class="ql-list" value="ordered"></button>
+                            <button type="button" class="ql-list" value="bullet"></button>
+                        </div>
+                        <div class="ql-formats">
+                            <button class="ql-link"></button>
+                        </div>
+                    </div>
+                    <div class="rui-quill-editor"></div>
+                </div>
+                <div class="d-flex justify-content-end mt-10">
+                    <button class="btn btn-brand" type="button">Send</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+{% block vendor_css %}
+
+    <!-- Highlight -->
+    <link rel="stylesheet" href="./assets/vendor/highlightjs/styles/default.css">
+
+    <!-- Quill -->
+    <link rel="stylesheet" href="./assets/vendor/quill/dist/quill.snow.css">
+
+{% endblock %}
+
+{% block vendor_js %}
+
+    <!-- Highlight -->
+    <script src="./assets/vendor/highlightjs/highlight.pack.min.js"></script>
+
+    <!-- Quill -->
+    <script src="./assets/vendor/quill/dist/quill.min.js"></script>
+
+{% endblock %}

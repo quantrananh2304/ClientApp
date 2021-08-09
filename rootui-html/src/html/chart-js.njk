@@ -1,0 +1,536 @@
+{% set page_title = 'Chart.js' %}
+{% set header_title = 'Chart.js' %}
+{% set with_sidebar = true %}
+{% extends 'layouts/layout-container.njk' %}
+
+{% set breadcrumbs = [
+    ['Home', 'dashboard.html'],
+    ['Components', '#'],
+    ['Advanced', '#'],
+    ['Charts', '#']
+] %}
+
+{% block content %}
+
+{% from "macros/snippet.njk" import snippet, snippetMacro %}
+{% from "macros/sidebar.njk" import sidebar %}
+
+<h2 id="chartLine">Line</h2>
+{{ snippetMacro(
+    'ChartLine',
+    '<canvas id="chartJsLine" height="80"></canvas>',
+    '<canvas id="chartJsLine" height="80"></canvas>',
+    "
+const data = {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+    datasets: [
+        {
+            label: 'Chart 1',
+            backgroundColor: 'rgba(94, 119, 255, 0.8)',
+            borderColor: 'transparent',
+            borderWidth: 0,
+            pointRadius: 3,
+            pointHoverRadius: 3,
+            pointHitRadius: 100,
+            pointBackgroundColor: 'transparent',
+            pointHoverBackgroundColor: 'rgba(94, 119, 255, 1)',
+            data: [0, 9, 15, 10, 30, 15, 25, 18, 20],
+        },
+        {
+            label: 'Chart 2',
+            backgroundColor: 'rgba(171, 184, 255, 0.8)',
+            borderColor: 'transparent',
+            borderWidth: 0,
+            pointRadius: 3,
+            pointHoverRadius: 3,
+            pointHitRadius: 100,
+            pointBackgroundColor: 'transparent',
+            pointHoverBackgroundColor: 'rgba(171, 184, 255, 1)',
+            data: [0, 10, 10, 13, 10, 20, 10, 10, 25],
+        }
+    ],
+};
+const options = {
+    type: 'line',
+    data: data,
+
+    options: {
+        tooltips: {
+            mode: 'nearest',
+            intersect: false,
+            backgroundColor: '#393f49',
+            titleMarginBottom: 8,
+            titleFontSize: 14,
+            titleFontColor: '#f8f9fa',
+            titleFontFamily: \"'Open Sans', sans-serif\",
+            bodyFontSize: 11,
+            bodyFontColor: '#d7d9e0',
+            bodyFontFamily: \"'Open Sans', sans-serif\",
+            footerMarginTop: 10,
+            footerFontSize: 11,
+            footerFontColor: '#f8f9fa',
+            footerFontFamily: \"'Open Sans', sans-serif\",
+            xPadding: 10,
+            yPadding: 10,
+            caretPadding: 5,
+            cornerRadius: 4,
+        },
+        legend: {
+            labels: {
+                padding: 30,
+                fontSize: 14,
+                fontColor: '#6c757d',
+                fontFamily: \"'Open Sans', sans-serif\",
+                boxWidth: 14,
+            },
+        },
+        scales: {
+            xAxes: [{
+                gridLines: {
+                    lineWidth: 0,
+                    color: 'transparent',
+                    zeroLineWidth: 0,
+                    zeroLineColor: 'transparent',
+                },
+                ticks: {
+                    fontSize: 12,
+                    fontColor: '#bcbec0',
+                    fontFamily: \"'Open Sans', sans-serif\",
+                },
+            }],
+            yAxes: [{
+                gridLines: {
+                    lineWidth: 0,
+                    color: 'transparent',
+                    zeroLineWidth: 0,
+                    zeroLineColor: 'transparent',
+                },
+                ticks: {
+                    fontSize: 12,
+                    fontColor: '#bcbec0',
+                    fontFamily: \"'Open Sans', sans-serif\",
+                },
+            }],
+        },
+    },
+};
+const chartLine = new Chart(document.getElementById('chartJsLine').getContext('2d'), options);
+    "
+)}}
+
+<div class="rui-gap-4" id="chartBar"></div>
+<h2>Bar</h2>
+{{ snippetMacro(
+    'ChartBar',
+    '<canvas id="chartJsBar" height="90"></canvas>',
+    '<canvas id="chartJsBar" height="90"></canvas>',
+    "
+const data = {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+    datasets: [
+        {
+            label: 'Chart 1',
+            backgroundColor: 'rgba(94, 119, 255, 0.8)',
+            borderColor: 'rgba(94, 119, 255, 0)',
+            borderWidth: 0,
+            pointRadius: 3,
+            pointHoverRadius: 3,
+            pointHitRadius: 100,
+            pointBackgroundColor: 'transparent',
+            pointHoverBackgroundColor: 'rgba(94, 119, 255, 1)',
+            data: [0, 9, 15, 10, 30, 15, 25, 18, 20],
+        },
+        {
+            label: 'Chart 2',
+            backgroundColor: 'rgba(171, 184, 255, 0.8)',
+            borderColor: 'rgba(171, 184, 255, 0)',
+            borderWidth: 0,
+            pointRadius: 3,
+            pointHoverRadius: 3,
+            pointHitRadius: 100,
+            pointBackgroundColor: 'transparent',
+            pointHoverBackgroundColor: 'rgba(171, 184, 255, 1)',
+            data: [0, 10, 10, 13, 10, 20, 10, 10, 25],
+        }
+    ],
+};
+const options = {
+    type: 'bar',
+    data: data,
+
+    options: {
+        tooltips: {
+            mode: 'nearest',
+            intersect: true,
+            backgroundColor: '#393f49',
+            titleMarginBottom: 8,
+            titleFontSize: 14,
+            titleFontColor: '#f8f9fa',
+            titleFontFamily: \"'Open Sans', sans-serif\",
+            bodyFontSize: 11,
+            bodyFontColor: '#d7d9e0',
+            bodyFontFamily: \"'Open Sans', sans-serif\",
+            footerMarginTop: 10,
+            footerFontSize: 11,
+            footerFontColor: '#f8f9fa',
+            footerFontFamily: \"'Open Sans', sans-serif\",
+            xPadding: 10,
+            yPadding: 10,
+            caretPadding: 5,
+            cornerRadius: 4,
+        },
+        legend: {
+            labels: {
+                padding: 30,
+                fontSize: 14,
+                fontColor: '#6c757d',
+                fontFamily: \"'Open Sans', sans-serif\",
+                boxWidth: 14,
+            },
+        },
+        scales: {
+            xAxes: [{
+                gridLines: {
+                    lineWidth: 0,
+                    color: 'transparent',
+                    zeroLineWidth: 0,
+                    zeroLineColor: 'transparent',
+                },
+                ticks: {
+                    fontSize: 12,
+                    fontColor: '#bcbec0',
+                    fontFamily: \"'Open Sans', sans-serif\",
+                },
+            }],
+            yAxes: [{
+                gridLines: {
+                    lineWidth: 0,
+                    color: 'transparent',
+                    zeroLineWidth: 0,
+                    zeroLineColor: 'transparent',
+                },
+                ticks: {
+                    fontSize: 12,
+                    fontColor: '#bcbec0',
+                    fontFamily: \"'Open Sans', sans-serif\",
+                },
+            }],
+        },
+    },
+};
+const chartBar = new Chart(document.getElementById('chartJsBar').getContext('2d'), options);
+    "
+)}}
+
+<div class="rui-gap-4" id="chartPie"></div>
+<h2>Pie</h2>
+{{ snippetMacro(
+    'ChartPie',
+    '<canvas id="chartJsPie" height="80"></canvas>',
+    '<canvas id="chartJsPie" height="80"></canvas>',
+    "
+const data = {
+    labels: ['Jan', 'Feb', 'Mar'],
+    datasets: [{
+        label: 'Chart Example',
+        backgroundColor: [
+            'rgba(142, 159, 255, 1)',
+            'rgba(171, 184, 255, 1)',
+            'rgba(202, 210, 255, 1)',
+        ],
+        borderColor: '#fff',
+        borderWidth: 0,
+        pointBorderWidth: 1,
+        pointBackgroundColor: 'rgba(114, 94, 195, 1)',
+        data: [5, 3, 4],
+    }],
+};
+const options = {
+    type: 'pie',
+    data: data,
+    options: {
+        tooltips: {
+            backgroundColor: '#393f49',
+            titleMarginBottom: 8,
+            titleFontSize: 14,
+            titleFontColor: '#f8f9fa',
+            titleFontFamily: \"'Open Sans', sans-serif\",
+            bodyFontSize: 11,
+            bodyFontColor: '#d7d9e0',
+            bodyFontFamily: \"'Open Sans', sans-serif\",
+            footerMarginTop: 10,
+            footerFontSize: 11,
+            footerFontColor: '#f8f9fa',
+            footerFontFamily: \"'Open Sans', sans-serif\",
+            xPadding: 10,
+            yPadding: 10,
+            caretSize: 0,
+            cornerRadius: 4,
+        },
+        legend: {
+            labels: {
+                padding: 30,
+                fontSize: 14,
+                fontColor: '#6c757d',
+                fontFamily: \"'Open Sans', sans-serif\",
+                boxWidth: 14,
+            },
+        },
+        scales: {
+            display: false,
+        },
+    },
+};
+const chartPie = new Chart(document.getElementById('chartJsPie').getContext('2d'), options);
+    "
+)}}
+
+{% endblock %}
+
+
+{% block content_sidebar %}
+{% call sidebar() %}
+    <li><a class="nav-link" href="#chartLine">Line</a></li>
+    <li><a class="nav-link" href="#chartBar">Bar</a></li>
+    <li><a class="nav-link" href="#chartPie">Pie</a></li>
+{% endcall %}
+{% endblock %}
+
+
+{% block vendor_css %}
+
+    <!-- Highlight -->
+    <link rel="stylesheet" href="./assets/vendor/highlightjs/styles/default.css">
+
+{% endblock %}
+
+{% block vendor_js %}
+
+    <!-- Highlight -->
+    <script src="./assets/vendor/highlightjs/highlight.pack.min.js"></script>
+
+    <!-- Chart.js -->
+    <script src="./assets/vendor/chart.js/dist/Chart.min.js"></script>
+
+    <script class="rui-page-additional-js">
+        (function(){
+            // Line and Bar
+            const data = {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+                datasets: [
+                    {
+                        label: 'Chart 1',
+                        backgroundColor: 'rgba(94, 119, 255, 0.8)',
+                        borderColor: 'transparent',
+                        borderWidth: 0,
+                        pointRadius: 3,
+                        pointHoverRadius: 3,
+                        pointHitRadius: 100,
+                        pointBackgroundColor: 'transparent',
+                        pointHoverBackgroundColor: 'rgba(94, 119, 255, 1)',
+                        data: [0, 9, 15, 10, 30, 15, 25, 18, 20],
+                    },
+                    {
+                        label: 'Chart 2',
+                        backgroundColor: 'rgba(171, 184, 255, 0.8)',
+                        borderColor: 'transparent',
+                        borderWidth: 0,
+                        pointRadius: 3,
+                        pointHoverRadius: 3,
+                        pointHitRadius: 100,
+                        pointBackgroundColor: 'transparent',
+                        pointHoverBackgroundColor: 'rgba(171, 184, 255, 1)',
+                        data: [0, 10, 10, 13, 10, 20, 10, 10, 25],
+                    }
+                ],
+            };
+            // Line
+            const optionsLine = {
+                type: 'line',
+                data: data,
+
+                options: {
+                    tooltips: {
+                        mode: 'nearest',
+                        intersect: false,
+                        backgroundColor: '#393f49',
+                        titleMarginBottom: 8,
+                        titleFontSize: 14,
+                        titleFontColor: '#f8f9fa',
+                        titleFontFamily: "'Open Sans', sans-serif",
+                        bodyFontSize: 11,
+                        bodyFontColor: '#d7d9e0',
+                        bodyFontFamily: "'Open Sans', sans-serif",
+                        footerMarginTop: 10,
+                        footerFontSize: 11,
+                        footerFontColor: '#f8f9fa',
+                        footerFontFamily: "'Open Sans', sans-serif",
+                        xPadding: 10,
+                        yPadding: 10,
+                        caretPadding: 5,
+                        cornerRadius: 4,
+                    },
+                    legend: {
+                        labels: {
+                            padding: 30,
+                            fontSize: 14,
+                            fontColor: '#6c757d',
+                            fontFamily: "'Open Sans', sans-serif",
+                            boxWidth: 14,
+                        },
+                    },
+                    scales: {
+                        xAxes: [{
+                            gridLines: {
+                                lineWidth: 0,
+                                color: 'transparent',
+                                zeroLineWidth: 0,
+                                zeroLineColor: 'transparent',
+                            },
+                            ticks: {
+                                fontSize: 12,
+                                fontColor: '#bcbec0',
+                                fontFamily: "'Open Sans', sans-serif",
+                            },
+                        }],
+                        yAxes: [{
+                            gridLines: {
+                                lineWidth: 0,
+                                color: 'transparent',
+                                zeroLineWidth: 0,
+                                zeroLineColor: 'transparent',
+                            },
+                            ticks: {
+                                fontSize: 12,
+                                fontColor: '#bcbec0',
+                                fontFamily: "'Open Sans', sans-serif",
+                            },
+                        }],
+                    },
+                },
+            };
+            // Bar
+            const optionsBar = {
+                type: 'bar',
+                data: data,
+
+                options: {
+                    tooltips: {
+                        mode: 'nearest',
+                        intersect: true,
+                        backgroundColor: '#393f49',
+                        titleMarginBottom: 8,
+                        titleFontSize: 14,
+                        titleFontColor: '#f8f9fa',
+                        titleFontFamily: "'Open Sans', sans-serif",
+                        bodyFontSize: 11,
+                        bodyFontColor: '#d7d9e0',
+                        bodyFontFamily: "'Open Sans', sans-serif",
+                        footerMarginTop: 10,
+                        footerFontSize: 11,
+                        footerFontColor: '#f8f9fa',
+                        footerFontFamily: "'Open Sans', sans-serif",
+                        xPadding: 10,
+                        yPadding: 10,
+                        caretPadding: 5,
+                        cornerRadius: 4,
+                    },
+                    legend: {
+                        labels: {
+                            padding: 30,
+                            fontSize: 14,
+                            fontColor: '#6c757d',
+                            fontFamily: "'Open Sans', sans-serif",
+                            boxWidth: 14,
+                        },
+                    },
+                    scales: {
+                        xAxes: [{
+                            gridLines: {
+                                lineWidth: 0,
+                                color: 'transparent',
+                                zeroLineWidth: 0,
+                                zeroLineColor: 'transparent',
+                            },
+                            ticks: {
+                                fontSize: 12,
+                                fontColor: '#bcbec0',
+                                fontFamily: "'Open Sans', sans-serif",
+                            },
+                        }],
+                        yAxes: [{
+                            gridLines: {
+                                lineWidth: 0,
+                                color: 'transparent',
+                                zeroLineWidth: 0,
+                                zeroLineColor: 'transparent',
+                            },
+                            ticks: {
+                                fontSize: 12,
+                                fontColor: '#bcbec0',
+                                fontFamily: "'Open Sans', sans-serif",
+                            },
+                        }],
+                    },
+                },
+            };
+            // Pie
+            const dataPie = {
+                labels: ['Jan', 'Feb', 'Mar'],
+                datasets: [{
+                    label: 'Chart Example',
+                    backgroundColor: [
+                        'rgba(142, 159, 255, 1)',
+                        'rgba(171, 184, 255, 1)',
+                        'rgba(202, 210, 255, 1)',
+                    ],
+                    borderColor: '#fff',
+                    borderWidth: 0,
+                    pointBorderWidth: 1,
+                    pointBackgroundColor: 'rgba(114, 94, 195, 1)',
+                    data: [5, 3, 4],
+                }],
+            };
+            const optionsPie = {
+                type: 'pie',
+                data: dataPie,
+                options: {
+                    tooltips: {
+                        backgroundColor: '#393f49',
+                        titleMarginBottom: 8,
+                        titleFontSize: 14,
+                        titleFontColor: '#f8f9fa',
+                        titleFontFamily: "'Open Sans', sans-serif",
+                        bodyFontSize: 11,
+                        bodyFontColor: '#d7d9e0',
+                        bodyFontFamily: "'Open Sans', sans-serif",
+                        footerMarginTop: 10,
+                        footerFontSize: 11,
+                        footerFontColor: '#f8f9fa',
+                        footerFontFamily: "'Open Sans', sans-serif",
+                        xPadding: 10,
+                        yPadding: 10,
+                        caretSize: 0,
+                        cornerRadius: 4,
+                    },
+                    legend: {
+                        labels: {
+                            padding: 30,
+                            fontSize: 14,
+                            fontColor: '#6c757d',
+                            fontFamily: "'Open Sans', sans-serif",
+                            boxWidth: 14,
+                        },
+                    },
+                    scales: {
+                        display: false,
+                    },
+                },
+            };
+
+            const chartLine = new Chart(document.getElementById('chartJsLine').getContext('2d'), optionsLine);
+            const chartBar = new Chart(document.getElementById('chartJsBar').getContext('2d'), optionsBar);
+            const chartPie = new Chart(document.getElementById('chartJsPie').getContext('2d'), optionsPie);
+        }());
+    </script>
+{% endblock %}

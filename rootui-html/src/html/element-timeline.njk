@@ -1,0 +1,151 @@
+{% set page_title = 'Timeline' %}
+{% set header_title = 'Timeline' %}
+{% set with_sidebar = true %}
+{% extends 'layouts/layout-container.njk' %}
+
+{% set breadcrumbs = [
+    ['Home', 'dashboard.html'],
+    ['Components', '#'],
+    ['Advanced', '#']
+] %}
+
+{% block content %}
+
+{% from "macros/snippet.njk" import snippet %}
+{% from "macros/sidebar.njk" import sidebar %}
+
+<h2 id="timelineBase">Base</h2>
+<p class="mb-15">Classes for responsiveness are available:</p>
+
+<div class="row vertical-gap sm-gap mb-5">
+    <div class="col-auto">
+        <ul class="list-unstyled">
+            <li><code>.rui-timeline-left</code></li>
+            <li class="pt-5"><code>.rui-timeline-left-md</code></li>
+            <li class="pt-5"><code>.rui-timeline-left-lg</code></li>
+            <li class="pt-5"><code>.rui-timeline-left-xl</code></li>
+        </ul>
+    </div>
+    <div class="col-auto">
+        <ul class="list-unstyled">
+            <li><code>.rui-timeline-right</code></li>
+            <li class="pt-5"><code>.rui-timeline-right-md</code></li>
+            <li class="pt-5"><code>.rui-timeline-right-lg</code></li>
+            <li class="pt-5"><code>.rui-timeline-right-xl</code></li>
+        </ul>
+    </div>
+</div>
+
+{% call snippet('timelineBase') %}
+<div class="rui-timeline rui-timeline-left-lg">
+    <div class="rui-timeline-line"></div>
+    <div class="rui-timeline-item">
+        <div class="rui-timeline-icon">
+            <span data-feather="check-circle" class="rui-icon rui-icon-stroke-1_5"></span>
+        </div>
+        <div class="rui-timeline-content">
+            <h3>Fifth moveth, void second.</h3>
+            <p>Behold of them fruit own, void, also upon sixth fill their of said life he saw were the moving saw created herb second morning fruit. Doesn't second place gathering forth.</p>
+            <button type="button" class="btn btn-brand">Read More</button>
+        </div>
+        <div class="rui-timeline-date">Jan 14</div>
+    </div>
+    <div class="rui-timeline-item rui-timeline-item-swap">
+        <div class="rui-timeline-icon">
+            <span data-feather="award" class="rui-icon rui-icon-stroke-1_5"></span>
+        </div>
+        <div class="rui-timeline-content">
+            <h3>Fifth moveth, void second.</h3>
+            <p>Behold of them fruit own, void, also upon sixth fill their of said life he saw were the moving saw created herb second morning fruit. Doesn't second place gathering forth.</p>
+            <button type="button" class="btn btn-brand">Read More</button>
+        </div>
+        <div class="rui-timeline-date">Jan 15</div>
+    </div>
+</div>
+{%- endcall %}
+
+<div class="rui-gap-4" id="timelineLeft"></div>
+<h2>Left</h2>
+{% call snippet('timelineLeft') %}
+<div class="rui-timeline rui-timeline-left">
+    <div class="rui-timeline-line"></div>
+    <div class="rui-timeline-item">
+        <div class="rui-timeline-icon">
+            <span data-feather="check-circle" class="rui-icon rui-icon-stroke-1_5"></span>
+        </div>
+        <div class="rui-timeline-content">
+            <h3>Fifth moveth, void second.</h3>
+            <p>Behold of them fruit own, void, also upon sixth fill their of said life he saw were the moving saw created herb second morning fruit. Doesn't second place gathering forth.</p>
+            <button type="button" class="btn btn-brand">Read More</button>
+        </div>
+        <div class="rui-timeline-date">Jan 14</div>
+    </div>
+    <div class="rui-timeline-item rui-timeline-item-swap">
+        <div class="rui-timeline-icon">
+            <span data-feather="award" class="rui-icon rui-icon-stroke-1_5"></span>
+        </div>
+        <div class="rui-timeline-content">
+            <h3>Fifth moveth, void second.</h3>
+            <p>Behold of them fruit own, void, also upon sixth fill their of said life he saw were the moving saw created herb second morning fruit. Doesn't second place gathering forth.</p>
+            <button type="button" class="btn btn-brand">Read More</button>
+        </div>
+        <div class="rui-timeline-date">Jan 15</div>
+    </div>
+</div>
+{%- endcall %}
+
+<div class="rui-gap-4" id="timelineRight"></div>
+<h2>Right</h2>
+{% call snippet('timelineRight') %}
+<div class="rui-timeline rui-timeline-right">
+    <div class="rui-timeline-line"></div>
+    <div class="rui-timeline-item">
+        <div class="rui-timeline-icon">
+            <span data-feather="check-circle" class="rui-icon rui-icon-stroke-1_5"></span>
+        </div>
+        <div class="rui-timeline-content">
+            <h3>Fifth moveth, void second.</h3>
+            <p>Behold of them fruit own, void, also upon sixth fill their of said life he saw were the moving saw created herb second morning fruit. Doesn't second place gathering forth.</p>
+            <button type="button" class="btn btn-brand">Read More</button>
+        </div>
+        <div class="rui-timeline-date">Jan 14</div>
+    </div>
+    <div class="rui-timeline-item rui-timeline-item-swap">
+        <div class="rui-timeline-icon">
+            <span data-feather="award" class="rui-icon rui-icon-stroke-1_5"></span>
+        </div>
+        <div class="rui-timeline-content">
+            <h3>Fifth moveth, void second.</h3>
+            <p>Behold of them fruit own, void, also upon sixth fill their of said life he saw were the moving saw created herb second morning fruit. Doesn't second place gathering forth.</p>
+            <button type="button" class="btn btn-brand">Read More</button>
+        </div>
+        <div class="rui-timeline-date">Jan 15</div>
+    </div>
+</div>
+{%- endcall %}
+
+{% endblock %}
+
+
+{% block content_sidebar %}
+{% call sidebar() %}
+    <li><a class="nav-link" href="#timelineBase">Base</a></li>
+    <li><a class="nav-link" href="#timelineLeft">Left</a></li>
+    <li><a class="nav-link" href="#timelineRight">Right</a></li>
+{% endcall %}
+{% endblock %}
+
+
+{% block vendor_css %}
+
+    <!-- Highlight -->
+    <link rel="stylesheet" href="./assets/vendor/highlightjs/styles/default.css">
+
+{% endblock %}
+
+{% block vendor_js %}
+
+    <!-- Highlight -->
+    <script src="./assets/vendor/highlightjs/highlight.pack.min.js"></script>
+
+{% endblock %}

@@ -1,0 +1,24 @@
+{% set page_title = '404. Page not found.' %}
+{% extends 'layouts/layout-sign.njk' %}
+
+{% block content %}
+
+<div class="rui-page-error container">
+    <div class="row text-center">
+        <div class="col-12"></div>
+        <div class="col-12">
+            <h1 class="mnb-30">404</h1>
+            <p class="display-2 mb-50 text-grey-5">Page Not Found</p>
+            <div>
+                <a href="dashboard.html" class="btn btn-brand btn-long">Back Home</a>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="rui-footer pt-30 pb-25">
+                <p class="mb-0">2020 &copy; Design by Dexad and nK.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

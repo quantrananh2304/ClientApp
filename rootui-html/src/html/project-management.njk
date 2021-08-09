@@ -1,0 +1,446 @@
+{% set page_title = 'Project Management' %}
+{% set header_title = 'Project Management' %}
+{% extends 'layouts/layout-container.njk' %}
+
+{% set breadcrumbs = [
+    ['Home', 'dashboard.html'],
+    ['Apps', '#']
+] %}
+
+{% block content %}
+
+{% from "macros/task.njk" import task %}
+
+<div class="row vertical-gap">
+    <div class="col-lg-3">
+        <div class="card">
+            <div class="card-body pt-20 pr-10 pb-20 pl-10">
+                <ul class="nav flex-column mnt-3" id="projectTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#activity" id="activity-tab" data-toggle="tab" role="tab" aria-controls="activity" aria-selected="true">
+                            <span data-feather="activity" class="rui-icon rui-icon-stroke-1_5"></span>
+                            <span>Activity</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#tasks" id="tasks-tab" data-toggle="tab" role="tab" aria-controls="tasks" aria-selected="false">
+                            <span data-feather="file-text" class="rui-icon rui-icon-stroke-1_5"></span>
+                            <span>Tasks</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#releases" id="releases-tab" data-toggle="tab" role="tab" aria-controls="releases" aria-selected="false">
+                            <span data-feather="check-circle" class="rui-icon rui-icon-stroke-1_5"></span>
+                            <span>Releases</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#project" id="project-tab" data-toggle="tab" role="tab" aria-controls="project" aria-selected="false">
+                            <span data-feather="book" class="rui-icon rui-icon-stroke-1_5"></span>
+                            <span>Project</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#settings" id="settings-tab" data-toggle="tab" role="tab" aria-controls="settings" aria-selected="false">
+                            <span data-feather="settings" class="rui-icon rui-icon-stroke-1_5"></span>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-9">
+        <div class="tab-content" id="projectTabContent">
+            <div class="tab-pane fade show active" id="activity" role="tabpanel" aria-labelledby="activity-tab">
+                <div class="card">
+                    <div class="card-body py-30">
+                        <h2>Activity</h2>
+                        <ul class="list-group list-group-flush rui-project-activity-list">
+                            <li class="list-group-item">
+                                <div class="media media-filled">
+                                    <a href="#" class="media-link active">
+                                        <span class="media-img">P</span>
+                                        <span class="media-body">
+                                            <span class="media-title">[Project] Release Version 1.2.0</span>
+                                            <small class="media-subtitle">Jul 05, 2020 10:22 — created</small>
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="media media-filled">
+                                    <a href="#" class="media-link active">
+                                        <span class="media-img">B</span>
+                                        <span class="media-body">
+                                            <span class="media-title">[Bug] Payment</span>
+                                            <small class="media-subtitle">Jul 04, 2020 11:12 — update status to "in process"</small>
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="media media-filled">
+                                    <a href="#" class="media-link active">
+                                        <span class="media-img">H</span>
+                                        <span class="media-body">
+                                            <span class="media-title">[Hotfix] Error login page</span>
+                                            <small class="media-subtitle">Jul 04, 2020 10:38 — created</small>
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="media media-filled">
+                                    <a href="#" class="media-link active">
+                                        <span class="media-img">P</span>
+                                        <span class="media-body">
+                                            <span class="media-title">[Testing] Release Version 1.1.9</span>
+                                            <small class="media-subtitle">Jul 03, 2020 11:46 — update status to "completed"</small>
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="media media-filled">
+                                    <a href="#" class="media-link active">
+                                        <span class="media-img">B</span>
+                                        <span class="media-body">
+                                            <span class="media-title">[Bug] Payment</span>
+                                            <small class="media-subtitle">Jul 03, 2020 10:08 — created</small>
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="tasks" role="tabpanel" aria-labelledby="tasks-tab">
+                <div class="card">
+                    <div class="card-body py-30">
+                        <div class="d-flex align-items-center mb-25">
+                            <h2 class="mnb-5 mr-auto">Tasks</h2>
+                            <button class="btn btn-brand btn-round btn-uniform btn-sm mnt-10 mnb-10"><span data-feather="plus" class="rui-icon rui-icon-stroke-1_5"></span></button>
+                        </div>
+                        <div class="rui-project-task-search">
+                            <form action="#">
+                                <div class="input-group input-group-clean">
+                                    <input type="search" class="form-control pl-3 order-12" placeholder="Type to search...">
+                                    <div class="input-group-prepend mnl-3 order-1">
+                                        <button type="button" class="btn btn-clean btn-uniform btn-grey-5 mb-0 mnl-8"><span data-feather="search" class="rui-icon rui-icon-stroke-1_5"></span></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="rui-project-task-info">
+                            <a class="rui-project-task-info-link" href="#">
+                                <span class="rui-project-task-info-icon">
+                                    <span data-feather="alert-circle" class="rui-icon rui-icon-stroke-1_5"></span>
+                                </span>
+                                <span class="rui-project-task-info-title"><span>10</span> Opened</span>
+                            </a>
+                            <a class="rui-project-task-info-link" href="#">
+                                <span class="rui-project-task-info-icon">
+                                    <span data-feather="check-circle" class="rui-icon rui-icon-stroke-1_5"></span>
+                                </span>
+                                <span class="rui-project-task-info-title"><span>2</span> Closed</span>
+                            </a>
+                        </div>
+                        <ul class="list-group list-group-flush rui-project-task-list">
+                            <li class="list-group-item">
+                                {{ task("alert-circle","Cattle whose. There isn't cattle rule said saying you divided","#12 opened 4 days ago by","Henry","rui-task-success")}}
+                            </li>
+                            <li class="list-group-item">
+                                {{ task("alert-circle","Was living rule Him created a to. Light of itself","#11 opened 21 days ago by","Neil","rui-task-success")}}
+                            </li>
+                            <li class="list-group-item">
+                                {{ task("check-circle","The problem with the Media object","#10 closed on 12 Mar by","Anna","rui-task-danger", "2")}}
+                            </li>
+                            <li class="list-group-item">
+                                {{ task("alert-circle","Great of together moved our him shall light. Fifth was","#9 opened on 11 Mar by","Mark","rui-task-success", "6")}}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <nav class="mt-15" aria-label="Page navigation example">
+                    <ul class="pagination pagination-sm">
+                        <li class="page-item"><a class="page-link" href="#"><span data-feather="chevron-left" class="rui-icon rui-icon-stroke-1_5"></span></a></li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#"><span data-feather="chevron-right" class="rui-icon rui-icon-stroke-1_5"></span></a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="tab-pane fade" id="releases" role="tabpanel" aria-labelledby="releases-tab">
+                <div class="card">
+                    <div class="card-body py-30">
+                        <h2>Releases</h2>
+                        <ul class="list-group list-group-flush rui-project-releases-list">
+                            <li class="list-group-item">
+                                <div class="rui-changelog">
+                                    <h3 class="rui-changelog-title">Sensific - Ver 1.2.0</h3>
+                                    <div class="rui-changelog-subtitle"><a href="#">Anna</a> released this on Jul 24</div>
+                                    <ul class="list-unstyled">
+                                        <li>
+                                            <div class="rui-changelog-item rui-changelog-success">
+                                                <span class="rui-changelog-item-type">Fixed:</span>
+                                                Very fruit years hath. His give given. Whose third abundantly
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="rui-changelog-item rui-changelog-brand">
+                                                <span class="rui-changelog-item-type">Added:</span>
+                                                So made male blessed Two, earth set. Own air beginning
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <ul class="list-unstyled">
+                                        <li>
+                                            <a class="rui-changelog-file" href="#">
+                                                <span data-feather="folder" class="rui-icon rui-icon-stroke-1_5"></span>
+                                                Sensific-1.2.0.zip
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="rui-changelog">
+                                    <h3 class="h3 rui-changelog-title">Sensific - Ver 1.1.9</h3>
+                                    <div class="rui-changelog-subtitle"><a href="#">Anna</a> released this on Jul 22</div>
+                                    <ul class="list-unstyled">
+                                        <li>
+                                            <div class="rui-changelog-item">
+                                                Gathering hath they're. Night form have void fruitful third winged
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="rui-changelog-item">
+                                                Whales isn't in blessed i seasons place man lights moveth
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <ul class="list-unstyled">
+                                        <li>
+                                            <a class="rui-changelog-file" href="#">
+                                                <span data-feather="folder" class="rui-icon rui-icon-stroke-1_5"></span>
+                                                Sensific-1.1.9.zip
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="rui-changelog">
+                                    <h3 class="h3 rui-changelog-title">Sensific - Ver 1.1.8</h3>
+                                    <div class="rui-changelog-subtitle"><a href="#">Anna</a> released this on Jul 15</div>
+                                    <ul class="list-unstyled">
+                                        <li>
+                                            <div class="rui-changelog-item">
+                                                Air to bearing were living bearing don't him shall there had all open them don't and they're set whose i. Moved image appear made beginning. Have upon stars evening without.
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <ul class="list-unstyled">
+                                        <li>
+                                            <a class="rui-changelog-file" href="#">
+                                                <span data-feather="folder" class="rui-icon rui-icon-stroke-1_5"></span>
+                                                Sensific-1.1.8.zip
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="project" role="tabpanel" aria-labelledby="project-tab">
+                <div class="card mb-30">
+                    <div class="card-body py-30 d-flex align-items-center">
+                        <h2 class="mnb-5 mr-auto">Project</h2>
+                        <a href="#" class="btn btn-custom-round mnr-5"><span data-feather="more-vertical" class="rui-icon rui-icon-stroke-1_5"></span></a>
+                    </div>
+                </div>
+                <div class="rui-scrollbar rui-kanban">
+                    <div class="row flex-nowrap">
+                        <div class="col">
+                            <div class="rui-kanban-col">
+                                <h3 class="h4">Deferred</h3>
+                                <ul class="rui-sortable list-unstyled" data-sortable-classNameGroup=".rui-kanban">
+                                    <li class="rui-kanban-item">
+                                        {{ task("pause-circle","Male replenish made subdue let","#5 postponed 1 days ago by","Henry","rui-task-info")}}
+                                    </li>
+                                    <li class="rui-kanban-item">
+                                        {{ task("pause-circle","Kind a said first don't cattle thing a face Firmament","#4 postponed 2 days ago by","Anna","rui-task-info")}}
+                                    </li>
+                                    <li class="rui-kanban-item">
+                                        {{ task("pause-circle","Kind over fruit you'll signs divide","#2 postponed 5 days ago by","Mark","rui-task-info")}}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="rui-kanban-col">
+                                <h3 class="h4">In Process</h3>
+                                <ul class="rui-sortable list-unstyled" data-sortable-classNameGroup=".rui-kanban">
+                                    <li class="rui-kanban-item">
+                                        {{ task("alert-circle","Cattle whose. There isn't cattle rule said saying you divided","#12 opened 4 days ago by","Henry","rui-task-success")}}
+                                    </li>
+                                    <li class="rui-kanban-item">
+                                        {{ task("alert-circle","Was living rule Him created a to. Light of itself","#11 opened 21 days ago by","Neil","rui-task-success")}}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="rui-kanban-col">
+                                <h3 class="h4">On Check</h3>
+                                <ul class="rui-sortable list-unstyled" data-sortable-classNameGroup=".rui-kanban">
+                                    <li class="rui-kanban-item">
+                                        {{ task("clock","Rule female second days","#7 on check 6 days ago by","Mark","rui-task-warning")}}
+                                    </li>
+                                    <li class="rui-kanban-item">
+                                        {{ task("clock","His night evening years. Good greater fourth make","#6 on check 9 days ago by","Jack","rui-task-warning")}}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col pr-0">
+                            <div class="rui-kanban-col">
+                                <h3 class="h4">Completed</h3>
+                                <ul class="rui-sortable list-unstyled" data-sortable-classNameGroup=".rui-kanban">
+                                    <li class="rui-kanban-item">
+                                        {{ task("check-circle","The problem with the Media object","#10 closed on 12 Mar by","Anna","rui-task-danger")}}
+                                    </li>
+                                    <li class="rui-kanban-item">
+                                        {{ task("check-circle","Wherein creeping set lesser days greater two you're make","#1 closed on 1 Mar by","Jack","rui-task-danger")}}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+                <div class="card">
+                    <div class="card-body py-30">
+                        <form action="#">
+                            <h2>Settings</h2>
+                            <ul class="list-group list-group-flush rui-project-settings-list">
+                                <li class="list-group-item">
+                                    <h3 class="h4">Activity</h3>
+                                    <ul class="list-unstyled rui-project-settings-list">
+                                        <li>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="activityProjects" checked>
+                                                <label class="custom-control-label" for="activityProjects">Projects</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="activityBugs" checked>
+                                                <label class="custom-control-label" for="activityBugs">Bugs</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="activityFixs" checked>
+                                                <label class="custom-control-label" for="activityFixs">Hotfixes</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="activityTestings" checked>
+                                                <label class="custom-control-label" for="activityTestings">Testings</label>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="list-group-item">
+                                    <h3 class="h4">Tasks, sort by:</h3>
+                                    <ul class="list-unstyled rui-project-settings-list">
+                                        <li>
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" id="taskNumber" name="radioTasks" class="custom-control-input" checked>
+                                                <label class="custom-control-label" for="taskNumber">Number</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" id="taskDate" name="radioTasks" class="custom-control-input">
+                                                <label class="custom-control-label" for="taskDate">Date</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" id="taskPopularity" name="radioTasks" class="custom-control-input">
+                                                <label class="custom-control-label" for="taskPopularity">Popularity</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" id="taskNewness" name="radioTasks" class="custom-control-input">
+                                                <label class="custom-control-label" for="taskNewness">Newness</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" id="taskComments" name="radioTasks" class="custom-control-input">
+                                                <label class="custom-control-label" for="taskComments">Comments</label>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="list-group-item">
+                                    <h3 class="h4">Project</h3>
+                                    <ul class="list-unstyled rui-project-settings-list">
+                                        <li>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="projectDeffered" checked>
+                                                <label class="custom-control-label" for="projectDeffered">Deffered</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="projectInProcess" checked>
+                                                <label class="custom-control-label" for="projectInProcess">In Process</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="projectOnCheck" checked>
+                                                <label class="custom-control-label" for="projectOnCheck">On Check</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="projectCompleted" checked>
+                                                <label class="custom-control-label" for="projectCompleted">Completed</label>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="list-group-item">
+                                    <button class="btn btn-brand" type="button">Save</button>
+                                </li>
+                            </ul>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+{% block vendor_js %}
+
+    <!-- Sortable -->
+    <script src="./assets/vendor/sortablejs/Sortable.min.js"></script>
+
+{% endblock %}

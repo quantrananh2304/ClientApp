@@ -1,0 +1,524 @@
+{% set page_title = 'Flot' %}
+{% set header_title = 'Flot' %}
+{% set with_sidebar = true %}
+{% extends 'layouts/layout-container.njk' %}
+
+{% set breadcrumbs = [
+    ['Home', 'dashboard.html'],
+    ['Components', '#'],
+    ['Advanced', '#'],
+    ['Charts', '#']
+] %}
+
+{% block content %}
+
+{% from "macros/snippet.njk" import snippet, snippetMacro %}
+{% from "macros/sidebar.njk" import sidebar %}
+
+<h2 id="chartLine">Line</h2>
+{{ snippetMacro(
+    'TestChart',
+    '<div class="flot-line"></div>',
+    '<div class="flot-line"></div>',
+    "
+const data = [
+    {
+        data: [[1, 0], [2, 10], [3, 10], [4, 13], [5, 10], [6, 20], [7, 10], [8, 10], [9, 25]],
+        color: 'rgba(171, 184, 255, 0.8)',
+        points: {
+            show: true,
+            fillColor: '#fff',
+            lineWidth: 1,
+        },
+    },
+    {
+        data: [[1, 0], [2, 9], [3, 15], [4, 10], [5, 30], [6, 15], [7, 25], [8, 18], [9, 20]],
+        color: 'rgba(94, 119, 255, 0.8)',
+        points: {
+            show: true,
+            fillColor: '#fff',
+            lineWidth: 1,
+        },
+    },
+];
+const options = {
+    series: {
+        lines: {
+            show: true,
+            lineWidth: 1,
+            fill: false,
+            fillColor: {
+                colors: [
+                    { opacity: 1 },
+                    { opacity: 1 },
+                ],
+            },
+        },
+    },
+    yaxis: {
+        showTicks: false,
+        gridLines: false,
+        color: 'transparent',
+    },
+    xaxis: {
+        showTicks: false,
+        gridLines: false,
+        ticks: [[1, 'Jan'], [2, 'Feb'], [3, 'Mar'], [4, 'Apr'], [5, 'May'], [6, 'Jun'], [7, 'Jul'], [8, 'Aug'], [9, 'Sep']],
+        color: 'transparent',
+    },
+    grid: {
+        borderWidth: 0,
+    },
+};
+$.plot('.flot-line', data, options);
+    "
+) }}
+
+<div class="rui-gap-4" id="chartBar"></div>
+<h2>Bar</h2>
+{{ snippetMacro(
+    'ChartBar',
+    '<div class="flot-bar"></div>',
+    '<div class="flot-bar"></div>',
+    "
+const data = [
+    {
+        data: [[1, 0], [2, 10], [3, 10], [4, 13], [5, 10], [6, 20], [7, 10], [8, 10], [9, 25]],
+        color: 'rgba(171, 184, 255, 0.8)',
+    },
+    {
+        data: [[1, 0], [2, 9], [3, 15], [4, 10], [5, 30], [6, 15], [7, 25], [8, 18], [9, 20]],
+        color: 'rgba(94, 119, 255, 0.8)',
+    },
+];
+const options = {
+    series: {
+        bars: {
+            show: true,
+            lineWidth: 0,
+            barWidth: 0.6,
+            align: 'center',
+            fill: true,
+            fillColor: {
+                colors: [
+                    { opacity: 1 },
+                    { opacity: 1 },
+                ],
+            },
+        },
+    },
+    yaxis: {
+        showTicks: false,
+        gridLines: false,
+        color: 'transparent',
+    },
+    xaxis: {
+        mode: 'categories',
+        showTicks: false,
+        gridLines: false,
+        ticks: [[1, 'Jan'], [2, 'Feb'], [3, 'Mar'], [4, 'Apr'], [5, 'May'], [6, 'Jun'], [7, 'Jul'], [8, 'Aug'], [9, 'Sep']],
+        color: 'transparent',
+    },
+    grid: {
+        borderWidth: 0,
+    },
+};
+$.plot('.flot-bar', data, options);
+    "
+)}}
+
+<div class="rui-gap-4" id="chartPie"></div>
+<h2>Pie</h2>
+{{ snippetMacro(
+    'ChartPie',
+    '<div class="flot-pie"></div>',
+    '<div class="flot-pie"></div>',
+    "
+const data = [
+    {
+        data: 5,
+        label: 'Jan',
+        color: 'rgba(94, 119, 255, 0.8)',
+    },
+    {
+        data: 3,
+        label: 'Feb',
+        color: 'rgba(94, 119, 255, 0.6)',
+    },
+    {
+        data: 4,
+        label: 'Mar',
+        color: 'rgba(94, 119, 255, 0.4)',
+    },
+];
+const options = {
+    series: {
+        pie: {
+            show: true,
+            radius: 1,
+            label: {
+                show: true,
+                radius: 2/4,
+                formatter: (t) => {
+                    return'<div style=\"font-size:12px;text-align:center;padding:2px;color:white;\">'+t+\"</div>\"
+                },
+            },
+            stroke: {
+                width: 0,
+            },
+        },
+    },
+    yaxis: {
+        showTicks: false,
+        gridLines: false,
+        color: 'transparent',
+    },
+    xaxis: {
+        showTicks: false,
+        gridLines: false,
+        color: 'transparent',
+    },
+    grid: {
+        borderWidth: 0,
+    },
+};
+$.plot('.flot-pie', dataPie, optionsPie);
+    "
+)}}
+
+<div class="rui-gap-4" id="chartRealtime"></div>
+<h2>Realtime</h2>
+{{ snippetMacro(
+    'ChartRealtime',
+    '<div class="flot-realtime"></div>',
+    '<div class="flot-realtime"></div>',
+    "
+const options = {
+    colors: ['rgba(94, 119, 255, 0.8)', 'rgba(94, 119, 255, 1)'],
+    series: {
+        lines: {
+            show: true,
+            lineWidth: 1,
+            fill: true,
+            fillColor: {
+                colors: [
+                    { opacity: 1 },
+                    { opacity: 1 },
+                ],
+            },
+        },
+    },
+    yaxis: {
+        showTicks: false,
+        gridLines: false,
+        color: 'transparent',
+    },
+    xaxis: {
+        show: false,
+    },
+    grid: {
+        borderWidth: 0,
+    },
+};
+
+const $chartRealtime = $('.flot-realtime');
+let data = [];
+const totalPoints = 300;
+
+function getRandomData() {
+    if (data.length > 0) {
+        data = data.slice(1);
+    }
+
+    // Do a random walk
+    while (data.length < totalPoints) {
+        var prev = data.length > 0 ? data[data.length - 1] : 50;
+        var y = prev + Math.random() * 10 - 5;
+
+        if (y < 0) {
+        y = 0;
+        } else if (y > 60) {
+        y = 60;
+        }
+        data.push(y);
+    }
+
+    // Zip the generated y values with the x values
+    var res = [];
+    for (var i = 0; i < data.length; ++i) {
+        res.push([i, data[i]])
+    }
+    return res;
+}
+
+// Set up the control widget
+const updateInterval = 30;
+let plot = $.plot($chartRealtime, [getRandomData()], options);
+
+$(window).on('resize', function() {
+    plot = $.plot($chartRealtime, [getRandomData()], options);
+});
+
+function update() {
+    plot.setData([getRandomData()]);
+
+    // Since the axes don't change, we don't need to call plot.setupGrid()
+    plot.draw();
+    setTimeout(update, updateInterval);
+}
+
+update();
+    "
+)}}
+
+{% endblock %}
+
+
+{% block content_sidebar %}
+{% call sidebar() %}
+    <li><a class="nav-link" href="#chartLine">Line</a></li>
+    <li><a class="nav-link" href="#chartBar">Bar</a></li>
+    <li><a class="nav-link" href="#chartPie">Pie</a></li>
+{% endcall %}
+{% endblock %}
+
+
+{% block vendor_css %}
+
+    <!-- Highlight -->
+    <link rel="stylesheet" href="./assets/vendor/highlightjs/styles/default.css">
+
+{% endblock %}
+
+{% block vendor_js %}
+
+    <!-- Highlight -->
+    <script src="./assets/vendor/highlightjs/highlight.pack.min.js"></script>
+
+    <!-- Flot -->
+    <script src="./assets/vendor/flot/dist/es5/jquery.flot.js"></script>
+    <script src="./assets/vendor/flot/source/jquery.flot.pie.js"></script>
+
+    <script class="rui-page-additional-js">
+        (function(){
+            const dataLine = [
+                {
+                    data: [[1, 0], [2, 10], [3, 10], [4, 13], [5, 10], [6, 20], [7, 10], [8, 10], [9, 25]],
+                    color: 'rgba(171, 184, 255, 0.8)',
+                    points: {
+                        show: true,
+                        fillColor: '#fff',
+                        lineWidth: 1,
+                    },
+                },
+                {
+                    data: [[1, 0], [2, 9], [3, 15], [4, 10], [5, 30], [6, 15], [7, 25], [8, 18], [9, 20]],
+                    color: 'rgba(94, 119, 255, 0.8)',
+                    points: {
+                        show: true,
+                        fillColor: '#fff',
+                        lineWidth: 1,
+                    },
+                },
+            ];
+            const optionsLine = {
+                series: {
+                    lines: {
+                        show: true,
+                        lineWidth: 1,
+                        fill: false,
+                        fillColor: {
+                            colors: [
+                                { opacity: 1 },
+                                { opacity: 1 },
+                            ],
+                        },
+                    },
+                },
+                yaxis: {
+                    showTicks: false,
+                    gridLines: false,
+                    color: 'transparent',
+                },
+                xaxis: {
+                    showTicks: false,
+                    gridLines: false,
+                    ticks: [[1, 'Jan'], [2, 'Feb'], [3, 'Mar'], [4, 'Apr'], [5, 'May'], [6, 'Jun'], [7, 'Jul'], [8, 'Aug'], [9, 'Sep']],
+                    color: 'transparent',
+                },
+                grid: {
+                    borderWidth: 0,
+                },
+            };
+            const dataBar = [
+                {
+                    data: [[1, 0], [2, 10], [3, 10], [4, 13], [5, 10], [6, 20], [7, 10], [8, 10], [9, 25]],
+                    color: 'rgba(171, 184, 255, 0.8)',
+                },
+                {
+                    data: [[1, 0], [2, 9], [3, 15], [4, 10], [5, 30], [6, 15], [7, 25], [8, 18], [9, 20]],
+                    color: 'rgba(94, 119, 255, 0.8)',
+                },
+            ];
+            const optionsBar = {
+                series: {
+                    bars: {
+                        show: true,
+                        lineWidth: 0,
+                        barWidth: 0.6,
+                        align: 'center',
+                        fill: true,
+                        fillColor: {
+                            colors: [
+                                { opacity: 1 },
+                                { opacity: 1 },
+                            ],
+                        },
+                    },
+                },
+                yaxis: {
+                    showTicks: false,
+                    gridLines: false,
+                    color: 'transparent',
+                },
+                xaxis: {
+                    mode: 'categories',
+                    showTicks: false,
+                    gridLines: false,
+                    ticks: [[1, 'Jan'], [2, 'Feb'], [3, 'Mar'], [4, 'Apr'], [5, 'May'], [6, 'Jun'], [7, 'Jul'], [8, 'Aug'], [9, 'Sep']],
+                    color: 'transparent',
+                },
+                grid: {
+                    borderWidth: 0,
+                },
+            };
+            const dataPie = [
+                {
+                    data: 5,
+                    label: 'Jan',
+                    color: 'rgba(94, 119, 255, 0.8)',
+                },
+                {
+                    data: 3,
+                    label: 'Feb',
+                    color: 'rgba(94, 119, 255, 0.6)',
+                },
+                {
+                    data: 4,
+                    label: 'Mar',
+                    color: 'rgba(94, 119, 255, 0.4)',
+                },
+            ];
+            const optionsPie = {
+                series: {
+                    pie: {
+                        show: true,
+                        radius: 1,
+                        label: {
+                            show: true,
+                            radius: 2/4,
+                            formatter: (t) => {
+                                return'<div style="font-size:12px;text-align:center;padding:2px;color:white;">'+t+"</div>"
+                            },
+                        },
+                        stroke: {
+                            width: 0,
+                        },
+                    },
+                },
+                yaxis: {
+                    showTicks: false,
+                    gridLines: false,
+                    color: 'transparent',
+                },
+                xaxis: {
+                    showTicks: false,
+                    gridLines: false,
+                    color: 'transparent',
+                },
+                grid: {
+                    borderWidth: 0,
+                },
+            };
+            $.plot('.flot-line', dataLine, optionsLine);
+            $.plot('.flot-bar', dataBar, optionsBar);
+            $.plot('.flot-pie', dataPie, optionsPie);
+
+            const optionsRealtime = {
+                colors: ['rgba(94, 119, 255, 0.8)', 'rgba(94, 119, 255, 1)'],
+                series: {
+                    lines: {
+                        show: true,
+                        lineWidth: 1,
+                        fill: true,
+                        fillColor: {
+                            colors: [
+                                { opacity: 1 },
+                                { opacity: 1 },
+                            ],
+                        },
+                    },
+                },
+                yaxis: {
+                    showTicks: false,
+                    gridLines: false,
+                    color: 'transparent',
+                },
+                xaxis: {
+                    show: false,
+                },
+                grid: {
+                    borderWidth: 0,
+                },
+            };
+
+            const $chartRealtime = $('.flot-realtime');
+            let dataRealtime = [];
+            const totalPoints = 300;
+
+            function getRandomData() {
+                if (dataRealtime.length > 0) {
+                    dataRealtime = dataRealtime.slice(1);
+                }
+
+                // Do a random walk
+                while (dataRealtime.length < totalPoints) {
+                    var prev = dataRealtime.length > 0 ? dataRealtime[dataRealtime.length - 1] : 50;
+                    var y = prev + Math.random() * 10 - 5;
+
+                    if (y < 0) {
+                    y = 0;
+                    } else if (y > 60) {
+                    y = 60;
+                    }
+                    dataRealtime.push(y);
+                }
+
+                // Zip the generated y values with the x values
+                var res = [];
+                for (var i = 0; i < dataRealtime.length; ++i) {
+                    res.push([i, dataRealtime[i]])
+                }
+                return res;
+            }
+
+            // Set up the control widget
+            const updateInterval = 30;
+            let plot = $.plot($chartRealtime, [getRandomData()], optionsRealtime);
+
+            $(window).on('resize', function() {
+                plot = $.plot($chartRealtime, [getRandomData()], optionsRealtime);
+            });
+
+            function update() {
+                plot.setData([getRandomData()]);
+
+                // Since the axes don't change, we don't need to call plot.setupGrid()
+                plot.draw();
+                setTimeout(update, updateInterval);
+            }
+
+            update();
+        }());
+    </script>
+{% endblock %}

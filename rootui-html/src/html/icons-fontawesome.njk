@@ -1,0 +1,69 @@
+{% set page_title = 'Icons Font Awesome' %}
+{% set header_title = 'Font Awesome' %}
+{% extends 'layouts/layout-container.njk' %}
+
+{% set breadcrumbs = [
+    ['Home', 'dashboard.html'],
+    ['Components', '#'],
+    ['Advanced', '#'],
+    ['Icons', '#']
+] %}
+
+{% block content %}
+
+<div class="row vertical-gap rui-fa-icons-demo">
+    <div class="col-12">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+{% block vendor_js %}
+
+    <!-- FontAwesome -->
+    <script src="./assets/vendor/fontawesome-free/js/all.js"></script>
+    <script src="./assets/vendor/fontawesome-free/js/v4-shims.js"></script>
+
+    <script class="rui-page-additional-js">
+        (function($){
+            if (!window.___FONT_AWESOME___) {
+                return;
+            }
+
+            var result = '';
+
+            // all FA rui-icons
+            Object.keys(___FONT_AWESOME___.styles).forEach(function(type) {
+                var icons = ___FONT_AWESOME___.styles[type];
+
+                Object.keys(icons).forEach(function(iconName) {
+                    var iconClass = type + ' fa-' + iconName;
+                    result += [
+                        '<div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">',
+                        '    <div class="demo-icons" data-toggle="tooltip" data-placement="top" title="' + iconClass + '">',
+                        '        <span class="' + iconClass + ' rui-icon"></span>',
+                        '       ' + iconName,
+                        '    </div>',
+                        '</div>',
+                    ].join('');
+                });
+            });
+
+            // insert rui-icons on page.
+            $('.rui-fa-icons-demo').html(result);
+
+            // hover title.
+            $('.rui-fa-icons-demo [data-toggle="tooltip"]').tooltip();
+
+            // copy classname on click.
+            $(document).on('click', '.rui-fa-icons-demo [data-toggle="tooltip"]', function() {
+                var title = $(this).attr('data-original-title') || $(this).attr('title');
+                prompt('Copy Icon HTML', '<span class="' + title + '"></span>');
+            });
+        }(jQuery));
+    </script>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% set page_title = 'DateTime Picker' %}
+{% set header_title = 'DateTime Picker' %}
+{% set with_sidebar = true %}
+{% extends 'layouts/layout-container.njk' %}
+
+{% set breadcrumbs = [
+    ['Home', 'dashboard.html'],
+    ['Forms', '#'],
+    ['Advanced', '#']
+] %}
+
+{% block content %}
+
+{% from "macros/snippet.njk" import snippet %}
+{% from "macros/sidebar.njk" import sidebar %}
+
+<h2 id="dateTimePicker">DateTime</h2>
+{% call snippet('DateTimePicker', 'no-frame-preview') %}
+<input class="rui-datetimepicker form-control w-auto" type="text" placeholder="Select date and time" data-datetimepicker-format="m.d.Y H:i">
+{%- endcall %}
+
+<div class="rui-gap-4" id="datePicker"></div>
+<h2>Date</h2>
+{% call snippet('DatePicker', 'no-frame-preview') %}
+<input class="rui-datetimepicker form-control w-auto" type="text" placeholder="Select a date" data-datetimepicker-format="m.d.Y" data-datetimepicker-time="false">
+{%- endcall %}
+
+<div class="rui-gap-4" id="timePicker"></div>
+<h2>Time</h2>
+{% call snippet('TimePicker', 'no-frame-preview') %}
+<input class="rui-datetimepicker form-control w-auto" type="text" placeholder="Select a time" data-datetimepicker-format="H:i" data-datetimepicker-date="false">
+{%- endcall %}
+
+{% endblock %}
+
+
+{% block content_sidebar %}
+{% call sidebar() %}
+    <li><a class="nav-link" href="#dateTimePicker">DateTime</a></li>
+    <li><a class="nav-link" href="#datePicker">Date</a></li>
+    <li><a class="nav-link" href="#timePicker">Time</a></li>
+{% endcall %}
+{% endblock %}
+
+
+{% block vendor_css %}
+
+    <!-- Highlight -->
+    <link rel="stylesheet" href="./assets/vendor/highlightjs/styles/default.css">
+
+    <!-- DateTimePicker -->
+    <link rel="stylesheet" href="./assets/vendor/jquery-datetimepicker/jquery.datetimepicker.css">
+
+{% endblock %}
+
+{% block vendor_js %}
+
+    <!-- Highlight -->
+    <script src="./assets/vendor/highlightjs/highlight.pack.min.js"></script>
+
+    <!-- DateTimePicker -->
+    <script src="./assets/vendor/jquery-datetimepicker/build/jquery.datetimepicker.full.min.js"></script>
+
+{% endblock %}

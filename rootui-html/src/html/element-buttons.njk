@@ -1,0 +1,266 @@
+{% set page_title = 'Element Buttons' %}
+{% set header_title = 'Buttons' %}
+{% set with_sidebar = true %}
+{% extends 'layouts/layout-container.njk' %}
+
+{% set breadcrumbs = [
+    ['Home', 'dashboard.html'],
+    ['Components', '#'],
+    ['Base', '#']
+] %}
+
+{% block content %}
+
+{% from "macros/snippet.njk" import snippet %}
+{% from "macros/sidebar.njk" import sidebar %}
+
+<h2 id="btnBase">Base</h2>
+{% call snippet('BtnBase') %}
+<button type="button" class="btn btn-brand">Brand</button>&nbsp;
+<button type="button" class="btn btn-primary">Primary</button>&nbsp;
+<button type="button" class="btn btn-secondary">Secondary</button>&nbsp;
+<button type="button" class="btn btn-success">Success</button>&nbsp;
+<button type="button" class="btn btn-danger">Danger</button>&nbsp;
+<button type="button" class="btn btn-warning">Warning</button>&nbsp;
+<button type="button" class="btn btn-info">Info</button>&nbsp;
+<button type="button" class="btn btn-light">Light</button>&nbsp;
+<button type="button" class="btn btn-dark">Dark</button>&nbsp;
+<a href="#" class="btn btn-link">Link</a>
+{%- endcall %}
+
+<div class="rui-gap-4" id="btnOutline"></div>
+<h2>Outline</h2>
+{% call snippet('BtnOutline') %}
+<button type="button" class="btn btn-outline-brand">Brand</button>&nbsp;
+<button type="button" class="btn btn-outline-primary">Primary</button>&nbsp;
+<button type="button" class="btn btn-outline-secondary">Secondary</button>&nbsp;
+<button type="button" class="btn btn-outline-success">Success</button>&nbsp;
+<button type="button" class="btn btn-outline-danger">Danger</button>&nbsp;
+<button type="button" class="btn btn-outline-warning">Warning</button>&nbsp;
+<button type="button" class="btn btn-outline-info">Info</button>&nbsp;
+<button type="button" class="btn btn-outline-light">Light</button>&nbsp;
+<button type="button" class="btn btn-outline-dark">Dark</button>
+{%- endcall %}
+
+<div class="rui-gap-4" id="btnGrey"></div>
+<h2>Grey</h2>
+{% call snippet('BtnGrey') %}
+<button type="button" class="btn btn-grey-1">Grey 1</button>&nbsp;
+<button type="button" class="btn btn-grey-2">Grey 2</button>&nbsp;
+<button type="button" class="btn btn-grey-3">Grey 3</button>
+{%- endcall %}
+
+{% call snippet('BtnGreyOutline') %}
+<button type="button" class="btn btn-grey-1 btn-outline">Grey 1</button>&nbsp;
+<button type="button" class="btn btn-grey-2 btn-outline">Grey 2</button>&nbsp;
+<button type="button" class="btn btn-grey-3 btn-outline">Grey 3</button>
+{%- endcall %}
+
+{% call snippet('BtnGreyOutlineHover') %}
+<button type="button" class="btn btn-grey-1 btn-hover-outline">Grey 1</button>&nbsp;
+<button type="button" class="btn btn-grey-2 btn-hover-outline">Grey 2</button>&nbsp;
+<button type="button" class="btn btn-grey-3 btn-hover-outline">Grey 3</button>
+{%- endcall %}
+
+<div class="rui-gap-4" id="btnIcon"></div>
+<h2>Icon</h2>
+{% call snippet('BtnIcon') %}
+<button type="button" class="btn btn-brand btn-long"><span class="text">Brand</span><span class="icon"><span data-feather="check" class="rui-icon rui-icon-stroke-1_5"></span></span></button>&nbsp;
+<button type="button" class="btn btn-brand btn-long"><span class="icon"><span data-feather="check" class="rui-icon rui-icon-stroke-1_5"></span></span><span class="text">Brand</span></button>&nbsp;
+<button type="button" class="btn btn-brand btn-long"><span class="icon"><span data-feather="check" class="rui-icon rui-icon-stroke-1_5"></span></span></button>
+{%- endcall %}
+
+<div class="rui-gap-4" id="btnRound"></div>
+<h2>Round, long and uniform</h2>
+{% call snippet('BtnRound') %}
+<button type="button" class="btn btn-brand btn-long btn-round">Brand</button>&nbsp;
+<button type="button" class="btn btn-brand btn-long">Brand</button>&nbsp;
+<button type="button" class="btn btn-brand btn-uniform btn-round"><span class="icon"><span data-feather="check" class="rui-icon rui-icon-stroke-1_5"></span></span></button>&nbsp;
+<button type="button" class="btn btn-brand btn-uniform"><span class="icon"><span data-feather="check" class="rui-icon rui-icon-stroke-1_5"></span></span></button>
+{%- endcall %}
+
+<div class="rui-gap-4" id="btnLarge"></div>
+<h2>Large</h2>
+{% call snippet('BtnLarge') %}
+<button type="button" class="btn btn-brand btn-lg">Large Button</button>&nbsp;
+<button type="button" class="btn btn-secondary btn-lg">Large Button</button>
+{%- endcall %}
+
+<div class="rui-gap-4" id="btnSmall"></div>
+<h2>Small</h2>
+{% call snippet('BtnSmall') %}
+<button type="button" class="btn btn-brand btn-sm">Small Button</button>&nbsp;
+<button type="button" class="btn btn-secondary btn-sm">Small Button</button>
+{%- endcall %}
+
+{% call snippet('BtnBlock') %}
+<button type="button" class="btn btn-brand btn-lg btn-block">Block level button</button>
+<button type="button" class="btn btn-secondary btn-lg btn-block">Block level button</button>
+{%- endcall %}
+
+<div class="rui-gap-4" id="btnHover"></div>
+<h2>Hover</h2>
+<h3>Outline</h3>
+{% call snippet('BtnHoverOutline') %}
+<button type="button" class="btn btn-hover-outline btn-brand btn-round">Brand</button>&nbsp;
+<button type="button" class="btn btn-hover-outline btn-brand">Brand</button>
+{%- endcall %}
+
+<div class="rui-gap-4" id="btnCustom"></div>
+<h3>Custom round</h3>
+{% call snippet('BtnCustom') %}
+<button type="button" class="btn btn-custom-round"><span data-feather="star" class="rui-icon rui-icon-stroke-1_5"></span></button>
+{%- endcall %}
+
+<div class="rui-gap-4" id="btnColors"></div>
+<h3>Colors</h3>
+{% call snippet('BtnColors') %}
+<button type="button" class="btn btn-brand btn-hover-primary">Button</button>&nbsp;
+<button type="button" class="btn btn-brand btn-hover-secondary">Button</button>&nbsp;
+<button type="button" class="btn btn-brand btn-hover-success">Button</button>&nbsp;
+<button type="button" class="btn btn-brand btn-hover-danger">Button</button>&nbsp;
+<button type="button" class="btn btn-brand btn-hover-warning">Button</button>&nbsp;
+<button type="button" class="btn btn-brand btn-hover-info">Button</button>&nbsp;
+<button type="button" class="btn btn-brand btn-hover-light">Button</button>&nbsp;
+<button type="button" class="btn btn-brand btn-hover-dark">Button</button>
+{%- endcall %}
+
+{% call snippet('BtnColorsOutline') %}
+<button type="button" class="btn btn-brand btn-hover-outline btn-hover-primary">Button</button>&nbsp;
+<button type="button" class="btn btn-brand btn-hover-outline btn-hover-secondary">Button</button>&nbsp;
+<button type="button" class="btn btn-brand btn-hover-outline btn-hover-success">Button</button>&nbsp;
+<button type="button" class="btn btn-brand btn-hover-outline btn-hover-danger">Button</button>&nbsp;
+<button type="button" class="btn btn-brand btn-hover-outline btn-hover-warning">Button</button>&nbsp;
+<button type="button" class="btn btn-brand btn-hover-outline btn-hover-info">Button</button>&nbsp;
+<button type="button" class="btn btn-brand btn-hover-outline btn-hover-light">Button</button>&nbsp;
+<button type="button" class="btn btn-brand btn-hover-outline btn-hover-dark">Button</button>
+{%- endcall %}
+
+<div class="rui-gap-4" id="btnGroup"></div>
+<h2>Group</h2>
+{% call snippet('BtnGroup') %}
+<div class="btn-group">
+    <button type="button" class="btn btn-brand">Left</button>
+    <button type="button" class="btn btn-brand">Middle</button>
+    <button type="button" class="btn btn-brand">Right</button>
+</div>&nbsp;
+<div class="btn-group">
+    <button type="button" class="btn btn-brand btn-long">Brand</button>
+    <button type="button" class="btn btn-brand btn-uniform">
+        <span data-feather="check" class="rui-icon rui-icon-stroke-1_5">
+    </button>
+</div>&nbsp;
+<div class="btn-group">
+    <button type="button" class="btn btn-brand btn-uniform">
+        <span data-feather="check" class="rui-icon rui-icon-stroke-1_5">
+    </button>
+    <button type="button" class="btn btn-brand btn-long">Brand</button>
+</div>&nbsp;
+<div class="btn-group">
+    <button type="button" class="btn btn-brand btn-round btn-long">Brand</button>
+    <button type="button" class="btn btn-brand btn-round btn-uniform">
+        <span data-feather="check" class="rui-icon rui-icon-stroke-1_5">
+    </button>
+</div>&nbsp;
+<div class="btn-group">
+    <button type="button" class="btn btn-brand btn-round btn-uniform">
+        <span data-feather="check" class="rui-icon rui-icon-stroke-1_5">
+    </button>
+    <button type="button" class="btn btn-brand btn-round btn-long">Brand</button>
+</div>
+{%- endcall %}
+
+{% call snippet('BtnGroupVertical') %}
+<div class="btn-group-vertical">
+    <button type="button" class="btn btn-brand">Top</button>
+    <button type="button" class="btn btn-brand">Middle</button>
+    <button type="button" class="btn btn-brand">Bottom</button>
+</div>
+{%- endcall %}
+
+<div class="rui-gap-4" id="btnActive"></div>
+<h2>Active</h2>
+{% call snippet('BtnActive') %}
+<button type="button" class="btn btn-brand active">Button brand</button>&nbsp;
+<button type="button" class="btn btn-secondary active">Button</button>
+{%- endcall %}
+
+<div class="rui-gap-4" id="btnDisabled"></div>
+<h2>Disabled</h2>
+{% call snippet('BtnDisabled') %}
+<button type="button" class="btn btn-brand" disabled>Button brand</button>&nbsp;
+<button type="button" class="btn btn-secondary" disabled>Button</button>
+{%- endcall %}
+
+<div class="rui-gap-4" id="btnToggle"></div>
+<h2>Toggle</h2>
+{% call snippet('BtnToggle') %}
+<button type="button" class="btn btn-brand" data-toggle="button" aria-pressed="false">Button</button>
+{%- endcall %}
+
+<div class="rui-gap-4" id="btnCheckboxRadio"></div>
+<h2>Checkbox and radio</h2>
+{% call snippet('BtnCheckbox') %}
+<div class="btn-group-toggle" data-toggle="buttons">
+    <label class="btn btn-secondary active">
+        <input type="checkbox" checked> Checked
+    </label>
+</div>
+{%- endcall %}
+
+{% call snippet('BtnRadio') %}
+<div class="btn-group btn-group-toggle" data-toggle="buttons">
+    <label class="btn btn-secondary active">
+        <input type="radio" name="options" id="option1" checked> Active
+    </label>
+    <label class="btn btn-secondary">
+        <input type="radio" name="options" id="option2"> Radio
+    </label>
+    <label class="btn btn-secondary">
+        <input type="radio" name="options" id="option3"> Radio
+    </label>
+</div>
+{%- endcall %}
+
+{% endblock %}
+
+
+{% block content_sidebar %}
+{% call sidebar() %}
+    <li><a class="nav-link" href="#btnBase">Base</a></li>
+    <li><a class="nav-link" href="#btnOutline">Outline</a></li>
+    <li><a class="nav-link" href="#btnGrey">Grey</a></li>
+    <li><a class="nav-link" href="#btnIcon">Icon</a></li>
+    <li><a class="nav-link" href="#btnRound">Round, long and uniform</a></li>
+    <li><a class="nav-link" href="#btnLarge">Large</a></li>
+    <li><a class="nav-link" href="#btnSmall">Small</a></li>
+    <li>
+        <a class="nav-link" href="#btnHover">Hover</a>
+        <ul class="nav flex-column">
+            <li><a class="nav-link" href="#btnHover">Outline</a></li>
+            <li><a class="nav-link" href="#btnCustom">Custom round</a></li>
+            <li><a class="nav-link" href="#btnColors">Colors</a></li>
+        </ul>
+    </li>
+    <li><a class="nav-link" href="#btnGroup">Group</a></li>
+    <li><a class="nav-link" href="#btnActive">Active</a></li>
+    <li><a class="nav-link" href="#btnDisabled">Disabled</a></li>
+    <li><a class="nav-link" href="#btnToggle">Toggle</a></li>
+    <li><a class="nav-link" href="#btnCheckboxRadio">Checkbox and Radio</a></li>
+{% endcall %}
+{% endblock %}
+
+
+{% block vendor_css %}
+
+    <!-- Highlight -->
+    <link rel="stylesheet" href="./assets/vendor/highlightjs/styles/default.css">
+
+{% endblock %}
+
+{% block vendor_js %}
+
+    <!-- Highlight -->
+    <script src="./assets/vendor/highlightjs/highlight.pack.min.js"></script>
+
+{% endblock %}

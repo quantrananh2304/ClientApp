@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+{{ headerComment | safe }}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>RootUI{{ ' | ' + page_title if page_title }}</title>
+
+    <meta name="description" content="RootUI - clean and powerful solution for your Dashboards, Administration areas.">
+    <meta name="keywords" content="admin, dashboard, template, react, reactjs, html, jquery, clean">
+    <meta name="author" content="nK">
+
+    <link rel="icon" type="image/png" href="${require('../../../common-assets/images/favicon.png')}">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400%7cOpen+Sans:300,400,600%7cPT+Serif:400i">
+
+    <!-- START: Vendors -->
+
+        <!-- Bootstrap Custom -->
+        <link rel="stylesheet" href="./assets/css/bootstrap-custom.css">
+
+    <!-- END: Vendors -->
+
+    <!-- RootUI -->
+    <link rel="stylesheet" href="./assets/css/rootui.css">
+    <link rel="stylesheet" href="./assets/css/rootui-night.css" media="{% if night_mode %}all{% else %}(night){% endif %}" class="rui-nightmode-link">
+</head>
+
+<body class="rui-navbar-autohide">
+    {% include "shared/page-preloader.njk" %}
+
+    <nav class="rui-navbar rui-navbar-top rui-navbar-sticky ml-0">
+        <div class="container">
+            <div class="rui-navbar-content pl-0">
+                <ul class="nav">
+                    <li>
+                        <a href="/">
+                            <img src="../../../common-assets/images/logo.svg" width="60" alt="">
+                        </a>
+                    </li>
+                </ul>
+                <ul class="nav rui-navbar-right">
+                    <li>
+                        <a class="nav-link" href="./react" target="_top">See Demo</a>
+                    </li>
+                    <li>
+                        <a class="btn btn-brand btn-long btn-round" href="https://1.envato.market/rootui" target="blank">
+                            <span class="icon"><span data-feather="shopping-bag" class="rui-icon rui-icon-stroke-1_5"></span></span>
+                            <span class="text">Purchase</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="rui-main">
+        <div class="bg-grey-1">
+            <div class="container">
+                <span class="rui-gap-5"></span>
+                <div class="row vertical-gap sm-gap">
+                    <div class="col-lg-8">
+                        <h1 class="display-3">RootUI</h1>
+                        <div class="rui-gap-1"></div>
+
+                        <p class="lead">RootUI is a clean and powerful solution for your Dashboards, Administration areas. There are available React + Redux and HTML versions.</p>
+                        <div class="rui-gap-1"></div>
+
+                        <a class="btn btn-brand btn-long btn-round" href="./react" target="_top">
+                            <span class="icon"><img src="../../../common-assets/images/logo-react.svg" width="16" height="16" alt=""></span>
+                            <span class="text">React Demo</span>
+                        </a>
+                        &nbsp;
+                        <a class="btn btn-outline-secondary btn-long btn-round" href="dashboard.html" target="_top">HTML Demo</a>
+                    </div>
+                </div>
+                <span class="rui-gap-6"></span>
+                <div class="rui-box-window">
+                    <a class="rui-box-window-image" href="./react" target="_top">
+                        <div class="rui-box-window-bar">
+                            <span class="bg-success"></span>
+                            <span class="bg-warning"></span>
+                            <span class="bg-danger"></span>
+                        </div>
+                        <img src="../../../common-assets/images/screen-dashboard.png" alt="">
+                    </a>
+                </div>
+                <span class="rui-gap-6"></span>
+            </div>
+        </div>
+        <div>
+            <span class="rui-gap-6"></span>
+            <div class="container text-center">
+                <div class="row justify-content-center">
+                    <div class="col-lg-5">
+                        <h2 class="h1">Quickly kick-start your next project with one of the available layouts</h2>
+                    </div>
+                </div>
+                <span class="rui-gap-2"></span>
+                <div class="row vertical-gap">
+                    <div class="col-sm-6 col-lg-3">
+                        <a href="./react?setting-show-section-lines=0" target="_top" class="rui-box-window">
+                            <span class="rui-box-window-image">
+                                <img src="../../../common-assets/images/screen-no-section-lines.png" alt="">
+                            </span>
+                            <span class="h3 d-block mt-15 mnb-6">No Section Lines</span>
+                        </a>
+                    </div>
+                    <div class="col-sm-6 col-lg-3">
+                        <a href="./react?setting-sidebar-small=1" target="_top" class="rui-box-window">
+                            <span class="rui-box-window-image">
+                                <img src="../../../common-assets/images/screen-small-sidebar.png" alt="">
+                            </span>
+                            <span class="h3 d-block mt-15 mnb-6">Small Sidebar</span>
+                        </a>
+                    </div>
+                    <div class="col-sm-6 col-lg-3">
+                        <a href="./react?setting-sidebar-dark=1&setting-nav-dark=1" target="_top" class="rui-box-window">
+                            <span class="rui-box-window-image">
+                                <img src="../../../common-assets/images/screen-dark-navs.png" alt="">
+                            </span>
+                            <span class="h3 d-block mt-15 mnb-6">Dark Navigations</span>
+                        </a>
+                    </div>
+                    <div class="col-sm-6 col-lg-3">
+                        <a href="./react?setting-night-mode=1" target="_top" class="rui-box-window">
+                            <span class="rui-box-window-image">
+                                <img src="../../../common-assets/images/screen-night-mode.png" alt="">
+                            </span>
+                            <span class="h3 d-block mt-15 mnb-6">Night Mode</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <span class="rui-gap-6"></span>
+        </div>
+
+        {% macro feature(name="", icon="") %}
+        <div class="rui-feature">
+            <div class="rui-feature-icon">
+                <span data-feather="{{ icon }}" class="rui-icon rui-icon-stroke-1"></span>
+            </div>
+            <span class="h4 mnb-4">{{ name }}</span>
+        </div>
+        {% endmacro %}
+
+        <div class="bg-grey-1">
+            <div class="container text-center">
+                <span class="rui-gap-6"></span>
+                <h2 class="h1 mb-15">Are you ready to get started today?</h2>
+                <a class="btn btn-brand btn-long btn-round mt-20" href="https://1.envato.market/rootui" target="blank">Purchase Now</a>
+                <span class="rui-gap-6"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- START: Scripts -->
+
+    <!-- START: Vendors -->
+
+        <!-- jQuery -->
+        <script src="./assets/vendor/jquery/dist/jquery.min.js"></script>
+
+        <!-- Popper -->
+        <script src="./assets/vendor/popper.js/dist/umd/popper.min.js"></script>
+
+        <!-- Bootstrap -->
+        <script src="./assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+
+        <!-- Feather Icons -->
+        <script src="./assets/vendor/feather-icons/dist/feather.min.js"></script>
+
+    <!-- END: Vendors -->
+
+    <!-- RootUI -->
+    <script src="./assets/js/rootui.js"></script>
+    <script src="./assets/js/rootui-init.js"></script>
+    <!-- END: Scripts -->
+</body>
+</html>

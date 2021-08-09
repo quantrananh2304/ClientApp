@@ -1,0 +1,192 @@
+{% set page_title = 'Calendar' %}
+{% set header_title = 'Calendar' %}
+{% extends 'layouts/layout-container.njk' %}
+
+{% set breadcrumbs = [
+    ['Home', 'dashboard.html'],
+    ['Apps', '#']
+] %}
+
+{% block content %}
+
+{% from "macros/snippet.njk" import snippet, snippetMacro %}
+{% from "macros/sidebar.njk" import sidebar %}
+
+{{ snippetMacro(
+    'CalendarBase',
+    '
+<div class="d-flex justify-content-end mb-20">
+    <button class="btn btn-brand" type="button">
+        <span class="icon"><span data-feather="plus" class="rui-icon rui-icon-stroke-1_5"></span></span>
+        <span class="text">Add Event</span>
+    </button>
+</div>
+<div class="rui-calendar rui-calendar-navs"></div>
+    ',
+    '
+<div class="d-flex justify-content-end mb-20">
+    <button class="btn btn-brand" type="button">Add Event</button>
+</div>
+<div class="rui-calendar rui-calendar-navs"></div>
+    ',
+    "
+const $calendar = $('.rui-calendar');
+const events = [
+    {
+        id: 'a',
+        title: 'Training',
+        start: 'your_dateT09:00:00',
+        allDay: false,
+        className: 'fc-event-brand',
+    },
+    {
+        id: 'b',
+        title: 'Repetition',
+        start: 'your_dateT11:00:00',
+        allDay: false,
+        className: 'fc-event-primary',
+    },
+    {
+        id: 'c',
+        title: 'Pick up the parcel',
+        start: 'your_dateT13:00:00',
+        allDay: false,
+        className: 'fc-event-warning',
+    },
+    {
+        id: 'd',
+        title: 'Film',
+        start: 'your_dateT16:00:00',
+        allDay: false,
+        className: 'fc-event-success',
+    },
+    {
+        id: 'e',
+        title: 'Stroll',
+        start: 'your_dateT19:00:00',
+        allDay: false,
+    },
+    {
+        id: 'f',
+        title: 'Meeting',
+        start: 'your_date',
+        className: 'fc-event-danger',
+    },
+];
+const optionsNavs = {
+    initialView: 'dayGridMonth',
+    headerToolbar: {
+        start: 'prev,next today',
+        center: 'title',
+        end: 'dayGridMonth,listWeek',
+    },
+    events: events,
+};
+
+$('.rui-calendar-navs').each( function() {
+    new FullCalendar.Calendar(this, optionsNavs).render();
+} );
+    ",
+    'no-frame-preview'
+)}}
+
+{% endblock %}
+
+{% block vendor_css %}
+
+    <!-- Highlight -->
+    <link rel="stylesheet" href="./assets/vendor/highlightjs/styles/default.css">
+
+    <!-- Fullcalendar -->
+    <link rel="stylesheet" href="./assets/vendor/fullcalendar/main.min.css">
+
+{% endblock %}
+
+{% block vendor_js %}
+
+    <!-- Highlight -->
+    <script src="./assets/vendor/highlightjs/highlight.pack.min.js"></script>
+
+    <!-- Fullcalendar -->
+    <script src="./assets/vendor/fullcalendar/main.min.js"></script>
+
+    <script class="rui-page-additional-js">
+        (function(){
+            // Auto Date
+            const date = new Date();
+            let dateMonth = date.getMonth() + 1;
+            let dateDay = date.getDate();
+            let dateDayNext = date.getDate() + 1;
+
+            if (dateMonth < 10) {
+                dateMonth = `0${dateMonth}`;
+            }
+            if (dateDay < 10) {
+                dateDay = `0${dateDay}`;
+            }
+            if (dateDayNext < 10) {
+                dateDayNext = `0${dateDayNext}`;
+            }
+            const dateTomorrow = String(`${date.getFullYear()}-${dateMonth}-${dateDayNext}`);
+            const dateToday = String(`${date.getFullYear()}-${dateMonth}-${dateDay}`);
+
+            const $calendar = $('.rui-calendar');
+            const events = [
+                {
+                    id: 'a',
+                    title: 'Training',
+                    start: `${dateToday}T09:00:00`,
+                    allDay: false,
+                    className: 'fc-event-brand',
+                },
+                {
+                    id: 'b',
+                    title: 'Repetition',
+                    start: `${dateToday}T11:00:00`,
+                    allDay: false,
+                    className: 'fc-event-primary',
+                },
+                {
+                    id: 'c',
+                    title: 'Pick up the parcel',
+                    start: `${dateToday}T13:00:00`,
+                    allDay: false,
+                    className: 'fc-event-warning',
+                },
+                {
+                    id: 'd',
+                    title: 'Film',
+                    start: `${dateToday}T16:00:00`,
+                    allDay: false,
+                    className: 'fc-event-success',
+                },
+                {
+                    id: 'e',
+                    title: 'Stroll',
+                    start: `${dateToday}T19:00:00`,
+                    allDay: false,
+                },
+                {
+                    id: 'f',
+                    title: 'Meeting',
+                    start: `${dateTomorrow}T09:00:00`,
+                    className: 'fc-event-danger',
+                    allDay: false,
+                },
+            ];
+            const optionsNavs = {
+                initialView: 'dayGridMonth',
+                headerToolbar: {
+                    start: 'prev,next today',
+                    center: 'title',
+                    end: 'dayGridMonth,listWeek',
+                },
+                events: events,
+            };
+
+            $('.rui-calendar-navs').each( function() {
+                new FullCalendar.Calendar(this, optionsNavs).render();
+            } );
+        }());
+    </script>
+{% endblock %}

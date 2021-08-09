@@ -1,0 +1,63 @@
+{% set page_title = 'Input Masks' %}
+{% set header_title = 'Input Masks' %}
+{% extends 'layouts/layout-container.njk' %}
+
+{% set breadcrumbs = [
+    ['Home', 'dashboard.html'],
+    ['Forms', '#'],
+    ['Advanced', '#']
+] %}
+
+{% block content %}
+
+{% from "macros/snippet.njk" import snippet %}
+{% from "macros/sidebar.njk" import sidebar %}
+
+{% call snippet('Inputmask') %}
+<div class="form-group row vertical-gap sm-gap mb-0">
+    <label for="maskDate" class="col-sm-2 col-form-label">Date</label>
+    <div class="col-sm-10">
+        <input id="maskDate" class="form-control rui-inputmask" data-inputmask-alias="datetime" data-inputmask-inputformat="mm/dd/yyyy">
+    </div>
+
+    <label for="maskTel" class="col-sm-2 col-form-label">Telephone</label>
+    <div class="col-sm-10">
+        <input id="maskTel" class="form-control rui-inputmask" data-inputmask="'mask': '(999) 999-9999'">
+    </div>
+
+    <label for="maskCurrency" class="col-sm-2 col-form-label">Currency</label>
+    <div class="col-sm-10">
+        <input id="maskCurrency" class="form-control rui-inputmask" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': false, 'prefix': '$ ', 'placeholder': '0'">
+    </div>
+
+    <label for="maskIp" class="col-sm-2 col-form-label">IP Address</label>
+    <div class="col-sm-10">
+        <input id="maskIp" class="form-control rui-inputmask" data-inputmask="'mask': '999.999.999.999'">
+    </div>
+
+    <label for="maskEmail" class="col-sm-2 col-form-label">Email Address</label>
+    <div class="col-sm-10">
+        <input id="maskEmail" class="form-control rui-inputmask" data-inputmask="'alias': 'email'">
+    </div>
+</div>
+{%- endcall %}
+
+{% endblock %}
+
+
+{% block vendor_css %}
+
+    <!-- Highlight -->
+    <link rel="stylesheet" href="./assets/vendor/highlightjs/styles/default.css">
+
+{% endblock %}
+
+{% block vendor_js %}
+
+    <!-- Highlight -->
+    <script src="./assets/vendor/highlightjs/highlight.pack.min.js"></script>
+
+    <!-- Inputmask -->
+    <script src="./assets/vendor/inputmask/dist/jquery.inputmask.min.js"></script>
+
+{% endblock %}

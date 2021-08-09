@@ -1,0 +1,208 @@
+{% set page_title = 'Element Dropdowns' %}
+{% set header_title = 'Dropdowns' %}
+{% set with_sidebar = true %}
+{% extends 'layouts/layout-container.njk' %}
+
+{% set breadcrumbs = [
+    ['Home', 'dashboard.html'],
+    ['Components', '#'],
+    ['Base', '#']
+] %}
+
+{% block content %}
+
+{% from "macros/snippet.njk" import snippet %}
+{% from "macros/sidebar.njk" import sidebar %}
+
+<h2 id="dropdownBase">Base</h2>
+{% call snippet('DropdownBase') %}
+<div class="btn-group dropdown{{ ' dropdown-triangle' if dropdown_triangle }}">
+    <button class="btn btn-brand btn-long dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="text">Dropdown</span>
+        <span class="icon"><span data-feather="chevron-down" class="rui-icon rui-icon-stroke-1_5"></span></span>
+    </button>
+    <ul class="dropdown-menu nav">
+        <li><a class="nav-link" href="#"><span data-feather="plus-circle" class="rui-icon rui-icon-stroke-1_5"></span><span>Action</span><span class="rui-nav-circle"></span></a></li>
+        <li><a class="nav-link" href="#"><span data-feather="x-circle" class="rui-icon rui-icon-stroke-1_5"></span><span>Another action</span><span class="rui-nav-circle"></span></a></li>
+        <li><a class="nav-link" href="#"><span data-feather="check-circle" class="rui-icon rui-icon-stroke-1_5"></span><span>Something else here</span><span class="rui-nav-circle"></span></a></li>
+    </ul>
+</div>&nbsp;
+
+<div class="btn-group dropdown{{ ' dropdown-triangle' if dropdown_triangle }}">
+    <button type="button" class="btn btn-brand btn-long">Split dropdown</button>
+    <button type="button" class="btn btn-brand btn-uniform dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="-20">
+        <span data-feather="chevron-down" class="rui-icon rui-icon-stroke-1_5">
+    </button>
+    <ul class="dropdown-menu nav">
+        <li><a class="nav-link" href="#"><span data-feather="plus-circle" class="rui-icon rui-icon-stroke-1_5"></span><span>Action</span><span class="rui-nav-circle"></span></a></li>
+        <li><a class="nav-link" href="#"><span data-feather="x-circle" class="rui-icon rui-icon-stroke-1_5"></span><span>Another action</span><span class="rui-nav-circle"></span></a></li>
+        <li><a class="nav-link" href="#"><span data-feather="check-circle" class="rui-icon rui-icon-stroke-1_5"></span><span>Something else here</span><span class="rui-nav-circle"></span></a></li>
+    </ul>
+</div>
+{%- endcall %}
+
+<div class="rui-gap-4" id="dropdownHover"></div>
+<h2>Hover</h2>
+{% call snippet('DropdownHover') %}
+<div class="btn-group dropdown dropdown-hover{{ ' dropdown-triangle' if dropdown_triangle }} dropdown-keep-open">
+    <a class="dropdown-item" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span data-feather="plus-circle" class="rui-icon rui-icon-stroke-1_5"></span>
+        <span>Dropdown</span>
+        <span class="rui-nav-circle"></span>
+    </a>
+    <ul class="dropdown-menu nav">
+        <li><a class="nav-link" href="#"><span data-feather="plus-circle" class="rui-icon rui-icon-stroke-1_5"></span><span>Action</span><span class="rui-nav-circle"></span></a></li>
+        <li><a class="nav-link" href="#"><span data-feather="x-circle" class="rui-icon rui-icon-stroke-1_5"></span><span>Another action</span><span class="rui-nav-circle"></span></a></li>
+        <li><a class="nav-link" href="#"><span data-feather="check-circle" class="rui-icon rui-icon-stroke-1_5"></span><span>Something else here</span><span class="rui-nav-circle"></span></a></li>
+    </ul>
+</div>&nbsp;
+
+<div class="btn-group dropdown dropdown-hover{{ ' dropdown-triangle' if dropdown_triangle }} dropdown-keep-open ml-20">
+    <a class="dropdown-item" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span>Dropdown</span>
+        <span data-feather="chevron-down" class="rui-icon rui-icon-stroke-1_5"></span>
+    </a>
+    <ul class="dropdown-menu nav">
+        <li><a class="nav-link" href="#">Action</a></li>
+        <li><a class="nav-link" href="#">Another action</a></li>
+        <li><a class="nav-link" href="#">Something else here</a></li>
+    </ul>
+</div>
+{%- endcall %}
+
+<div class="rui-gap-4" id="dropdownDirection"></div>
+<h2>Direction</h2>
+<h3>Up</h3>
+{% call snippet('DropdownDropup') %}
+<div class="btn-group dropdown{{ ' dropdown-triangle' if dropdown_triangle }} dropup">
+    <button class="btn btn-brand btn-long dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="text">Dropdown</span>
+        <span class="icon"><span data-feather="chevron-up" class="rui-icon rui-icon-stroke-1_5"></span></span>
+    </button>
+    <ul class="dropdown-menu nav">
+        <li><a class="nav-link" href="#"><span data-feather="plus-circle" class="rui-icon rui-icon-stroke-1_5"></span><span>Action</span><span class="rui-nav-circle"></span></a></li>
+        <li><a class="nav-link" href="#"><span data-feather="x-circle" class="rui-icon rui-icon-stroke-1_5"></span><span>Another action</span><span class="rui-nav-circle"></span></a></li>
+        <li><a class="nav-link" href="#"><span data-feather="check-circle" class="rui-icon rui-icon-stroke-1_5"></span><span>Something else here</span><span class="rui-nav-circle"></span></a></li>
+    </ul>
+</div>&nbsp;
+
+<div class="btn-group dropdown{{ ' dropdown-triangle' if dropdown_triangle }} dropup">
+    <button type="button" class="btn btn-brand btn-long">Split dropup</button>
+    <button type="button" class="btn btn-brand btn-uniform dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="-20">
+        <span data-feather="chevron-up" class="rui-icon rui-icon-stroke-1_5">
+    </button>
+    <ul class="dropdown-menu nav">
+        <li><a class="nav-link" href="#"><span data-feather="plus-circle" class="rui-icon rui-icon-stroke-1_5"></span><span>Action</span><span class="rui-nav-circle"></span></a></li>
+        <li><a class="nav-link" href="#"><span data-feather="x-circle" class="rui-icon rui-icon-stroke-1_5"></span><span>Another action</span><span class="rui-nav-circle"></span></a></li>
+        <li><a class="nav-link" href="#"><span data-feather="check-circle" class="rui-icon rui-icon-stroke-1_5"></span><span>Something else here</span><span class="rui-nav-circle"></span></a></li>
+    </ul>
+</div>
+{%- endcall %}
+
+<div class="rui-gap-4" id="dropdownDropright"></div>
+<h3>Right</h3>
+{% call snippet('DropdownDropright') %}
+<div class="btn-group dropdown{{ ' dropdown-triangle' if dropdown_triangle }} dropright">
+    <button class="btn btn-brand btn-long dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="-20">
+        <span class="text">Dropdown</span>
+        <span class="icon"><span data-feather="chevron-right" class="rui-icon rui-icon-stroke-1_5"></span></span>
+    </button>
+    <ul class="dropdown-menu nav">
+        <li><a class="nav-link" href="#"><span data-feather="plus-circle" class="rui-icon rui-icon-stroke-1_5"></span><span>Action</span><span class="rui-nav-circle"></span></a></li>
+        <li><a class="nav-link" href="#"><span data-feather="x-circle" class="rui-icon rui-icon-stroke-1_5"></span><span>Another action</span><span class="rui-nav-circle"></span></a></li>
+        <li><a class="nav-link" href="#"><span data-feather="check-circle" class="rui-icon rui-icon-stroke-1_5"></span><span>Something else here</span><span class="rui-nav-circle"></span></a></li>
+    </ul>
+</div>&nbsp;
+
+<div class="btn-group dropdown{{ ' dropdown-triangle' if dropdown_triangle }} dropright">
+    <button type="button" class="btn btn-brand btn-long">Split dropright</button>
+    <button type="button" class="btn btn-brand btn-uniform dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="-20">
+        <span data-feather="chevron-right" class="rui-icon rui-icon-stroke-1_5">
+    </button>
+    <ul class="dropdown-menu nav">
+        <li><a class="nav-link" href="#"><span data-feather="plus-circle" class="rui-icon rui-icon-stroke-1_5"></span><span>Action</span><span class="rui-nav-circle"></span></a></li>
+        <li><a class="nav-link" href="#"><span data-feather="x-circle" class="rui-icon rui-icon-stroke-1_5"></span><span>Another action</span><span class="rui-nav-circle"></span></a></li>
+        <li><a class="nav-link" href="#"><span data-feather="check-circle" class="rui-icon rui-icon-stroke-1_5"></span><span>Something else here</span><span class="rui-nav-circle"></span></a></li>
+    </ul>
+</div>
+{%- endcall %}
+
+<div class="rui-gap-4" id="dropdownDropleft"></div>
+<h3>Left</h3>
+{% call snippet('DropdownDropleft') %}
+<div class="btn-group dropdown{{ ' dropdown-triangle' if dropdown_triangle }} dropleft">
+    <button class="btn btn-brand btn-long dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="-20">
+        <span class="icon"><span data-feather="chevron-left" class="rui-icon rui-icon-stroke-1_5"></span></span>
+        <span class="text">Dropdown</span>
+    </button>
+    <ul class="dropdown-menu nav">
+        <li><a class="nav-link" href="#"><span data-feather="plus-circle" class="rui-icon rui-icon-stroke-1_5"></span><span>Action</span><span class="rui-nav-circle"></span></a></li>
+        <li><a class="nav-link" href="#"><span data-feather="x-circle" class="rui-icon rui-icon-stroke-1_5"></span><span>Another action</span><span class="rui-nav-circle"></span></a></li>
+        <li><a class="nav-link" href="#"><span data-feather="check-circle" class="rui-icon rui-icon-stroke-1_5"></span><span>Something else here</span><span class="rui-nav-circle"></span></a></li>
+    </ul>
+</div>&nbsp;
+
+<div class="btn-group">
+    <div class="btn-group dropdown{{ ' dropdown-triangle' if dropdown_triangle }} dropleft">
+        <button type="button" class="btn btn-brand btn-uniform dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="-20">
+            <span data-feather="chevron-left" class="rui-icon rui-icon-stroke-1_5">
+        </button>
+        <ul class="dropdown-menu nav">
+            <li><a class="nav-link" href="#"><span data-feather="plus-circle" class="rui-icon rui-icon-stroke-1_5"></span><span>Action</span><span class="rui-nav-circle"></span></a></li>
+            <li><a class="nav-link" href="#"><span data-feather="x-circle" class="rui-icon rui-icon-stroke-1_5"></span><span>Another action</span><span class="rui-nav-circle"></span></a></li>
+            <li><a class="nav-link" href="#"><span data-feather="check-circle" class="rui-icon rui-icon-stroke-1_5"></span><span>Something else here</span><span class="rui-nav-circle"></span></a></li>
+        </ul>
+    </div>
+    <button type="button" class="btn btn-brand btn-long">Split dropleft</button>
+</div>
+{%- endcall %}
+
+<div class="rui-gap-4" id="dropdownAlignment"></div>
+<h2>Menu alignment</h2>
+{% call snippet('DropdownAlignment') %}
+<div class="btn-group dropdown{{ ' dropdown-triangle' if dropdown_triangle }}">
+    <button class="btn btn-brand btn-long dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="text">Right-aligned menu</span>
+        <span class="icon"><span data-feather="chevron-down" class="rui-icon rui-icon-stroke-1_5"></span></span>
+    </button>
+    <ul class="dropdown-menu dropdown-menu-right nav">
+        <li><a class="nav-link" href="#"><span data-feather="plus-circle" class="rui-icon rui-icon-stroke-1_5"></span><span>Action</span><span class="rui-nav-circle"></span></a></li>
+        <li><a class="nav-link" href="#"><span data-feather="x-circle" class="rui-icon rui-icon-stroke-1_5"></span><span>Another action</span><span class="rui-nav-circle"></span></a></li>
+        <li><a class="nav-link" href="#"><span data-feather="check-circle" class="rui-icon rui-icon-stroke-1_5"></span><span>Something else here</span><span class="rui-nav-circle"></span></a></li>
+    </ul>
+</div>
+{%- endcall %}
+
+{% endblock %}
+
+
+{% block content_sidebar %}
+{% call sidebar() %}
+    <li><a class="nav-link" href="#dropdownBase">Base</a></li>
+    <li><a class="nav-link" href="#dropdownHover">Hover</a></li>
+    <li>
+        <a class="nav-link" href="#dropdownDirection">Direction</a>
+        <ul class="nav flex-column">
+            <li><a class="nav-link" href="#dropdownDirection">Up</a></li>
+            <li><a class="nav-link" href="#dropdownDropright">Right</a></li>
+            <li><a class="nav-link" href="#dropdownDropleft">Left</a></li>
+        </ul>
+    </li>
+    <li><a class="nav-link" href="#dropdownAlignment">Alignment</a></li>
+{% endcall %}
+{% endblock %}
+
+
+{% block vendor_css %}
+
+    <!-- Highlight -->
+    <link rel="stylesheet" href="./assets/vendor/highlightjs/styles/default.css">
+
+{% endblock %}
+
+{% block vendor_js %}
+
+    <!-- Highlight -->
+    <script src="./assets/vendor/highlightjs/highlight.pack.min.js"></script>
+
+{% endblock %}

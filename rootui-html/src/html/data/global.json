@@ -1,0 +1,360 @@
+{
+    "custom_styles": false,
+    "custom_css": false,
+    "vendor_css": false,
+    "vendor_js": false,
+    "page_separator": false,
+    "show_section_lines": true,
+    "dropdown_triangle": true,
+    "with_sidebar": false,
+    "nav": true,
+    "nav_logo": "RootUI.",
+    "nav_logo_img": true,
+    "nav_logo_path": "../../../common-assets/images/logo.svg",
+    "nav_logo_white_path": "../../../common-assets/images/logo-white.svg",
+    "nav_logo_width": "45",
+    "nav_logo_url": "dashboard.html",
+    "nav_align": "left",
+    "nav_expand": "lg",
+    "nav_sticky": true,
+    "nav_autohide": true,
+    "nav_container_fluid": true,
+    "navigation": {
+        "#actions": {
+            "name": "Actions",
+            "icon": "layers",
+            "sub": {
+                "#create-post": {
+                    "name": "Create Post",
+                    "icon": "plus-circle"
+                },
+                "#create-page": {
+                    "name": "Create Page",
+                    "icon": "plus-circle"
+                },
+                "#manage-users": {
+                    "name": "Manage Users",
+                    "icon": "users"
+                },
+                "#manage-sites": {
+                    "name": "Manage Sites",
+                    "icon": "sidebar",
+                    "sub": {
+                        "#my-site-1": {
+                            "name": "My Site 1"
+                        },
+                        "#my-site-2": {
+                            "name": "My Site 2"
+                        },
+                        "#my-site-3": {
+                            "name": "My Site 3"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "navigation_sidebar": {
+        "dashboard.html": {
+            "name": "Dashboard",
+            "icon": "home"
+        },
+        "mailbox.html": {
+            "label": "Apps",
+            "name": "Mailbox",
+            "icon": "send"
+        },
+        "messenger.html": {
+            "name": "Messenger",
+            "icon": "message-circle"
+        },
+        "calendar.html": {
+            "name": "Calendar",
+            "icon": "calendar"
+        },
+        "project-management.html": {
+            "name": "Project Management",
+            "icon": "book"
+        },
+        "file-manager.html": {
+            "name": "File Manager",
+            "icon": "file"
+        },
+        "profile.html": {
+            "name": "Profile",
+            "icon": "user"
+        },
+        "grid.html": {
+            "label": "Content",
+            "name": "Grid",
+            "icon": "grid"
+        },
+        "colors.html": {
+            "name": "Colors",
+            "icon": "droplet"
+        },
+        "typography.html": {
+            "name": "Typography",
+            "icon": "bold"
+        },
+        "element-tables.html": {
+            "name": "Tables",
+            "icon": "menu"
+        },
+        "element-alerts.html": {
+            "label": "Components",
+            "name": "Base",
+            "icon": "layers",
+            "sub": {
+                "element-alerts.html": {
+                    "name": "Alerts"
+                },
+                "element-badge.html": {
+                    "name": "Badge"
+                },
+                "element-breadcrumb.html": {
+                    "name": "Breadcrumbs"
+                },
+                "element-buttons.html": {
+                    "name": "Buttons"
+                },
+                "element-card.html": {
+                    "name": "Card"
+                },
+                "element-carousel.html": {
+                    "name": "Carousel"
+                },
+                "element-collapse.html": {
+                    "name": "Collapse"
+                },
+                "element-dropdowns.html": {
+                    "name": "Dropdowns"
+                },
+                "element-list-group.html": {
+                    "name": "List group"
+                },
+                "element-media-object.html": {
+                    "name": "Media object"
+                },
+                "element-modal.html": {
+                    "name": "Modal"
+                },
+                "element-navs.html": {
+                    "name": "Navs"
+                },
+                "element-pagination.html": {
+                    "name": "Pagination"
+                },
+                "element-popovers.html": {
+                    "name": "Popovers"
+                },
+                "element-progress.html": {
+                    "name": "Progress"
+                },
+                "element-spinners.html": {
+                    "name": "Spinners"
+                },
+                "element-tabs.html": {
+                    "name": "Tabs"
+                }
+            }
+        },
+        "icons-feather.html": {
+            "name": "Advanced",
+            "icon": "box",
+            "sub": {
+                "icons-feather.html": {
+                    "name": "Icons",
+                    "sub": {
+                        "icons-feather.html": {
+                            "name": "Feather"
+                        },
+                        "icons-fontawesome.html": {
+                            "name": "Font Awesome"
+                        }
+                    }
+                },
+                "chart-js.html": {
+                    "name": "Charts",
+                    "sub": {
+                        "chart-js.html": {
+                            "name": "Chart.js"
+                        },
+                        "chart-chartist.html": {
+                            "name": "Chartist"
+                        },
+                        "chart-peity.html": {
+                            "name": "Peity"
+                        },
+                        "chart-echarts.html": {
+                            "name": "eCharts"
+                        },
+                        "chart-flot.html": {
+                            "name": "Flot"
+                        }
+                    }
+                },
+                "element-timeline.html": {
+                    "name": "Timeline"
+                },
+                "element-tree-view.html": {
+                    "name": "Tree View"
+                },
+                "element-toasts.html": {
+                    "name": "Toasts"
+                },
+                "element-sweetalert.html": {
+                    "name": "Sweet Alert"
+                },
+                "element-maps.html": {
+                    "name": "Maps"
+                },
+                "element-datatables.html": {
+                    "name": "Data Tables"
+                }
+            }
+        },
+        "element-forms.html": {
+            "label": "Forms",
+            "name": "Base",
+            "icon": "mail"
+        },
+        "element-datetime.html": {
+            "name": "Advanced",
+            "icon": "database",
+            "sub": {
+                "element-datetime.html": {
+                    "name": "DateTime Picker"
+                },
+                "element-daterange.html": {
+                    "name": "DateRange Picker"
+                },
+                "element-validation.html": {
+                    "name": "Validation"
+                },
+                "element-touchspin.html": {
+                    "name": "Touchspin"
+                },
+                "element-rangeslider.html": {
+                    "name": "Range Slider"
+                },
+                "element-inputmasks.html": {
+                    "name": "Input Masks"
+                },
+                "element-dropzone.html": {
+                    "name": "Dropzone"
+                },
+                "element-colorpicker.html": {
+                    "name": "Color Picker"
+                },
+                "element-selectize.html": {
+                    "name": "Selectize"
+                },
+                "element-markdown.html": {
+                    "name": "Markdown editor"
+                },
+                "element-WYSIWYG.html": {
+                    "name": "WYSIWYG editor"
+                }
+            }
+        },
+        "sign-in.html": {
+            "label": "Pages",
+            "name": "Sign In",
+            "icon": "log-in",
+            "sub": {
+                "sign-in.html": {
+                    "name": "Sign In"
+                },
+                "sign-in-2.html": {
+                    "name": "Sign In 2"
+                }
+            }
+        },
+        "sign-up.html": {
+            "name": "Sign Up",
+            "icon": "log-out",
+            "sub": {
+                "sign-up.html": {
+                    "name": "Sign Up"
+                },
+                "sign-up-2.html": {
+                    "name": "Sign Up 2"
+                }
+            }
+        },
+        "404.html": {
+            "name": "404",
+            "icon": "alert-octagon"
+        }
+    },
+    "img_country": {
+        "usa": "../../../common-assets/images/flags/united-states-of-america.svg",
+        "china": "../../../common-assets/images/flags/china.svg",
+        "germany": "../../../common-assets/images/flags/germany.svg",
+        "japan": "../../../common-assets/images/flags/japan.svg",
+        "spain": "../../../common-assets/images/flags/spain.svg",
+        "france": "../../../common-assets/images/flags/france.svg",
+        "canada": "../../../common-assets/images/flags/canada.svg",
+        "netherlands": "../../../common-assets/images/flags/netherlands.svg",
+        "italy": "../../../common-assets/images/flags/italy.svg",
+        "russia": "../../../common-assets/images/flags/russia.svg",
+        "czech_republic": "../../../common-assets/images/flags/czech-republic.svg"
+    },
+    "img_file": {
+        "empty": "../../../common-assets/images/icon-empty.svg",
+        "zip": "../../../common-assets/images/icon-zip.svg",
+        "rar": "../../../common-assets/images/icon-rar.svg",
+        "html": "../../../common-assets/images/icon-html.svg",
+        "php": "../../../common-assets/images/icon-php.svg",
+        "css": "../../../common-assets/images/icon-css.svg",
+        "js": "../../../common-assets/images/icon-js.svg",
+        "doc": "../../../common-assets/images/icon-doc.svg",
+        "txt": "../../../common-assets/images/icon-txt.svg",
+        "pdf": "../../../common-assets/images/icon-pdf.svg",
+        "xls": "../../../common-assets/images/icon-xls.svg",
+        "png": "../../../common-assets/images/icon-png.svg",
+        "jpg": "../../../common-assets/images/icon-jpg.svg"
+    },
+    "user_1": {
+        "img": "../../../common-assets/images/avatar-1.png",
+        "img_profile": "../../../common-assets/images/avatar-1-profile.png",
+        "name": "Jack Boyd"
+    },
+    "user_2": {
+        "img": "../../../common-assets/images/avatar-2.png",
+        "name": "Helen Holt"
+    },
+    "user_3": {
+        "img": "../../../common-assets/images/avatar-3.png",
+        "name": "Avice Harris"
+    },
+    "user_4": {
+        "img": "../../../common-assets/images/avatar-4.png",
+        "name": "Anna Rice"
+    },
+    "user_5": {
+        "img": "../../../common-assets/images/avatar-5.png",
+        "name": "Amber Smith"
+    },
+    "user_6": {
+        "img": "../../../common-assets/images/avatar-6.png",
+        "name": "Mary Rose"
+    },
+    "letter_1": {
+        "img": "../../../common-assets/images/letter-1.png",
+        "img_min": "../../../common-assets/images/letter-1-min.png"
+    },
+    "letter_2": {
+        "img": "../../../common-assets/images/letter-2.png",
+        "img_min": "../../../common-assets/images/letter-2-min.png"
+    },
+    "letter_3": {
+        "img": "../../../common-assets/images/letter-3.png",
+        "img_min": "../../../common-assets/images/letter-3-min.png"
+    },
+    "letter_4": {
+        "img": "../../../common-assets/images/letter-4.png",
+        "img_min": "../../../common-assets/images/letter-4-min.png"
+    }
+}

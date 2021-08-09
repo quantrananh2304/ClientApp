@@ -1,0 +1,50 @@
+{% set page_title = 'Colors' %}
+{% set header_title = 'Colors' %}
+{% extends 'layouts/layout-container.njk' %}
+
+{% set breadcrumbs = [
+    ['Home', 'dashboard.html'],
+    ['Content', '#']
+] %}
+
+{% block content %}
+
+{% from "macros/snippet.njk" import snippet %}
+{% from "macros/sidebar.njk" import sidebar %}
+
+{% macro colors(name="", class="", color="") %}
+<div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+    <code>{{ name }}</code>
+    <div class="demo-colors {{ class }}">
+        {{ color }}
+    </div>
+</div>
+{% endmacro %}
+<h2>Backgrounds</h2>
+<div class="row vertical-gap">
+    {{ colors('bg-brand', 'bg-brand text-white', '#725ec3') }}
+    {{ colors('bg-primary', 'bg-primary text-white', '#007bff') }}
+    {{ colors('bg-secondary', 'bg-secondary text-white', '#6c757d') }}
+    {{ colors('bg-success', 'bg-success text-white', '#2fc787') }}
+    {{ colors('bg-danger', 'bg-danger text-white', '#ef5164') }}
+    {{ colors('bg-warning', 'bg-warning text-white', '#fdbf21') }}
+    {{ colors('bg-info', 'bg-info text-white', '#32bfc8') }}
+    {{ colors('bg-light', 'bg-light', '#f8f9fa') }}
+    {{ colors('bg-dark', 'bg-dark text-white', '#393f49') }}
+</div>
+
+<div class="rui-gap-4"></div>
+<h2>Text</h2>
+<div class="row vertical-gap">
+    {{ colors('text-brand', 'bg-grey-1 text-brand', '#725ec3') }}
+    {{ colors('text-primary', 'bg-grey-1 text-primary', '#007bff') }}
+    {{ colors('text-secondary', 'bg-grey-1 text-secondary', '#6c757d') }}
+    {{ colors('text-success', 'bg-grey-1 text-success', '#2fc787') }}
+    {{ colors('text-danger', 'bg-grey-1 text-danger', '#ef5164') }}
+    {{ colors('text-warning', 'bg-grey-1 text-warning', '#fdbf21') }}
+    {{ colors('text-info', 'bg-grey-1 text-info', '#32bfc8') }}
+    {{ colors('text-light', 'bg-grey-4 text-light', '#f8f9fa') }}
+    {{ colors('text-dark', 'bg-grey-1 text-dark', '#393f49') }}
+</div>
+
+{% endblock %}

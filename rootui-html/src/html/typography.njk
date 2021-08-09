@@ -1,0 +1,101 @@
+{% set page_title = 'Typography' %}
+{% set header_title = 'Typography' %}
+{% set with_sidebar = true %}
+{% extends 'layouts/layout-container.njk' %}
+
+{% set breadcrumbs = [
+    ['Home', 'dashboard.html'],
+    ['Content', '#']
+] %}
+
+{% block content %}
+
+{% from "macros/snippet.njk" import snippet %}
+{% from "macros/sidebar.njk" import sidebar %}
+
+<h2 id="typographyBase">Base</h2>
+{% call snippet('TypographyBase') %}
+<h1>H1. Heading</h1>
+<h2>H2. Heading</h2>
+<h3>H3. Heading</h3>
+<h4>H4. Heading</h4>
+<h5>H5. Heading</h5>
+<h6>H6. Heading</h6>
+{%- endcall %}
+
+<div class="rui-gap-4" id="typographyDisplay"></div>
+<h2>Display</h2>
+{% call snippet('TypographyDisplay') %}
+<h1 class="display-1">Display 1</h1>
+<h1 class="display-2">Display 2</h1>
+<h1 class="display-3">Display 3</h1>
+<h1 class="display-4">Display 4</h1>
+{%- endcall %}
+
+<div class="rui-gap-4" id="typographyLead"></div>
+<h2>Lead</h2>
+{% call snippet('TypographyLead') %}
+<p class="lead">
+    Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.
+</p>
+{%- endcall %}
+
+<div class="rui-gap-4" id="typographyInline"></div>
+<h2>Inline text elements</h2>
+{% call snippet('TypographyInline') %}
+<p>You can use the mark tag to <mark>highlight</mark> text.</p>
+<p><del>This line of text is meant to be treated as deleted text.</del></p>
+<p><s>This line of text is meant to be treated as no longer accurate.</s></p>
+<p><ins>This line of text is meant to be treated as an addition to the document.</ins></p>
+<p><u>This line of text will render as underlined</u></p>
+<p><small>This line of text is meant to be treated as fine print.</small></p>
+<p><strong>This line rendered as bold text.</strong></p>
+<p><em>This line rendered as italicized text.</em></p>
+{%- endcall %}
+
+<div class="rui-gap-4" id="typographyBlockquotes"></div>
+<h2>Blockquotes</h2>
+{% call snippet('TypographyBlockquotes') %}
+<blockquote class="blockquote">
+    <p class="mb-0">Subdue said second lights together great morning second second there.</p>
+    <footer class="blockquote-footer">John Doe</footer>
+</blockquote>
+{%- endcall %}
+
+<div class="rui-gap-4" id="typographyBlockquotes2"></div>
+<h2>Blockquotes 2</h2>
+{% call snippet('TypographyBlockquotes2') %}
+<blockquote class="blockquote blockquote-style-2">
+    <p class="mb-0">Face to don't open. <br> Hath i and gathering so open let him fruitful evening lights bring god abundantly gathered.</p>
+    <footer class="blockquote-footer">John Doe</footer>
+</blockquote>
+{%- endcall %}
+
+{% endblock %}
+
+
+{% block content_sidebar %}
+{% call sidebar() %}
+    <li><a class="nav-link" href="#typographyBase">Base</a></li>
+    <li><a class="nav-link" href="#typographyDisplay">Display</a></li>
+    <li><a class="nav-link" href="#typographyLead">Lead</a></li>
+    <li><a class="nav-link" href="#typographyInline">Inline text elements</a></li>
+    <li><a class="nav-link" href="#typographyBlockquotes">Blockquotes</a></li>
+    <li><a class="nav-link" href="#typographyBlockquotes2">Blockquotes 2</a></li>
+{% endcall %}
+{% endblock %}
+
+
+{% block vendor_css %}
+
+    <!-- Highlight -->
+    <link rel="stylesheet" href="./assets/vendor/highlightjs/styles/default.css">
+
+{% endblock %}
+
+{% block vendor_js %}
+
+    <!-- Highlight -->
+    <script src="./assets/vendor/highlightjs/highlight.pack.min.js"></script>
+
+{% endblock %}

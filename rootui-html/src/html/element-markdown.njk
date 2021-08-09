@@ -1,0 +1,41 @@
+{% set page_title = 'Markdown' %}
+{% set header_title = 'Markdown' %}
+{% extends 'layouts/layout-container.njk' %}
+
+{% set breadcrumbs = [
+    ['Home', 'dashboard.html'],
+    ['Forms', '#'],
+    ['Advanced', '#']
+] %}
+
+{% block content %}
+
+{% from "macros/snippet.njk" import snippet %}
+{% from "macros/sidebar.njk" import sidebar %}
+
+{% call snippet('Markdown', 'no-frame-preview') %}
+<textarea class="rui-markdown form-control"></textarea>
+{%- endcall %}
+
+{% endblock %}
+
+
+{% block vendor_css %}
+
+    <!-- Highlight -->
+    <link rel="stylesheet" href="./assets/vendor/highlightjs/styles/default.css">
+
+    <!-- EasyMDE -->
+    <link rel="stylesheet" href="./assets/vendor/easymde/dist/easymde.min.css">
+
+{% endblock %}
+
+{% block vendor_js %}
+
+    <!-- Highlight -->
+    <script src="./assets/vendor/highlightjs/highlight.pack.min.js"></script>
+
+    <!-- EasyMDE -->
+    <script src="./assets/vendor/easymde/dist/easymde.min.js"></script>
+
+{% endblock %}

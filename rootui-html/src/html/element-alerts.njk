@@ -1,0 +1,103 @@
+{% set page_title = 'Element Alerts' %}
+{% set header_title = 'Alerts' %}
+{% set with_sidebar = true %}
+{% extends 'layouts/layout-container.njk' %}
+
+{% set breadcrumbs = [
+    ['Home', 'dashboard.html'],
+    ['Components', '#'],
+    ['Base', '#']
+] %}
+
+{% block content %}
+
+{% from "macros/snippet.njk" import snippet %}
+{% from "macros/sidebar.njk" import sidebar %}
+
+
+<h2 id="alertBase">Base</h2>
+{% call snippet('AlertBase', 'no-frame-preview') %}
+<div class="alert alert-brand" role="alert">
+    A simple brand alert—check it out!
+</div>
+<div class="alert alert-primary" role="alert">
+    A simple primary alert—check it out!
+</div>
+<div class="alert alert-secondary" role="alert">
+    A simple secondary alert—check it out!
+</div>
+<div class="alert alert-success" role="alert">
+    A simple success alert—check it out!
+</div>
+<div class="alert alert-danger" role="alert">
+    A simple danger alert—check it out!
+</div>
+<div class="alert alert-warning" role="alert">
+    A simple warning alert—check it out!
+</div>
+<div class="alert alert-info" role="alert">
+    A simple info alert—check it out!
+</div>
+<div class="alert alert-light" role="alert">
+    A simple light alert—check it out!
+</div>
+<div class="alert alert-dark" role="alert">
+    A simple dark alert—check it out!
+</div>
+{%- endcall %}
+
+<div class="rui-gap-4" id="alertLink"></div>
+<h2>Link</h2>
+{% call snippet('AlertLink', 'no-frame-preview') %}
+<div class="alert alert-brand" role="alert">
+    A simple brand alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+</div>
+{%- endcall %}
+
+<div class="rui-gap-4" id="alertContent"></div>
+<h2>Additional Content</h2>
+{% call snippet('AlertContent', 'no-frame-preview') %}
+<div class="alert alert-content alert-success" role="alert">
+    <h4 class="h3">Well done!</h4>
+    <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+    <hr>
+    <p class="mnb-6">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+</div>
+{%- endcall %}
+
+<div class="rui-gap-4" id="alertDismissible"></div>
+<h2>Dismissible</h2>
+{% call snippet('AlertDismissible', 'no-frame-preview') %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span data-feather="x" class="rui-icon rui-icon-stroke-1_5"></span>
+    </button>
+</div>
+{%- endcall %}
+
+{% endblock %}
+
+{% block content_sidebar %}
+{% call sidebar() %}
+    <li><a class="nav-link" href="#alertBase">Base</a></li>
+    <li><a class="nav-link" href="#alertLink">Link</a></li>
+    <li><a class="nav-link" href="#alertContent">Content</a></li>
+    <li><a class="nav-link" href="#alertDismissible">Dismissible</a></li>
+{% endcall %}
+{% endblock %}
+
+
+{% block vendor_css %}
+
+    <!-- Highlight -->
+    <link rel="stylesheet" href="./assets/vendor/highlightjs/styles/default.css">
+
+{% endblock %}
+
+{% block vendor_js %}
+
+    <!-- Highlight -->
+    <script src="./assets/vendor/highlightjs/highlight.pack.min.js"></script>
+
+{% endblock %}

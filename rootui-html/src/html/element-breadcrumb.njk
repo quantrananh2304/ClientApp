@@ -1,0 +1,78 @@
+{% set page_title = 'Element Breadcrumbs' %}
+{% set header_title = 'Breadcrumbs' %}
+{% set with_sidebar = true %}
+{% extends 'layouts/layout-container.njk' %}
+
+{% set breadcrumbs = [
+    ['Home', 'dashboard.html'],
+    ['Components', '#'],
+    ['Base', '#']
+] %}
+
+{% block content %}
+
+{% from "macros/snippet.njk" import snippet %}
+{% from "macros/sidebar.njk" import sidebar %}
+
+<h2 id="breadcrumbBase">Base</h2>
+{% call snippet('BreadcrumbBase') %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item"><a href="#">Library</a></li>
+        <li class="breadcrumb-item">Data</li>
+    </ol>
+</nav>
+{%- endcall %}
+
+<div class="rui-gap-4" id="breadcrumbDropdown"></div>
+<h2>Dropdown</h2>
+{% call snippet('BreadcrumbDropdown') %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item dropdown dropdown-hover{{ ' dropdown-triangle' if dropdown_triangle }} dropdown-keep-open">
+            <a href="#" class="dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown
+            </a>
+            <div class="dropdown-menu dropdown-menu-sm">
+                <ul class="dropdown-menu-scroll">
+                    <li><a class="dropdown-item" href="element-alerts.html">Alerts</a></li>
+                    <li><a class="dropdown-item" href="element-badge.html">Badge</a></li>
+                    <li><a class="dropdown-item" href="element-buttons.html">Buttons</a></li>
+                    <li><a class="dropdown-item" href="element-card.html">Card</a></li>
+                    <li><a class="dropdown-item" href="element-carousel.html">Carousel</a></li>
+                    <li><a class="dropdown-item" href="element-collapse.html">Collapse</a></li>
+                    <li><a class="dropdown-item" href="element-dropdowns.html">Dropdowns</a></li>
+                    <li><a class="dropdown-item" href="element-forms.html">Forms</a></li>
+                </ul>
+            </div>
+        </li>
+    </ol>
+</nav>
+{%- endcall %}
+
+{% endblock %}
+
+
+{% block content_sidebar %}
+{% call sidebar() %}
+    <li><a class="nav-link" href="#breadcrumbBase">Base</a></li>
+    <li><a class="nav-link" href="#breadcrumbDropdown">Dropdown</a></li>
+{% endcall %}
+{% endblock %}
+
+
+{% block vendor_css %}
+
+    <!-- Highlight -->
+    <link rel="stylesheet" href="./assets/vendor/highlightjs/styles/default.css">
+
+{% endblock %}
+
+{% block vendor_js %}
+
+    <!-- Highlight -->
+    <script src="./assets/vendor/highlightjs/highlight.pack.min.js"></script>
+
+{% endblock %}

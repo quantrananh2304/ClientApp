@@ -1,0 +1,85 @@
+<!--
+    Additional Classes:
+
+    .rui-snippet-frame - all framed
+    .rui-snippet-frame-preview - all but the preview.
+ -->
+{% macro snippetSingle(type="", style="") %}
+<div class="rui-snippet-single{% if style %} rui-snippet-{{ style }}{% endif %}">
+    <pre><code class="{{ type }}">{% filter escape %}{{ caller() | trim }}{% endfilter %}</code></pre>
+</div>
+{% endmacro %}
+
+{% macro snippet(pills="", frame="") %}
+<div class="rui-snippet{% if frame == 'no-frame-preview' %} rui-snippet-frame-preview{% else %} rui-snippet-frame{% endif %}">
+    <ul class="nav nav-pills rui-tabs-sliding" id="pills-tab-{{ pills }}" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link rui-tabs-link active" id="pills{{ pills }}Tab" data-toggle="pill" href="#pills{{ pills }}" role="tab" aria-controls="pills{{ pills }}" aria-selected="true">Preview</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link rui-tabs-link" id="pills{{ pills }}HtmlTab" data-toggle="pill" href="#pills{{ pills }}Html" role="tab" aria-controls="pills{{ pills }}Html" aria-selected="false">HTML</a>
+        </li>
+    </ul>
+    <div class="tab-content rui-snippet-content">
+        <div class="tab-pane fade show active" id="pills{{ pills }}" role="tabpanel" aria-labelledby="pills{{ pills }}Tab">
+            <div class="rui-snippet-preview demo">{{ caller() | trim }}</div>
+        </div>
+        <div class="tab-pane fade" id="pills{{ pills }}Html" role="tabpanel" aria-labelledby="pills{{ pills }}HtmlTab">
+            <div class="rui-snippet-html">
+                <pre><code class="html">{% filter escape %}{{ caller() | trim }}{% endfilter %}</code></pre>
+            </div>
+        </div>
+    </div>
+</div>
+{% endmacro %}
+
+{% macro snippetMacro(pills="", prev="", html="", js="", frame="") %}
+<div class="rui-snippet{% if frame == 'no-frame-preview' %} rui-snippet-frame-preview{% else %} rui-snippet-frame{% endif %}">
+    <ul class="nav nav-pills rui-tabs-sliding" id="pills-tab-{{ pills }}" role="tablist">
+        {% if prev %}
+        <li class="nav-item">
+            <a class="nav-link rui-tabs-link active" id="pills{{ pills }}Tab" data-toggle="pill" href="#pills{{ pills }}" role="tab" aria-controls="pills{{ pills }}" aria-selected="true">Preview</a>
+        </li>
+        {% endif %}
+        {% if html %}
+        <li class="nav-item">
+            <a class="nav-link rui-tabs-link" id="pills{{ pills }}HtmlTab" data-toggle="pill" href="#pills{{ pills }}Html" role="tab" aria-controls="pills{{ pills }}Html" aria-selected="false">HTML</a>
+        </li>
+        {% endif %}
+        {% if js %}
+        <li class="nav-item">
+            <a class="nav-link rui-tabs-link" id="pills{{ pills }}JsTab" data-toggle="pill" href="#pills{{ pills }}Js" role="tab" aria-controls="pills{{ pills }}Js" aria-selected="false">JS</a>
+        </li>
+        {% endif %}
+    </ul>
+    <div class="tab-content rui-snippet-content">
+        {% if prev %}
+        <div class="tab-pane fade show active" id="pills{{ pills }}" role="tabpanel" aria-labelledby="pills{{ pills }}Tab">
+            <div class="rui-snippet-preview demo">{{ prev | trim | safe }}</div>
+        </div>
+        {% endif %}
+
+        {% if html == '!copy' %}
+        <div class="tab-pane fade" id="pills{{ pills }}Html" role="tabpanel" aria-labelledby="pills{{ pills }}HtmlTab">
+            <div class="rui-snippet-html">
+                <pre><code class="html">{% filter escape %}{{ prev | trim | safe }}{% endfilter %}</code></pre>
+            </div>
+        </div>
+        {% else %}
+        <div class="tab-pane fade" id="pills{{ pills }}Html" role="tabpanel" aria-labelledby="pills{{ pills }}HtmlTab">
+            <div class="rui-snippet-html">
+                <pre><code class="html">{% filter escape %}{{ html | trim | safe }}{% endfilter %}</code></pre>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if js %}
+        <div class="tab-pane fade" id="pills{{ pills }}Js" role="tabpanel" aria-labelledby="pills{{ pills }}JsTab">
+            <div class="rui-snippet-html">
+                <pre><code class="js">{% filter escape %}{{ js | trim | safe }}{% endfilter %}</code></pre>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endmacro %}

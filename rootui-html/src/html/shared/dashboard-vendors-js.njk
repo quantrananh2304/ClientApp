@@ -1,0 +1,255 @@
+
+<!-- Swiper -->
+<script src="./assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+<!-- Chart.js -->
+<script src="./assets/vendor/chart.js/dist/Chart.min.js"></script>
+
+<!-- Chartist -->
+<script src="./assets/vendor/chartist/dist/chartist.min.js"></script>
+
+<!-- jqVmap -->
+<script src="./assets/vendor/jqvmap/dist/jquery.vmap.min.js"></script>
+<script src="./assets/vendor/jqvmap/dist/maps/jquery.vmap.usa.js"></script>
+
+<script class="rui-page-additional-js">
+    (function(){
+        // Vector Map
+        const data = {
+            va: 6278, // Virginia
+            pa: 2110, // Pennsylvania
+            tn: 2917, // Tennessee
+            wv: 1721, // West Virginia
+            nv: 900, // Nevada
+            tx: 13263, // Texas
+            nh: 2917, // New Hampshire
+            ny: 19220, // New York
+            hi: 2726, // Hawaii
+            vt: 1927, // Vermont
+            nm: 8650, // New Mexico
+            nc: 1720, // North Carolina
+            nd: 6780, // North Dakota
+            ne: 2980, // Nebraska
+            la: 9271, // Louisiana
+            sd: 2712, // South Dakota
+            dc: 8360, // District of Columbia
+            de: 2900, // Delaware
+            fl: 9162, // Florida
+            ct: 6281, // Connecticut
+            wa: 8261, // Washington
+            ks: 1611, // Kansas
+            wi: 2751, // Wisconsin
+            or: 2860, // Oregon
+            ky: 9960, // Kentucky
+            me: 2710, // Maine
+            oh: 8361, // Ohio
+            ok: 3816, // Oklahoma
+            id: 13251, // Idaho
+            wy: 2871, // Wyoming
+            ut: 3812, // Utah
+            in: 10721, // Indiana
+            il: 3816, // Illinois
+            ak: 3810, // Alaska
+            nj: 8920, // New Jersey
+            co: 7350, // Colorado
+            md: 1923, // Maryland
+            ma: 4816, // Massachusetts
+            al: 2710, // Alabama
+            mo: 3150, // Missouri
+            mn: 1863, // Minnesota
+            ca: 9372, // California
+            ia: 3726, // Iowa
+            mi: 790, // Michigan
+            ga: 2860, // Georgia
+            az: 8610, // Arizona
+            mt: 8785, // Montana
+            ms: 3710, // Mississippi
+            sc: 7739, // South Carolina
+            ri: 1753, // Rhode Island
+            ar: 7720, // Arkansas
+        };
+
+        $('.rui-jqvmap').vectorMap({
+            map: 'usa_en',
+            backgroundColor: '#f8f9fa',
+            borderColor: '#a4a6a8',
+            borderOpacity: 1,
+            borderWidth: 0.1,
+            color: '#b6b8b9',
+            hoverColor: '#4b515b',
+            selectedColor: '#393f49',
+            showTooltip: true,
+            scaleColors: ['#d3d6da', '#8a8f9c'],
+            normalizeFunction: 'polynomial',
+            values: data,
+            onLabelShow: function(event, label, code) {
+                if (data[code] === undefined) {
+                    label.html(`${label.html()} - $0`);
+                } else {
+                    label.html(`${label.html()} - $${data[code]}`);
+                }
+            },
+        });
+
+        // Chart
+        $('.rui-chartjs').each(function () {
+            const $this = $(this);
+            const ctx = $this[0].getContext('2d');
+
+            $this.attr('height', parseInt($this.attr('data-height'), 10));
+
+            // Line Realtime
+            if ($this.hasClass('rui-chartjs-line')) {
+                const dataInterval = parseInt($this.attr('data-chartjs-interval'), 10);
+                const dataBorderColor = $this.attr('data-chartjs-line-color');
+                const conf = {};
+
+                const gradient = ctx.createLinearGradient(0, 0, 0, 90);
+                gradient.addColorStop(0, Chart.helpers.color(dataBorderColor).alpha(0.1).rgbString());
+                gradient.addColorStop(1, Chart.helpers.color(dataBorderColor).alpha(0).rgbString());
+
+                const rand = () => Array.from({ length: 40 }, () => Math.floor(Math.random() * (100 - 40) + 40));
+                function addData(chart, data) {
+                    chart.data.datasets.forEach((dataset) => {
+                        let data = dataset.data;
+                        const first = data.shift();
+                        data.push(first);
+                        dataset.data = data;
+                    });
+
+                    chart.update();
+                }
+
+                conf.type = 'line';
+                conf.data = {
+                    labels: rand(),
+                    datasets: [
+                        {
+                            backgroundColor: gradient,
+                            borderColor: dataBorderColor,
+                            borderWidth: 2,
+                            pointHitRadius: 5,
+                            pointBorderWidth: 0,
+                            pointBackgroundColor: 'transparent',
+                            pointBorderColor: 'transparent',
+                            pointHoverBorderWidth: 0,
+                            pointHoverBackgroundColor: dataBorderColor,
+                            data: rand(),
+                        }
+                    ],
+                };
+                conf.options = {
+                    tooltips: {
+                        mode: 'index',
+                        intersect: false,
+                        backgroundColor: '#393f49',
+                        bodyFontSize: 11,
+                        bodyFontColor: '#d7d9e0',
+                        bodyFontFamily: '"Open Sans", sans-serif',
+                        xPadding: 10,
+                        yPadding: 10,
+                        displayColors: false,
+                        caretPadding: 5,
+                        cornerRadius: 4,
+                        callbacks: {
+                            title: () => {
+                                return;
+                            },
+                            label: (t) => {
+                                if ($this.hasClass('rui-chartjs-memory')) {
+                                    return [`In use ${t.value}%`, `${t.value * 100} MB`];
+                                }
+                                if ($this.hasClass('rui-chartjs-disc')) {
+                                    return [`Read ${Math.round((t.value / 80) * 100) / 100} MB/s`, `Write ${Math.round((t.value / 90) * 100) / 100} MB/s`];
+                                }
+                                if ($this.hasClass('rui-chartjs-cpu')) {
+                                    return [`Utilization ${t.value}%`, `Processes ${parseInt((t.value / 10), 10)}`];
+                                }
+                                if ($this.hasClass('rui-chartjs-total')) {
+                                    return `$${t.value}`;
+                                }
+                            }
+                        },
+                    },
+                    legend: {
+                        display: false,
+                    },
+                    maintainAspectRatio: true,
+                    spanGaps: false,
+                    plugins: {
+                        filler: {
+                            propagate: false,
+                        },
+                    },
+                    scales: {
+                        xAxes: [{ display: false }],
+                        yAxes: [{
+                            display: false,
+                            ticks: {
+                                beginAtZero: true,
+                            },
+                        }],
+                    },
+                };
+                const myChart = new Chart(ctx, conf);
+                setInterval(() => addData(myChart), dataInterval);
+            }
+        });
+
+        // Doughnut
+        $('.rui-chartist').each(function () {
+            const $this = $(this);
+            let dataSeries = $this.attr('data-chartist-series');
+            const dataWidth = $this.attr('data-width');
+            const dataHeight = $this.attr('data-height');
+            const dataGradient = $this.attr('data-chartist-gradient');
+            const dataBorderWidth = parseInt($this.attr('data-chartist-width'), 10);
+            const data = {};
+            const conf = {};
+
+            // Data
+            if (dataSeries) {
+                dataSeries = dataSeries.split(',');
+                let dataSeriesNum = [];
+                for (i = 0; i < dataSeries.length; i++) {
+                    dataSeriesNum.push(parseInt(dataSeries[i], 10));
+                }
+                data.series = dataSeriesNum;
+            }
+
+            // Conf
+            conf.donut = true;
+            conf.showLabel = false;
+
+            if (dataBorderWidth) {
+                conf.donutWidth = dataBorderWidth;
+            }
+            if (dataWidth) {
+                conf.width = dataWidth;
+            }
+            if (dataHeight) {
+                conf.height = dataHeight;
+            }
+
+            const chart = new Chartist.Pie($this[0], data, conf);
+
+            // Create gradient
+            chart.on('created', function(ctx) {
+                const defs = ctx.svg.elem('defs');
+                defs.elem('linearGradient', {
+                    id: 'gradient',
+                    x1: 0,
+                    y1: 1,
+                    x2: 0,
+                    y2: 0
+                }).elem('stop', {
+                    offset: 0,
+                    'stop-color': dataGradient.split(';')[0]
+                }).parent().elem('stop', {
+                    offset: 1,
+                    'stop-color': dataGradient.split(';')[1]
+                });
+            });
+        });
+    }());
+</script>

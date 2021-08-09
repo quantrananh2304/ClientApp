@@ -1,0 +1,163 @@
+{% set page_title = 'File Manager' %}
+{% set header_title = 'File Manager' %}
+{% extends 'layouts/layout-container.njk' %}
+
+{% set breadcrumbs = [
+    ['Home', 'dashboard.html'],
+    ['Apps', '#']
+] %}
+
+{% block content %}
+
+<div class="rui-filemanager">
+    <div class="rui-filemanager-head">
+        <div class="row sm-gap vertical-gap align-items-center">
+            <div class="col">
+                <div class="input-group">
+                    <div class="input-group-prepend mnl-3">
+                        <button type="button" class="btn btn-clean btn-grey-5 mb-0 mnl-10"><span data-feather="search" class="rui-icon rui-icon-stroke-1_5"></span></button>
+                    </div>
+                    <input type="search" class="form-control form-control-clean rui-search-input" placeholder="Type to search...">
+                </div>
+            </div>
+            <div class="col-auto">
+                <button type="button" class="btn btn-brand btn-custom-round mnt-2"><span data-feather="more-vertical" class="rui-icon rui-icon-stroke-1_5"></span></button>
+            </div>
+            <div class="col-auto">
+                <button type="button" class="btn btn-brand btn-sm btn-uniform btn-round"><span data-feather="plus" class="rui-icon rui-icon-stroke-1_5"></span></button>
+            </div>
+        </div>
+    </div>
+    <div class="rui-filemanager-content">
+        <h2 class="h5 text-grey-5">Quick access</h2>
+        <div class="table-responsive-lg">
+            <table class="table rui-filemanager-table">
+                <tbody>
+                    <tr>
+                        <th class="rui-filemanager-table-name" scope="row">
+                            <span class="rui-filemanager-file">
+                                <a class="rui-filemanager-file-link" href="#"><span data-feather="file-text" class="rui-icon rui-icon-stroke-1_5"></span>Project.doc</a>
+                            </span>
+                        </th>
+                        <td class="rui-filemanager-table-size"><span class="rui-filemanager-file">1.4 GB</span></td>
+                        <td class="rui-filemanager-table-date"><span class="rui-filemanager-file">04.25.2020</span></td>
+                        <td class="rui-filemanager-table-icon">
+                            <span class="rui-filemanager-file">
+                                <a class="rui-filemanager-file-icon mr-10" href="#"><span data-feather="link-2" class="rui-icon rui-icon-stroke-1_5"></span></a>
+                                <a class="rui-filemanager-file-icon" href="#"><span data-feather="more-horizontal" class="rui-icon rui-icon-stroke-1_5"></span></a>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="rui-filemanager-table-name" scope="row">
+                            <span class="rui-filemanager-file">
+                                <a class="rui-filemanager-file-link" href="#"><span data-feather="file" class="rui-icon rui-icon-stroke-1_5"></span>Project-2.html</a>
+                            </span>
+                        </th>
+                        <td class="rui-filemanager-table-size"><span class="rui-filemanager-file">2 GB</span></td>
+                        <td class="rui-filemanager-table-date"><span class="rui-filemanager-file">04.24.2020</span></td>
+                        <td class="rui-filemanager-table-icon">
+                            <span class="rui-filemanager-file">
+                                <a class="rui-filemanager-file-icon mr-10" href="#"><span data-feather="link-2" class="rui-icon rui-icon-stroke-1_5"></span></a>
+                                <a class="rui-filemanager-file-icon" href="#"><span data-feather="more-horizontal" class="rui-icon rui-icon-stroke-1_5"></span></a>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="table-responsive-lg">
+            <table class="rui-datatable rui-filemanager-table table mb-0" data-datatable-order="2:desc" data-datatable-search="false" data-datatable-info="false" data-datatable-paging="false">
+                <thead>
+                    <tr>
+                        <th scope="col">
+                            Name
+                            <span data-feather="chevron-down" class="rui-icon rui-icon-stroke-1_5"></span>
+                        </th>
+                        <th scope="col">
+                            File size
+                            <span data-feather="chevron-down" class="rui-icon rui-icon-stroke-1_5"></span>
+                        </th>
+                        <th scope="col">
+                            Last modified
+                            <span data-feather="chevron-down" class="rui-icon rui-icon-stroke-1_5"></span>
+                        </th>
+                        <th class="rui-datatable-empty"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row" class="rui-filemanager-table-name">
+                            <span class="rui-filemanager-file">
+                                <a class="rui-filemanager-file-link" href="#"><span data-feather="file-text" class="rui-icon rui-icon-stroke-1_5"></span>Project.doc</a>
+                            </span>
+                        </th>
+                        <td class="rui-filemanager-table-size"><span class="rui-filemanager-file">1.4 GB</span></td>
+                        <td class="rui-filemanager-table-date"><span class="rui-filemanager-file">04.25.2020</span></td>
+                        <td class="rui-filemanager-table-icon">
+                            <span class="rui-filemanager-file">
+                                <a class="rui-filemanager-file-icon mr-10" href="#"><span data-feather="link-2" class="rui-icon rui-icon-stroke-1_5"></span></a>
+                                <a class="rui-filemanager-file-icon" href="#"><span data-feather="more-horizontal" class="rui-icon rui-icon-stroke-1_5"></span></a>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="rui-filemanager-table-name">
+                            <span class="rui-filemanager-file">
+                                <a class="rui-filemanager-file-link" href="#"><span data-feather="file" class="rui-icon rui-icon-stroke-1_5"></span>Project-2.html</a>
+                            </span>
+                        </th>
+                        <td class="rui-filemanager-table-size"><span class="rui-filemanager-file">2 GB</span></td>
+                        <td class="rui-filemanager-table-date"><span class="rui-filemanager-file">04.24.2020</span></td>
+                        <td class="rui-filemanager-table-icon">
+                            <span class="rui-filemanager-file">
+                                <a class="rui-filemanager-file-icon mr-10" href="#"><span data-feather="link-2" class="rui-icon rui-icon-stroke-1_5"></span></a>
+                                <a class="rui-filemanager-file-icon" href="#"><span data-feather="more-horizontal" class="rui-icon rui-icon-stroke-1_5"></span></a>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="rui-filemanager-table-name">
+                            <span class="rui-filemanager-file">
+                                <a class="rui-filemanager-file-link" href="#"><span data-feather="file" class="rui-icon rui-icon-stroke-1_5"></span>Project-1.html</a>
+                            </span>
+                        </th>
+                        <td class="rui-filemanager-table-size"><span class="rui-filemanager-file">2.1 GB</span></td>
+                        <td class="rui-filemanager-table-date"><span class="rui-filemanager-file">04.23.2020</span></td>
+                        <td class="rui-filemanager-table-icon">
+                            <span class="rui-filemanager-file">
+                                <a class="rui-filemanager-file-icon mr-10" href="#"><span data-feather="link-2" class="rui-icon rui-icon-stroke-1_5"></span></a>
+                                <a class="rui-filemanager-file-icon" href="#"><span data-feather="more-horizontal" class="rui-icon rui-icon-stroke-1_5"></span></a>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="rui-filemanager-table-name">
+                            <span class="rui-filemanager-file">
+                                <a class="rui-filemanager-file-link" href="#"><span data-feather="file-text" class="rui-icon rui-icon-stroke-1_5"></span>Schedule.txt</a>
+                            </span>
+                        </th>
+                        <td class="rui-filemanager-table-size"><span class="rui-filemanager-file">0.6 GB</span></td>
+                        <td class="rui-filemanager-table-date"><span class="rui-filemanager-file">04.22.2020</span></td>
+                        <td class="rui-filemanager-table-icon">
+                            <span class="rui-filemanager-file">
+                                <a class="rui-filemanager-file-icon mr-10" href="#"><span data-feather="link-2" class="rui-icon rui-icon-stroke-1_5"></span></a>
+                                <a class="rui-filemanager-file-icon" href="#"><span data-feather="more-horizontal" class="rui-icon rui-icon-stroke-1_5"></span></a>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+{% block vendor_js %}
+
+    <!-- DataTables -->
+    <script src="./assets/vendor/datatables/media/js/jquery.dataTables.min.js"></script>
+
+{% endblock %}

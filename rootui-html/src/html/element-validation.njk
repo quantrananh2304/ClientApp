@@ -1,0 +1,123 @@
+{% set page_title = 'Validation' %}
+{% set header_title = 'Validation' %}
+{% extends 'layouts/layout-container.njk' %}
+
+{% set breadcrumbs = [
+    ['Home', 'dashboard.html'],
+    ['Forms', '#'],
+    ['Advanced', '#']
+] %}
+
+{% block content %}
+
+{% from "macros/snippet.njk" import snippetMacro %}
+{% from "macros/sidebar.njk" import sidebar %}
+
+{{ snippetMacro(
+    'Validation',
+    '
+<form class="needs-validation" novalidate>
+    <div class="row vertical-gap sm-gap">
+        <div class="col-6">
+            <label for="validationCustom01">Your name</label>
+            <input type="text" class="form-control" id="validationCustom01" placeholder="Name" required>
+            <div class="invalid-feedback">
+                This value is required.
+            </div>
+        </div>
+        <div class="col-6">
+            <label for="validationEmail">Your email</label>
+            <input type="email" class="form-control" id="validationEmail" placeholder="Email" required>
+            <div class="invalid-feedback">
+                This value is required.
+            </div>
+        </div>
+        <div class="col-auto">
+            <div class="custom-control custom-radio">
+                <input type="radio" id="validationMale" name="customRadio" class="custom-control-input" required>
+                <label class="custom-control-label" for="validationMale">Male</label>
+            </div>
+        </div>
+        <div class="col-auto">
+            <div class="custom-control custom-radio">
+                <input type="radio" id="validationFemale" name="customRadio" class="custom-control-input" required>
+                <label class="custom-control-label" for="validationFemale">Female</label>
+            </div>
+        </div>
+        <div class="col-12">
+            <select class="custom-select">
+                <option selected>Open this select menu</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+        </div>
+        <div class="col-12">
+            <div class="custom-control custom-checkbox">
+                <input class="custom-control-input" type="checkbox" value="" id="validationCheckbox" required>
+                <label class="custom-control-label" for="validationCheckbox"> I have read and agree to the terms and conditions</label>
+                <div class="invalid-feedback">
+                    You must agree before submitting.
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <button class="btn btn-brand" type="submit">Submit form</button>
+        </div>
+    </div>
+</form>
+    ',
+    '!copy',
+    "
+window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+    form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+    }, false);
+    });
+}, false);
+    "
+) }}
+
+{% endblock %}
+
+
+{% block vendor_css %}
+
+    <!-- Highlight -->
+    <link rel="stylesheet" href="./assets/vendor/highlightjs/styles/default.css">
+
+{% endblock %}
+
+{% block vendor_js %}
+
+    <!-- Highlight -->
+    <script src="./assets/vendor/highlightjs/highlight.pack.min.js"></script>
+
+    <!-- Validator -->
+    <script src="./assets/vendor/validator/validator.min.js"></script>
+
+    <script class="rui-page-additional-js">
+        (function(){
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+                if (form.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+            });
+        }());
+    </script>
+{% endblock %}

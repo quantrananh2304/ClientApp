@@ -1,0 +1,149 @@
+{% set page_title = 'Element Navs' %}
+{% set header_title = 'Navs' %}
+{% set with_sidebar = true %}
+{% extends 'layouts/layout-container.njk' %}
+
+{% set breadcrumbs = [
+    ['Home', 'dashboard.html'],
+    ['Components', '#'],
+    ['Base', '#']
+] %}
+
+{% block content %}
+
+{% from "macros/snippet.njk" import snippet %}
+{% from "macros/sidebar.njk" import sidebar %}
+
+<h2 id="navBase">Base</h2>
+{% call snippet('NavBase') %}
+<ul class="nav">
+    <li class="nav-item">
+        <a class="nav-link active" href="#">Active</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+    </li>
+</ul>
+{%- endcall %}
+
+<div class="rui-gap-4" id="navIcon"></div>
+<h2>Icon</h2>
+{% call snippet('NavIcon') %}
+<ul class="nav">
+    <li class="nav-item">
+        <a class="nav-link active" href="#">
+            <span data-feather="check" class="rui-icon rui-icon-stroke-1_5"></span>
+            <span>Active</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">
+            <span data-feather="check" class="rui-icon rui-icon-stroke-1_5"></span>
+            <span>Link</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">
+            <span data-feather="check" class="rui-icon rui-icon-stroke-1_5"></span>
+            <span>Link</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">
+            <span data-feather="check" class="rui-icon rui-icon-stroke-1_5"></span>
+            <span>Disabled</span>
+        </a>
+    </li>
+</ul>
+{%- endcall %}
+
+<div class="rui-gap-4" id="navVertical"></div>
+<h2>Vertical</h2>
+{% call snippet('NavVertical') %}
+<ul class="nav flex-column">
+    <li class="nav-item">
+        <a class="nav-link active" href="#">Active</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+    </li>
+</ul>
+{%- endcall %}
+
+<div class="rui-gap-4" id="navTab"></div>
+<h2>Tabs</h2>
+{% call snippet('NavTab') %}
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" href="#">Active</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+    </li>
+</ul>
+{%- endcall %}
+
+<div class="rui-gap-4" id="navPill"></div>
+<h2>Pills</h2>
+{% call snippet('NavPill') %}
+<ul class="nav nav-pills">
+    <li class="nav-item">
+        <a class="nav-link active" href="#">Active</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+    </li>
+</ul>
+{%- endcall %}
+
+{% endblock %}
+
+
+{% block content_sidebar %}
+{% call sidebar() %}
+    <li><a class="nav-link" href="#navBase">Base</a></li>
+    <li><a class="nav-link" href="#navIcon">Icon</a></li>
+    <li><a class="nav-link" href="#navVertical">Vertical</a></li>
+    <li><a class="nav-link" href="#navTab">Tabs</a></li>
+    <li><a class="nav-link" href="#navPill">Pills</a></li>
+{% endcall %}
+{% endblock %}
+
+
+{% block vendor_css %}
+
+    <!-- Highlight -->
+    <link rel="stylesheet" href="./assets/vendor/highlightjs/styles/default.css">
+
+{% endblock %}
+
+{% block vendor_js %}
+
+    <!-- Highlight -->
+    <script src="./assets/vendor/highlightjs/highlight.pack.min.js"></script>
+
+{% endblock %}

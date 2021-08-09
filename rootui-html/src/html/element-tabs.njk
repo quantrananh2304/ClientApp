@@ -1,0 +1,148 @@
+{% set page_title = 'Element Tabs' %}
+{% set header_title = 'Tabs' %}
+{% set with_sidebar = true %}
+{% extends 'layouts/layout-container.njk' %}
+
+{% set breadcrumbs = [
+    ['Home', 'dashboard.html'],
+    ['Components', '#'],
+    ['Base', '#']
+] %}
+
+{% block content %}
+
+{% from "macros/snippet.njk" import snippet %}
+{% from "macros/sidebar.njk" import sidebar %}
+
+<h2 id="tabsBase">Base</h2>
+{% call snippet('TabsBase') %}
+<ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+    </li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <p class="mnb-4">Behold life divided man subdue, after. Form winged creeping. Was divide of without evening give, was. Open had fruitful. Were lesser greater heaven also fly first for together is appear days. Gathered bearing midst green every fly behold fish you're.</p>
+    </div>
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <p class="mnb-4">Kind third day saw set itself fowl after whales upon can't sixth of days let fill Replenish waters make. Dry gathering winged land they're you'll above green was she'd moving.</p>
+    </div>
+    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+        <p class="mnb-4">Isn't that Moveth night set seed moved. Also fowl seed signs subdue day male seasons don't saying, subdue fish all. Fill from place. Two fifth Years light blessed it he. Seed brought Life dry creepeth appear first in above it.</p>
+    </div>
+</div>
+{%- endcall %}
+
+<div class="rui-gap-4" id="tabsPills"></div>
+<h2>Pills</h2>
+{% call snippet('TabsPills') %}
+<ul class="nav nav-pills" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Home</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</a>
+    </li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+        <p class="mnb-4">Behold life divided man subdue, after. Form winged creeping. Was divide of without evening give, was. Open had fruitful. Were lesser greater heaven also fly first for together is appear days. Gathered bearing midst green every fly behold fish you're.</p>
+    </div>
+    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+        <p class="mnb-4">Kind third day saw set itself fowl after whales upon can't sixth of days let fill Replenish waters make. Dry gathering winged land they're you'll above green was she'd moving.</p>
+    </div>
+    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+        <p class="mnb-4">Isn't that Moveth night set seed moved. Also fowl seed signs subdue day male seasons don't saying, subdue fish all. Fill from place. Two fifth Years light blessed it he. Seed brought Life dry creepeth appear first in above it.</p>
+    </div>
+</div>
+{%- endcall %}
+
+<div class="rui-gap-4" id="tabsSliding"></div>
+<h2>Sliding</h2>
+{% call snippet('TabsSliding') %}
+<ul class="nav nav-tabs rui-tabs-sliding" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link rui-tabs-link active" id="homeTabsSliding-tab" data-toggle="tab" href="#homeTabsSliding" role="tab" aria-controls="homeTabsSliding" aria-selected="true">Home</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link rui-tabs-link" id="profileTabsSliding-tab" data-toggle="tab" href="#profileTabsSliding" role="tab" aria-controls="profileTabsSliding" aria-selected="false">Profile</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link rui-tabs-link" id="contactTabsSliding-tab" data-toggle="tab" href="#contactTabsSliding" role="tab" aria-controls="contactTabsSliding" aria-selected="false">Contact</a>
+    </li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane fade show active" id="homeTabsSliding" role="tabpanel" aria-labelledby="homeTabsSliding-tab">
+        <p class="mnb-4">Behold life divided man subdue, after. Form winged creeping. Was divide of without evening give, was. Open had fruitful. Were lesser greater heaven also fly first for together is appear days. Gathered bearing midst green every fly behold fish you're.</p>
+    </div>
+    <div class="tab-pane fade" id="profileTabsSliding" role="tabpanel" aria-labelledby="profileTabsSliding-tab">
+        <p class="mnb-4">Kind third day saw set itself fowl after whales upon can't sixth of days let fill Replenish waters make. Dry gathering winged land they're you'll above green was she'd moving.</p>
+    </div>
+    <div class="tab-pane fade" id="contactTabsSliding" role="tabpanel" aria-labelledby="contactTabsSliding-tab">
+        <p class="mnb-4">Isn't that Moveth night set seed moved. Also fowl seed signs subdue day male seasons don't saying, subdue fish all. Fill from place. Two fifth Years light blessed it he. Seed brought Life dry creepeth appear first in above it.</p>
+    </div>
+</div>
+{%- endcall %}
+
+{% call snippet('PillsSliding') %}
+<ul class="nav nav-pills rui-tabs-sliding" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link rui-tabs-link active" id="homePillsSliding-tab" data-toggle="pill" href="#homePillsSliding" role="tab" aria-controls="homePillsSliding" aria-selected="true">Home</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link rui-tabs-link" id="profilePillsSliding-tab" data-toggle="pill" href="#profilePillsSliding" role="tab" aria-controls="profilePillsSliding" aria-selected="false">Profile</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link rui-tabs-link" id="contactPillsSliding-tab" data-toggle="pill" href="#contactPillsSliding" role="tab" aria-controls="contactPillsSliding" aria-selected="false">Contact</a>
+    </li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane fade show active" id="homePillsSliding" role="tabpanel" aria-labelledby="homePillsSliding-tab">
+        <p class="mnb-4">Behold life divided man subdue, after. Form winged creeping. Was divide of without evening give, was. Open had fruitful. Were lesser greater heaven also fly first for together is appear days. Gathered bearing midst green every fly behold fish you're.</p>
+    </div>
+    <div class="tab-pane fade" id="profilePillsSliding" role="tabpanel" aria-labelledby="profilePillsSliding-tab">
+        <p class="mnb-4">Kind third day saw set itself fowl after whales upon can't sixth of days let fill Replenish waters make. Dry gathering winged land they're you'll above green was she'd moving.</p>
+    </div>
+    <div class="tab-pane fade" id="contactPillsSliding" role="tabpanel" aria-labelledby="contactPillsSliding-tab">
+        <p class="mnb-4">Isn't that Moveth night set seed moved. Also fowl seed signs subdue day male seasons don't saying, subdue fish all. Fill from place. Two fifth Years light blessed it he. Seed brought Life dry creepeth appear first in above it.</p>
+    </div>
+</div>
+{%- endcall %}
+
+{% endblock %}
+
+
+{% block content_sidebar %}
+
+{% call sidebar() %}
+    <li><a class="nav-link" href="#tabsBase">Base</a></li>
+    <li><a class="nav-link" href="#tabsPills">Pills</a></li>
+    <li><a class="nav-link" href="#tabsSliding">Sliding</a></li>
+{% endcall %}
+
+{% endblock %}
+
+
+{% block vendor_css %}
+
+    <!-- Highlight -->
+    <link rel="stylesheet" href="./assets/vendor/highlightjs/styles/default.css">
+
+{% endblock %}
+
+{% block vendor_js %}
+
+    <!-- Highlight -->
+    <script src="./assets/vendor/highlightjs/highlight.pack.min.js"></script>
+
+{% endblock %}

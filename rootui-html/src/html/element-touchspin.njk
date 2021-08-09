@@ -1,0 +1,76 @@
+{% set page_title = 'Touchspin' %}
+{% set header_title = 'Touchspin' %}
+{% set with_sidebar = true %}
+{% extends 'layouts/layout-container.njk' %}
+
+{% set breadcrumbs = [
+    ['Home', 'dashboard.html'],
+    ['Forms', '#'],
+    ['Advanced', '#']
+] %}
+
+{% block content %}
+
+{% from "macros/snippet.njk" import snippet %}
+{% from "macros/sidebar.njk" import sidebar %}
+
+<h2 id="touchspinBase">Base</h2>
+{% call snippet('Touchspin') %}
+<div class="rui-touchspin">
+    <input class="form-control" type="text" value="55" min="0" max="100" step="1" data-touchspin-btn="btn-grey-2">
+</div>
+<div class="rui-touchspin rui-touchspin-right">
+    <input class="form-control" type="text" value="55" min="0" max="100" step="1" data-touchspin-btn="btn-grey-2">
+</div>
+<div class="rui-touchspin rui-touchspin-left">
+    <input class="form-control" type="text" value="55" min="0" max="100" step="1" data-touchspin-btn="btn-grey-2">
+</div>
+{%- endcall %}
+
+<div class="rui-gap-4" id="touchspinVertical"></div>
+<h2>Vertical button</h2>
+{% call snippet('TouchspinVertical') %}
+<div class="rui-touchspin rui-touchspin-vertical">
+    <input class="form-control" type="text" value="55" min="0" max="100" step="1" data-touchspin-vertical="true" data-touchspin-btn="btn-grey-2">
+</div>
+<div class="rui-touchspin rui-touchspin-vertical rui-touchspin-left">
+    <input class="form-control" type="text" value="55" min="0" max="100" step="1" data-touchspin-vertical="true" data-touchspin-btn="btn-grey-2">
+</div>
+{%- endcall %}
+
+<div class="rui-gap-4" id="touchspinOverlay"></div>
+<h2>Overlay button</h2>
+{% call snippet('TouchspinOverlay') %}
+<div class="rui-touchspin rui-touchspin-overlay rui-touchspin-vertical">
+    <input class="form-control" type="text" value="55" min="0" max="100" step="1" data-touchspin-vertical="true" data-touchspin-btn="btn-grey-2">
+</div>
+{%- endcall %}
+
+{% endblock %}
+
+
+{% block content_sidebar %}
+{% call sidebar() %}
+    <li><a class="nav-link" href="#touchspinBase">Base</a></li>
+    <li><a class="nav-link" href="#touchspinVertical">Vertical</a></li>
+    <li><a class="nav-link" href="#touchspinOverlay">Overlay</a></li>
+{% endcall %}
+{% endblock %}
+
+
+{% block vendor_css %}
+
+    <!-- Highlight -->
+    <link rel="stylesheet" href="./assets/vendor/highlightjs/styles/default.css">
+
+{% endblock %}
+
+{% block vendor_js %}
+
+    <!-- Highlight -->
+    <script src="./assets/vendor/highlightjs/highlight.pack.min.js"></script>
+
+    <!-- Bootstrap Touchspin -->
+    <script src="./assets/vendor/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
+
+{% endblock %}

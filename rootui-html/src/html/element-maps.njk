@@ -1,0 +1,630 @@
+{% set page_title = 'Map' %}
+{% set header_title = 'Map' %}
+{% set with_sidebar = true %}
+{% extends 'layouts/layout-container.njk' %}
+
+{% set breadcrumbs = [
+    ['Home', 'dashboard.html'],
+    ['Components', '#'],
+    ['Advanced', '#']
+] %}
+
+{% block content %}
+
+{% from "macros/snippet.njk" import snippetMacro %}
+{% from "macros/sidebar.njk" import sidebar %}
+
+<h2 id="googleMap">Google Map</h2>
+{{ snippetMacro(
+    'GoogleMap',
+    '<div id="gMap" class="rui-gmap"></div>',
+    '<div id="gMap" class="rui-gmap"></div>',
+    '
+function initMap() {
+    const uluru = {lat: 40.703436, lng: -74.012715};
+    const map = new google.maps.Map(document.getElementById(\'gMap\'), {
+        zoom: 14,
+        scrollwheel: false,
+        mapTypeControl: false,
+        streetViewControl: false,
+        center: uluru,
+        zoomControl: true,
+        zoomControlOptions: {
+            position: google.maps.ControlPosition.LEFT_TOP,
+        },
+
+        styles: [
+            {
+                "featureType": "water",
+                "elementType": "geometry",
+                "stylers": [
+                    {
+                        "color": "#e9e9e9"
+                    },
+                    {
+                        "lightness": 17
+                    }
+                ]
+            },
+            {
+                "featureType": "landscape",
+                "elementType": "geometry",
+                "stylers": [
+                    {
+                        "color": "#f5f5f5"
+                    },
+                    {
+                        "lightness": 20
+                    }
+                ]
+            },
+            {
+                "featureType": "road.highway",
+                "elementType": "geometry.fill",
+                "stylers": [
+                    {
+                        "color": "#ffffff"
+                    },
+                    {
+                        "lightness": 17
+                    }
+                ]
+            },
+            {
+                "featureType": "road.highway",
+                "elementType": "geometry.stroke",
+                "stylers": [
+                    {
+                        "color": "#ffffff"
+                    },
+                    {
+                        "lightness": 29
+                    },
+                    {
+                        "weight": 0.2
+                    }
+                ]
+            },
+            {
+                "featureType": "road.arterial",
+                "elementType": "geometry",
+                "stylers": [
+                    {
+                        "color": "#ffffff"
+                    },
+                    {
+                        "lightness": 18
+                    }
+                ]
+            },
+            {
+                "featureType": "road.local",
+                "elementType": "geometry",
+                "stylers": [
+                    {
+                        "color": "#ffffff"
+                    },
+                    {
+                        "lightness": 16
+                    }
+                ]
+            },
+            {
+                "featureType": "poi",
+                "elementType": "geometry",
+                "stylers": [
+                    {
+                        "color": "#f5f5f5"
+                    },
+                    {
+                        "lightness": 21
+                    }
+                ]
+            },
+            {
+                "featureType": "poi.park",
+                "elementType": "geometry",
+                "stylers": [
+                    {
+                        "color": "#dedede"
+                    },
+                    {
+                        "lightness": 21
+                    }
+                ]
+            },
+            {
+                "elementType": "labels.text.stroke",
+                "stylers": [
+                    {
+                        "visibility": "on"
+                    },
+                    {
+                        "color": "#ffffff"
+                    },
+                    {
+                        "lightness": 16
+                    }
+                ]
+            },
+            {
+                "elementType": "labels.text.fill",
+                "stylers": [
+                    {
+                        "saturation": 36
+                    },
+                    {
+                        "color": "#333333"
+                    },
+                    {
+                        "lightness": 40
+                    }
+                ]
+            },
+            {
+                "elementType": "labels.icon",
+                "stylers": [
+                    {
+                        "visibility": "off"
+                    }
+                ]
+            },
+            {
+                "featureType": "transit",
+                "elementType": "geometry",
+                "stylers": [
+                    {
+                        "color": "#f2f2f2"
+                    },
+                    {
+                        "lightness": 19
+                    }
+                ]
+            },
+            {
+                "featureType": "administrative",
+                "elementType": "geometry.fill",
+                "stylers": [
+                    {
+                        "color": "#fefefe"
+                    },
+                    {
+                        "lightness": 20
+                    }
+                ]
+            },
+            {
+                "featureType": "administrative",
+                "elementType": "geometry.stroke",
+                "stylers": [
+                    {
+                        "color": "#fefefe"
+                    },
+                    {
+                        "lightness": 17
+                    },
+                    {
+                        "weight": 1.2
+                    }
+                ]
+            }
+        ]
+    });
+
+    const marker = new google.maps.Marker({
+        position: uluru,
+        map: map,
+        icon: \'../../../common-assets/images/location-icon.svg\'
+    });
+}
+    ',
+    'no-frame-preview'
+)}}
+
+<div class="rui-gap-4" id="vectorMap"></div>
+<h2>Vector Map</h2>
+{{ snippetMacro(
+    'VectorMap',
+    '<div class="jqvmap rui-jqvmap"></div>',
+    '<div class="jqvmap rui-jqvmap"></div>',
+    "
+// Vector Map
+const data = {
+    va: 6278, // Virginia
+    pa: 2110, // Pennsylvania
+    tn: 2917, // Tennessee
+    wv: 1721, // West Virginia
+    nv: 900, // Nevada
+    tx: 13263, // Texas
+    nh: 2917, // New Hampshire
+    ny: 19220, // New York
+    hi: 2726, // Hawaii
+    vt: 1927, // Vermont
+    nm: 8650, // New Mexico
+    nc: 1720, // North Carolina
+    nd: 6780, // North Dakota
+    ne: 2980, // Nebraska
+    la: 9271, // Louisiana
+    sd: 2712, // South Dakota
+    dc: 8360, // District of Columbia
+    de: 2900, // Delaware
+    fl: 9162, // Florida
+    ct: 6281, // Connecticut
+    wa: 8261, // Washington
+    ks: 1611, // Kansas
+    wi: 2751, // Wisconsin
+    or: 2860, // Oregon
+    ky: 9960, // Kentucky
+    me: 2710, // Maine
+    oh: 8361, // Ohio
+    ok: 3816, // Oklahoma
+    id: 13251, // Idaho
+    wy: 2871, // Wyoming
+    ut: 3812, // Utah
+    in: 10721, // Indiana
+    il: 3816, // Illinois
+    ak: 3810, // Alaska
+    nj: 8920, // New Jersey
+    co: 7350, // Colorado
+    md: 1923, // Maryland
+    ma: 4816, // Massachusetts
+    al: 2710, // Alabama
+    mo: 3150, // Missouri
+    mn: 1863, // Minnesota
+    ca: 9372, // California
+    ia: 3726, // Iowa
+    mi: 790, // Michigan
+    ga: 2860, // Georgia
+    az: 8610, // Arizona
+    mt: 8785, // Montana
+    ms: 3710, // Mississippi
+    sc: 7739, // South Carolina
+    ri: 1753, // Rhode Island
+    ar: 7720, // Arkansas
+};
+
+$('.rui-jqvmap').vectorMap({
+    map: 'usa_en',
+    backgroundColor: '#f8f9fa',
+    borderColor: '#a4a6a8',
+    borderOpacity: 1,
+    borderWidth: 0.1,
+    color: '#b6b8b9',
+    hoverColor: '#4b515b',
+    selectedColor: '#393f49',
+    showTooltip: true,
+    scaleColors: ['#d3d6da', '#8a8f9c'],
+    normalizeFunction: 'polynomial',
+    values: data,
+    onLabelShow: function(event, label, code) {
+        if (data[code] === undefined) {
+            label.html(`${label.html()} - $0`);
+        } else {
+            label.html(`${label.html()} - $${data[code]}`);
+        }
+    },
+});
+    ",
+    'no-frame-preview'
+)}}
+
+{% endblock %}
+
+
+{% block content_sidebar %}
+{% call sidebar() %}
+    <li><a class="nav-link" href="#googleMap">Google Map</a></li>
+    <li><a class="nav-link" href="#vectorMap">Vector Map</a></li>
+{% endcall %}
+{% endblock %}
+
+
+{% block vendor_css %}
+
+    <!-- Highlight -->
+    <link rel="stylesheet" href="./assets/vendor/highlightjs/styles/default.css">
+
+    <!-- jqVmap -->
+    <link rel="stylesheet" href="./assets/vendor/jqvmap/dist/jqvmap.css">
+
+{% endblock %}
+
+{% block vendor_js %}
+
+    <!-- Highlight -->
+    <script src="./assets/vendor/highlightjs/highlight.pack.min.js"></script>
+
+    <!-- jqVmap -->
+    <script src="./assets/vendor/jqvmap/dist/jquery.vmap.min.js"></script>
+    <script src="./assets/vendor/jqvmap/dist/maps/jquery.vmap.usa.js"></script>
+
+    <script class="rui-page-additional-js">
+        (function(){
+            function initMap() {
+                const uluru = {lat: 40.703436, lng: -74.012715};
+                const map = new google.maps.Map(document.getElementById('gMap'), {
+                    zoom: 14,
+                    scrollwheel: false,
+                    mapTypeControl: false,
+                    streetViewControl: false,
+                    center: uluru,
+                    zoomControl: true,
+                    zoomControlOptions: {
+                        position: google.maps.ControlPosition.LEFT_TOP,
+                    },
+
+                    styles: [
+                        {
+                            "featureType": "water",
+                            "elementType": "geometry",
+                            "stylers": [
+                                {
+                                    "color": "#e9e9e9"
+                                },
+                                {
+                                    "lightness": 17
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "landscape",
+                            "elementType": "geometry",
+                            "stylers": [
+                                {
+                                    "color": "#f5f5f5"
+                                },
+                                {
+                                    "lightness": 20
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "road.highway",
+                            "elementType": "geometry.fill",
+                            "stylers": [
+                                {
+                                    "color": "#ffffff"
+                                },
+                                {
+                                    "lightness": 17
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "road.highway",
+                            "elementType": "geometry.stroke",
+                            "stylers": [
+                                {
+                                    "color": "#ffffff"
+                                },
+                                {
+                                    "lightness": 29
+                                },
+                                {
+                                    "weight": 0.2
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "road.arterial",
+                            "elementType": "geometry",
+                            "stylers": [
+                                {
+                                    "color": "#ffffff"
+                                },
+                                {
+                                    "lightness": 18
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "road.local",
+                            "elementType": "geometry",
+                            "stylers": [
+                                {
+                                    "color": "#ffffff"
+                                },
+                                {
+                                    "lightness": 16
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "poi",
+                            "elementType": "geometry",
+                            "stylers": [
+                                {
+                                    "color": "#f5f5f5"
+                                },
+                                {
+                                    "lightness": 21
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "poi.park",
+                            "elementType": "geometry",
+                            "stylers": [
+                                {
+                                    "color": "#dedede"
+                                },
+                                {
+                                    "lightness": 21
+                                }
+                            ]
+                        },
+                        {
+                            "elementType": "labels.text.stroke",
+                            "stylers": [
+                                {
+                                    "visibility": "on"
+                                },
+                                {
+                                    "color": "#ffffff"
+                                },
+                                {
+                                    "lightness": 16
+                                }
+                            ]
+                        },
+                        {
+                            "elementType": "labels.text.fill",
+                            "stylers": [
+                                {
+                                    "saturation": 36
+                                },
+                                {
+                                    "color": "#333333"
+                                },
+                                {
+                                    "lightness": 40
+                                }
+                            ]
+                        },
+                        {
+                            "elementType": "labels.icon",
+                            "stylers": [
+                                {
+                                    "visibility": "off"
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "transit",
+                            "elementType": "geometry",
+                            "stylers": [
+                                {
+                                    "color": "#f2f2f2"
+                                },
+                                {
+                                    "lightness": 19
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "administrative",
+                            "elementType": "geometry.fill",
+                            "stylers": [
+                                {
+                                    "color": "#fefefe"
+                                },
+                                {
+                                    "lightness": 20
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "administrative",
+                            "elementType": "geometry.stroke",
+                            "stylers": [
+                                {
+                                    "color": "#fefefe"
+                                },
+                                {
+                                    "lightness": 17
+                                },
+                                {
+                                    "weight": 1.2
+                                }
+                            ]
+                        }
+                    ]
+                });
+
+                const marker = new google.maps.Marker({
+                    position: uluru,
+                    map: map,
+                    icon: '${require("../../../common-assets/images/location-icon.svg")}'
+                });
+            }
+
+            if ( window.google && window.google.maps ) {
+                initMap();
+            } else {
+                window.initMap = initMap;
+                $.getScript('//maps.google.com/maps/api/js?sensor=true&key=AIzaSyBlQNaWM2_jxXJbRwL2ozXWw3cg-uuld8w&callback=initMap', function () {});
+            }
+        }());
+    </script>
+
+    <script class="rui-page-additional-js">
+        (function(){
+            // Vector Map
+            const data = {
+                va: 6278, // Virginia
+                pa: 2110, // Pennsylvania
+                tn: 2917, // Tennessee
+                wv: 1721, // West Virginia
+                nv: 900, // Nevada
+                tx: 13263, // Texas
+                nh: 2917, // New Hampshire
+                ny: 19220, // New York
+                hi: 2726, // Hawaii
+                vt: 1927, // Vermont
+                nm: 8650, // New Mexico
+                nc: 1720, // North Carolina
+                nd: 6780, // North Dakota
+                ne: 2980, // Nebraska
+                la: 9271, // Louisiana
+                sd: 2712, // South Dakota
+                dc: 8360, // District of Columbia
+                de: 2900, // Delaware
+                fl: 9162, // Florida
+                ct: 6281, // Connecticut
+                wa: 8261, // Washington
+                ks: 1611, // Kansas
+                wi: 2751, // Wisconsin
+                or: 2860, // Oregon
+                ky: 9960, // Kentucky
+                me: 2710, // Maine
+                oh: 8361, // Ohio
+                ok: 3816, // Oklahoma
+                id: 13251, // Idaho
+                wy: 2871, // Wyoming
+                ut: 3812, // Utah
+                in: 10721, // Indiana
+                il: 3816, // Illinois
+                ak: 3810, // Alaska
+                nj: 8920, // New Jersey
+                co: 7350, // Colorado
+                md: 1923, // Maryland
+                ma: 4816, // Massachusetts
+                al: 2710, // Alabama
+                mo: 3150, // Missouri
+                mn: 1863, // Minnesota
+                ca: 9372, // California
+                ia: 3726, // Iowa
+                mi: 790, // Michigan
+                ga: 2860, // Georgia
+                az: 8610, // Arizona
+                mt: 8785, // Montana
+                ms: 3710, // Mississippi
+                sc: 7739, // South Carolina
+                ri: 1753, // Rhode Island
+                ar: 7720, // Arkansas
+            };
+
+            $('.rui-jqvmap').vectorMap({
+                map: 'usa_en',
+                backgroundColor: '#f8f9fa',
+                borderColor: '#a4a6a8',
+                borderOpacity: 1,
+                borderWidth: 0.1,
+                color: '#b6b8b9',
+                hoverColor: '#4b515b',
+                selectedColor: '#393f49',
+                showTooltip: true,
+                scaleColors: ['#d3d6da', '#8a8f9c'],
+                normalizeFunction: 'polynomial',
+                values: data,
+                onLabelShow: function(event, label, code) {
+                    if (data[code] === undefined) {
+                        label.html(`${label.html()} - $0`);
+                    } else {
+                        label.html(`${label.html()} - $${data[code]}`);
+                    }
+                },
+            });
+        }());
+    </script>
+{% endblock %}

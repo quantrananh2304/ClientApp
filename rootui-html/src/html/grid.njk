@@ -1,0 +1,71 @@
+{% set page_title = 'Grid' %}
+{% set header_title = 'Grid' %}
+{% set with_sidebar = true %}
+{% extends 'layouts/layout-container.njk' %}
+
+{% set breadcrumbs = [
+    ['Home', 'dashboard.html'],
+    ['Content', '#']
+] %}
+
+{% block content %}
+
+{% from "macros/snippet.njk" import snippet %}
+{% from "macros/sidebar.njk" import sidebar %}
+
+<h2 id="gridBase">Base</h2>
+{% call snippet('GridBase', 'no-frame-preview') %}
+<div class="row xs-gap">
+    <div class="col-sm">
+        <div class="bg-grey-1 pt-15 pr-20 pb-15 pl-20 br-4">One of three columns</div>
+    </div>
+    <div class="col-sm">
+        <div class="bg-grey-1 pt-15 pr-20 pb-15 pl-20 br-4">One of three columns</div>
+    </div>
+    <div class="col-sm">
+        <div class="bg-grey-1 pt-15 pr-20 pb-15 pl-20 br-4">One of three columns</div>
+    </div>
+</div>
+{%- endcall %}
+
+<div class="rui-gap-4" id="gridVerticalGap"></div>
+<h2>Vertical Gap</h2>
+<p>Use the following classes for customization: <code>.lg-gap</code>, <code>.md-gap</code>, <code>.sm-gap</code>, <code>.xs-gap</code></p>
+{% call snippet('GridVerticalGap', 'no-frame-preview') %}
+<div class="row vertical-gap xs-gap">
+    <div class="col-12">
+        <div class="bg-grey-1 pt-15 pr-20 pb-15 pl-20 br-4">One of three columns</div>
+    </div>
+    <div class="col-12">
+        <div class="bg-grey-1 pt-15 pr-20 pb-15 pl-20 br-4">One of three columns</div>
+    </div>
+    <div class="col-12">
+        <div class="bg-grey-1 pt-15 pr-20 pb-15 pl-20 br-4">One of three columns</div>
+    </div>
+</div>
+{%- endcall %}
+
+{% endblock %}
+
+
+{% block content_sidebar %}
+{% call sidebar() %}
+    <li><a class="nav-link" href="#gridBase">Base</a></li>
+    <li><a class="nav-link" href="#gridVerticalGap">Vertical Gap</a></li>
+{% endcall %}
+{% endblock %}
+
+
+{% block vendor_css %}
+
+    <!-- Highlight -->
+    <link rel="stylesheet" href="./assets/vendor/highlightjs/styles/default.css">
+
+{% endblock %}
+
+{% block vendor_js %}
+
+    <!-- Highlight -->
+    <script src="./assets/vendor/highlightjs/highlight.pack.min.js"></script>
+
+{% endblock %}

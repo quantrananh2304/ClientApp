@@ -1,0 +1,65 @@
+{% set page_title = 'WYSIWYG editor' %}
+{% set header_title = 'WYSIWYG editor' %}
+{% extends 'layouts/layout-container.njk' %}
+
+{% set breadcrumbs = [
+    ['Home', 'dashboard.html'],
+    ['Forms', '#'],
+    ['Advanced', '#']
+] %}
+
+{% block content %}
+
+{% from "macros/snippet.njk" import snippet %}
+{% from "macros/sidebar.njk" import sidebar %}
+
+{% call snippet('WYSIWYG', 'no-frame-preview') %}
+<div class="rui-quill">
+    <span data-feather="chevron-down" class="rui-icon rui-icon-stroke-1_5 rui-quill-select-icon"></span>
+    <div class="rui-quill-toolbar">
+        <div class="ql-formats">
+            <select class="ql-header"></select>
+        </div>
+        <div class="ql-formats">
+            <button class="ql-bold"></button>
+            <button class="ql-italic"></button>
+            <button class="ql-underline"></button>
+            <button class="ql-strike"></button>
+        </div>
+        <div class="ql-formats">
+            <button class="ql-clean"></button>
+        </div>
+        <div class="ql-formats">
+            <button type="button" class="ql-list" value="ordered"></button>
+            <button type="button" class="ql-list" value="bullet"></button>
+        </div>
+        <div class="ql-formats">
+            <button class="ql-link"></button>
+        </div>
+    </div>
+    <div class="rui-quill-editor"></div>
+</div>
+{%- endcall %}
+
+{% endblock %}
+
+
+{% block vendor_css %}
+
+    <!-- Highlight -->
+    <link rel="stylesheet" href="./assets/vendor/highlightjs/styles/default.css">
+
+    <!-- Quill -->
+    <link rel="stylesheet" href="./assets/vendor/quill/dist/quill.snow.css">
+
+{% endblock %}
+
+{% block vendor_js %}
+
+    <!-- Highlight -->
+    <script src="./assets/vendor/highlightjs/highlight.pack.min.js"></script>
+
+    <!-- Quill -->
+    <script src="./assets/vendor/quill/dist/quill.min.js"></script>
+
+{% endblock %}

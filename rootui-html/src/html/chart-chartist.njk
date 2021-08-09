@@ -1,0 +1,189 @@
+{% set page_title = 'Chartist' %}
+{% set header_title = 'Chartist' %}
+{% set with_sidebar = true %}
+{% extends 'layouts/layout-container.njk' %}
+
+{% set breadcrumbs = [
+    ['Home', 'dashboard.html'],
+    ['Components', '#'],
+    ['Advanced', '#'],
+    ['Charts', '#']
+] %}
+
+{% block content %}
+
+{% from "macros/snippet.njk" import snippet, snippetMacro %}
+{% from "macros/sidebar.njk" import sidebar %}
+
+<h2 id="chartLine">Line</h2>
+{{ snippetMacro(
+    'ChartLine',
+    '<div class="ct-chart ct-chart-line"></div>',
+    '<div class="ct-chart ct-chart-line"></div>',
+    "
+const data = {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+    series: [
+        [0, 9, 15, 10, 30, 15, 25, 18, 20],
+        [0, 10, 10, 13, 10, 20, 10, 10, 25],
+    ],
+};
+const options = {
+    fullWidth: true,
+    height: '320px',
+    showArea: true,
+    seriesBarDistance: 48,
+    showLine: false,
+    chartPadding: {
+        top: 30,
+        right: 30,
+        bottom: 0,
+        left: 0,
+    },
+    axisX: {
+        showGrid: false,
+    },
+    axisY: {
+        showGrid: false,
+        onlyInteger: true,
+    },
+};
+new Chartist.Line('.ct-chart', data, options);
+    "
+) }}
+
+
+<div class="rui-gap-4" id="chartBar"></div>
+<h2>Bar</h2>
+{{ snippetMacro(
+    'ChartBar',
+    '<div class="ct-chart ct-chart-bar"></div>',
+    '<div class="ct-chart ct-chart-bar"></div>',
+    "
+const data = {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+    series: [
+        [0, 9, 15, 10, 30, 15, 25, 18, 20],
+        [0, 10, 10, 13, 10, 20, 10, 10, 25],
+    ],
+};
+const options = {
+    fullWidth: true,
+    height: '320px',
+    showArea: true,
+    seriesBarDistance: 48,
+    showLine: false,
+    chartPadding: {
+        top: 30,
+        right: 30,
+        bottom: 0,
+        left: 0,
+    },
+    axisX: {
+        showGrid: false,
+    },
+    axisY: {
+        showGrid: false,
+        onlyInteger: true,
+    },
+};
+new Chartist.Bar('.ct-chart-bar', data, options);
+    "
+)}}
+
+<div class="rui-gap-4" id="chartPie"></div>
+<h2>Pie</h2>
+{{ snippetMacro(
+    'ChartPie',
+    '<div class="ct-chart ct-chart-pie"></div>',
+    '<div class="ct-chart ct-chart-pie"></div>',
+    "
+const data = {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+    series: [5, 3, 4],
+};
+const options = {
+    fullWidth: true,
+    height: '320px',
+    labelOffset: 10,
+    showArea: true,
+};
+new Chartist.Pie('.ct-chart-pie', data, options);
+    "
+)}}
+
+{% endblock %}
+
+
+{% block content_sidebar %}
+{% call sidebar() %}
+    <li><a class="nav-link" href="#chartLine">Line</a></li>
+    <li><a class="nav-link" href="#chartBar">Bar</a></li>
+    <li><a class="nav-link" href="#chartPie">Pie</a></li>
+{% endcall %}
+{% endblock %}
+
+{% block vendor_css %}
+
+    <!-- Highlight -->
+    <link rel="stylesheet" href="./assets/vendor/highlightjs/styles/default.css">
+
+    <!-- Chartist -->
+    <link rel="stylesheet" href="./assets/vendor/chartist/dist/chartist.css">
+
+{% endblock %}
+
+{% block vendor_js %}
+
+    <!-- Highlight -->
+    <script src="./assets/vendor/highlightjs/highlight.pack.min.js"></script>
+
+    <!-- Chartist -->
+    <script src="./assets/vendor/chartist/dist/chartist.min.js"></script>
+
+    <script class="rui-page-additional-js">
+        (function(){
+            const data = {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+                series: [
+                    [0, 9, 15, 10, 30, 15, 25, 18, 20],
+                    [0, 10, 10, 13, 10, 20, 10, 10, 25],
+                ],
+            };
+            const options = {
+                fullWidth: true,
+                height: '320px',
+                showArea: true,
+                seriesBarDistance: 48,
+                showLine: false,
+                chartPadding: {
+                    top: 30,
+                    right: 30,
+                    bottom: 0,
+                    left: 0,
+                },
+                axisX: {
+                    showGrid: false,
+                },
+                axisY: {
+                    showGrid: false,
+                    onlyInteger: true,
+                },
+            };
+            const dataPie = {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+                series: [5, 3, 4],
+            };
+            const optionsPie = {
+                fullWidth: true,
+                height: '320px',
+                labelOffset: 10,
+                showArea: true,
+            };
+
+            new Chartist.Line('.ct-chart-line', data, options);
+            new Chartist.Bar('.ct-chart-bar', data, options);
+            new Chartist.Pie('.ct-chart-pie', dataPie, optionsPie);
+        }());
+    </script>
+{% endblock %}

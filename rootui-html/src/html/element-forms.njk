@@ -1,0 +1,184 @@
+{% set page_title = 'Element Forms' %}
+{% set header_title = 'Forms' %}
+{% set with_sidebar = true %}
+{% extends 'layouts/layout-container.njk' %}
+
+{% set breadcrumbs = [
+    ['Home', 'dashboard.html'],
+    ['Forms', '#']
+] %}
+
+{% block content %}
+
+{% from "macros/snippet.njk" import snippet %}
+{% from "macros/sidebar.njk" import sidebar %}
+
+<div class="d-flex align-items-center justify-content-between mb-25">
+    <h2 class="mnb-2" id="formBase">Base</h2>
+</div>
+{% call snippet('FormBase') %}
+<form class="#">
+    <div class="row vertical-gap sm-gap">
+        <div class="col-12">
+            <label for="exampleBase1">Email</label>
+            <input type="email" class="form-control" id="exampleBase1" placeholder="Email">
+        </div>
+
+        <div class="col-12">
+            <label for="exampleBase2">With Icon</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <span data-feather="at-sign" class="rui-icon rui-icon-stroke-1_5"></span>
+                    </div>
+                </div>
+                <input type="text" class="form-control" id="exampleBase2" placeholder="Email">
+            </div>
+        </div>
+
+        <fieldset class="col-12" disabled>
+            <label for="exampleBase3">Disabled</label>
+            <input type="email" class="form-control" id="exampleBase3" placeholder="Email">
+        </fieldset>
+    </div>
+</form>
+{%- endcall %}
+
+<div class="rui-gap-4" id="formGroup"></div>
+<h2>Group</h2>
+{% call snippet('FormGroup') %}
+<form class="#">
+    <div class="row vertical-gap sm-gap">
+        <label for="exampleGroup1" class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-10">
+            <input type="email" class="form-control" id="exampleGroup1" placeholder="Email">
+        </div>
+
+        <label for="exampleGroup2" class="col-sm-2 col-form-label">With Icon</label>
+        <div class="col-sm-10">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <span data-feather="at-sign" class="rui-icon rui-icon-stroke-1_5"></span>
+                    </div>
+                </div>
+                <input type="text" class="form-control" id="exampleGroup2" placeholder="Email">
+            </div>
+        </div>
+
+        <div class="col-12">
+            <fieldset disabled>
+                <div class="row vertical-gap sm-gap">
+                    <label for="exampleGroup3" class="col-sm-2 col-form-label">Disabled</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="exampleGroup3" placeholder="Email">
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+</form>
+{%- endcall %}
+
+<div class="rui-gap-4" id="formCheckboxesRadios"></div>
+<h2>Checkboxes and radios</h2>
+<h3>Checkboxes</h3>
+{% call snippet('FormCheckbox') %}
+<div class="custom-control custom-checkbox">
+    <input type="checkbox" class="custom-control-input" id="customCheck1">
+    <label class="custom-control-label" for="customCheck1">Checkbox</label>
+</div>
+{%- endcall %}
+
+<div class="rui-gap-4" id="formRadio"></div>
+<h3>Radio</h3>
+{% call snippet('FormRadio') %}
+<div class="custom-control custom-radio">
+    <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
+    <label class="custom-control-label" for="customRadio1">Toggle this custom radio</label>
+</div>
+<div class="custom-control custom-radio mt-5">
+    <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
+    <label class="custom-control-label" for="customRadio2">Or toggle this other custom radio</label>
+</div>
+{%- endcall %}
+
+<div class="rui-gap-4" id="formDisabled"></div>
+<h3>Disabled</h3>
+{% call snippet('FormDisabled') %}
+<div class="custom-control custom-checkbox">
+    <input type="checkbox" class="custom-control-input" id="customCheckDisabled1" disabled>
+    <label class="custom-control-label" for="customCheckDisabled1">Check this custom checkbox</label>
+</div>
+<div class="custom-control custom-radio mt-5">
+    <input type="radio" name="radioDisabled" id="customRadioDisabled2" class="custom-control-input" disabled>
+    <label class="custom-control-label" for="customRadioDisabled2">Toggle this custom radio</label>
+</div>
+{%- endcall %}
+
+<div class="rui-gap-4" id="formSwitches"></div>
+<h2>Switches</h2>
+{% call snippet('FormSwitches') %}
+<div class="custom-control custom-switch">
+    <input type="checkbox" class="custom-control-input" id="customSwitch1">
+    <label class="custom-control-label" for="customSwitch1">Toggle this switch element</label>
+</div>
+<div class="custom-control custom-switch mt-5">
+    <input type="checkbox" class="custom-control-input" disabled id="customSwitch2">
+    <label class="custom-control-label" for="customSwitch2">Disabled switch element</label>
+</div>
+{%- endcall %}
+
+<div class="rui-gap-4" id="formSelect"></div>
+<h2>Select</h2>
+{% call snippet('FormSelect') %}
+<select class="custom-select">
+    <option selected>Open this select menu</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+</select>
+{%- endcall %}
+
+<div class="rui-gap-4" id="formRange"></div>
+<h2>Range</h2>
+{% call snippet('FormRange') %}
+<label for="customRange1">Example range</label>
+<input type="range" class="custom-range" id="customRange1">
+{%- endcall %}
+
+{% endblock %}
+
+
+{% block content_sidebar %}
+{% call sidebar() %}
+    <li><a class="nav-link" href="#formBase">Base</a></li>
+    <li><a class="nav-link" href="#formGroup">Group</a></li>
+    <li>
+        <a class="nav-link" href="#formCheckboxesRadios">Checkboxes and radios</a>
+        <ul class="nav flex-column">
+            <li><a class="nav-link" href="#formCheckboxesRadios">Checkboxes</a></li>
+            <li><a class="nav-link" href="#formRadio">Radio</a></li>
+            <li><a class="nav-link" href="#formDisabled">Disabled</a></li>
+        </ul>
+    </li>
+    <li><a class="nav-link" href="#formSwitches">Switches</a></li>
+    <li><a class="nav-link" href="#formSelect">Select</a></li>
+    <li><a class="nav-link" href="#formRange">Range</a></li>
+{% endcall %}
+{% endblock %}
+
+
+{% block vendor_css %}
+
+    <!-- Highlight -->
+    <link rel="stylesheet" href="./assets/vendor/highlightjs/styles/default.css">
+
+{% endblock %}
+
+{% block vendor_js %}
+
+    <!-- Highlight -->
+    <script src="./assets/vendor/highlightjs/highlight.pack.min.js"></script>
+
+{% endblock %}

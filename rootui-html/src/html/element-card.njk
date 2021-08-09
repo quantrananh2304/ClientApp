@@ -1,0 +1,244 @@
+{% set page_title = 'Element Cards' %}
+{% set header_title = 'Cards' %}
+{% set with_sidebar = true %}
+{% extends 'layouts/layout-container.njk' %}
+
+{% set breadcrumbs = [
+    ['Home', 'dashboard.html'],
+    ['Components', '#'],
+    ['Base', '#']
+] %}
+
+{% block content %}
+
+{% from "macros/snippet.njk" import snippet %}
+{% from "macros/sidebar.njk" import sidebar %}
+
+<h2 id="cardBase">Base</h2>
+{% call snippet('CardBase', 'no-frame-preview') %}
+<div class="card">
+    <img src="../../../common-assets/images/card.png" class="card-img-top" alt="">
+    <div class="card-body">
+        <h5 class="card-title h2">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="btn btn-brand">Go somewhere</a>
+    </div>
+</div>
+{%- endcall %}
+
+<div class="rui-gap-4" id="cardCollapse"></div>
+<h2>Collapse</h2>
+{% call snippet('CardCollapse', 'no-frame-preview') %}
+<div class="card">
+    <div class="card-body pb-20">
+        <h5 class="card-title h2 mb-0">Card title</h5>
+        <a class="btn btn-custom-round card-btn-collapse collapsed" data-toggle="collapse" href="#collapseCard" role="button" aria-expanded="false" aria-controls="collapseCard">
+            <span class="rui-icon rui-icon-stroke-1_5" data-feather="code"></span>
+        </a>
+        <div class="collapse" id="collapseCard">
+            <div class="card-text pt-15 mnt-2">
+                Some quick example text to build on the card title and make up the bulk of the card's content.
+            </div>
+            <a href="#" class="btn btn-brand mt-20">Go somewhere</a>
+        </div>
+    </div>
+</div>
+{%- endcall %}
+
+<div class="rui-gap-4" id="cardBody"></div>
+<h2>Body</h2>
+{% call snippet('CardBody', 'no-frame-preview') %}
+<div class="card">
+    <div class="card-body mnt-6 mnb-6">
+        This is some text within a card body.
+    </div>
+</div>
+{%- endcall %}
+
+<div class="rui-gap-4" id="cardTitles"></div>
+<h2>Titles, text, and links</h2>
+{% call snippet('CardTitles', 'no-frame-preview') %}
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title h2">Card title</h5>
+        <h6 class="card-subtitle h4 text-muted">Card subtitle</h6>
+        <p class="card-text mb-15">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="card-link">Card link</a>
+        <a href="#" class="card-link">Another link</a>
+    </div>
+</div>
+{%- endcall %}
+
+<div class="rui-gap-4" id="cardList"></div>
+<h2>List Group</h2>
+{% call snippet('CardList', 'no-frame-preview') %}
+<div class="card">
+    <div class="card-header">
+        Featured
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Cras justo odio</li>
+        <li class="list-group-item">Dapibus ac facilisis in</li>
+        <li class="list-group-item">Vestibulum at eros</li>
+    </ul>
+</div>
+{%- endcall %}
+
+<div class="rui-gap-4" id="cardKitchen"></div>
+<h2>Kitchen sink</h2>
+{% call snippet('CardKitchen', 'no-frame-preview') %}
+<div class="card">
+    <img src="../../../common-assets/images/card.png" class="card-img-top" alt="">
+    <div class="card-body">
+        <h5 class="card-title h2">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Cras justo odio</li>
+        <li class="list-group-item">Dapibus ac facilisis in</li>
+        <li class="list-group-item">Vestibulum at eros</li>
+    </ul>
+    <div class="card-body">
+        <div class="mnt-5 mnb-5">
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+        </div>
+    </div>
+</div>
+{%- endcall %}
+
+<div class="rui-gap-4" id="cardHeader"></div>
+<h2>Header and footer</h2>
+{% call snippet('CardHeader', 'no-frame-preview') %}
+<div class="card">
+    <div class="card-header">
+        Featured
+    </div>
+    <div class="card-body">
+        <h5 class="card-title h2">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-brand">Go somewhere</a>
+    </div>
+</div>
+{%- endcall %}
+
+{% call snippet('CardHeaderQuote', 'no-frame-preview') %}
+<div class="card">
+    <div class="card-header">
+        Quote
+    </div>
+    <div class="card-body">
+        <blockquote class="blockquote mb-0">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+            <footer class="blockquote-footer mnt-7 mnb-5">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+        </blockquote>
+    </div>
+</div>
+{%- endcall %}
+
+{% call snippet('CardHeaderCenter', 'no-frame-preview') %}
+<div class="card text-center">
+    <div class="card-header">
+        Featured
+    </div>
+    <div class="card-body">
+        <h5 class="card-title h2">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-brand">Go somewhere</a>
+    </div>
+    <div class="card-footer text-muted">
+        2 days ago
+    </div>
+</div>
+{%- endcall %}
+
+<div class="rui-gap-4" id="cardSizing"></div>
+<h2>Sizing</h2>
+{% call snippet('CardSizing', 'no-frame-preview') %}
+<div class="row xs-gap vertical-gap">
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title h2">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-brand">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title h2">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-brand">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+</div>
+{%- endcall %}
+
+<div class="rui-gap-4" id="cardAlignment"></div>
+<h2>Text alignment</h2>
+{% call snippet('CardAlignment', 'no-frame-preview') %}
+<div class="row xs-gap vertical-gap">
+    <div class="col-sm-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title h2">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-brand">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="card text-center">
+            <div class="card-body">
+                <h5 class="card-title h2">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-brand">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="card text-right">
+            <div class="card-body">
+                <h5 class="card-title h2">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-brand">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+</div>
+{%- endcall %}
+
+{% endblock %}
+
+
+{% block content_sidebar %}
+{% call sidebar() %}
+    <li><a class="nav-link" href="#cardBase">Base</a></li>
+    <li><a class="nav-link" href="#cardCollapse">Collapse</a></li>
+    <li><a class="nav-link" href="#cardBody">Body</a></li>
+    <li><a class="nav-link" href="#cardTitles">Titles, text, and links</a></li>
+    <li><a class="nav-link" href="#cardList">List group</a></li>
+    <li><a class="nav-link" href="#cardKitchen">Kitchen sink</a></li>
+    <li><a class="nav-link" href="#cardHeader">Header and footer</a></li>
+    <li><a class="nav-link" href="#cardSizing">Sizing</a></li>
+    <li><a class="nav-link" href="#cardAlignment">Text alignment</a></li>
+{% endcall %}
+{% endblock %}
+
+
+{% block vendor_css %}
+
+    <!-- Highlight -->
+    <link rel="stylesheet" href="./assets/vendor/highlightjs/styles/default.css">
+
+{% endblock %}
+
+{% block vendor_js %}
+
+    <!-- Highlight -->
+    <script src="./assets/vendor/highlightjs/highlight.pack.min.js"></script>
+
+{% endblock %}

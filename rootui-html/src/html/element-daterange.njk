@@ -1,0 +1,41 @@
+{% set page_title = 'DateRange Picker' %}
+{% set header_title = 'DateRange Picker' %}
+{% extends 'layouts/layout-container.njk' %}
+
+{% set breadcrumbs = [
+    ['Home', 'dashboard.html'],
+    ['Forms', '#'],
+    ['Advanced', '#']
+] %}
+
+{% block content %}
+
+{% from "macros/snippet.njk" import snippet %}
+{% from "macros/sidebar.njk" import sidebar %}
+
+{% call snippet('DateRangePicker', 'no-frame-preview') %}
+<input class="rui-daterange form-control w-auto" type="text" placeholder="Select dates" data-daterangepicker-format="MM/DD/YYYY">
+{%- endcall %}
+
+{% endblock %}
+
+
+{% block vendor_css %}
+
+    <!-- Highlight -->
+    <link rel="stylesheet" href="./assets/vendor/highlightjs/styles/default.css">
+
+    <!-- DateRangePicker -->
+    <link rel="stylesheet" href="./assets/vendor/daterangepicker/daterangepicker.css">
+
+{% endblock %}
+
+{% block vendor_js %}
+
+    <!-- Highlight -->
+    <script src="./assets/vendor/highlightjs/highlight.pack.min.js"></script>
+
+    <!-- DateRangePicker -->
+    <script src="./assets/vendor/daterangepicker/daterangepicker.js"></script>
+
+{% endblock %}

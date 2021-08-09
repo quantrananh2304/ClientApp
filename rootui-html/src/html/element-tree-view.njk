@@ -1,0 +1,83 @@
+{% set page_title = 'Tree View' %}
+{% set header_title = 'Tree View' %}
+{% extends 'layouts/layout-container.njk' %}
+
+{% set breadcrumbs = [
+    ['Home', 'dashboard.html'],
+    ['Components', '#'],
+    ['Advanced', '#']
+] %}
+
+{% block content %}
+
+{% from "macros/snippet.njk" import snippet %}
+{% from "macros/sidebar.njk" import sidebar %}
+
+{% call snippet('TreeView', 'no-frame-preview') %}
+<div class="rui-jstree rui-jstree-lines">
+    <ul>
+        <li data-jstree='{ "selected" : true, "opened" : true }'>
+            <span data-feather="folder-plus" class="rui-icon rui-icon-stroke-1_5 rui-jstree-icon rui-jstree-icon-open"></span>
+            <span data-feather="folder-minus" class="rui-icon rui-icon-stroke-1_5 rui-jstree-icon rui-jstree-icon-close"></span>
+            Root node
+            <ul>
+                <li>
+                    <span data-feather="file" class="rui-icon rui-icon-stroke-1_5"></span> Child node 1
+                </li>
+                <li>
+                    <span data-feather="file" class="rui-icon rui-icon-stroke-1_5"></span> Child node 2
+                </li>
+                <li>
+                    <span data-feather="folder-plus" class="rui-icon rui-icon-stroke-1_5 rui-jstree-icon rui-jstree-icon-open"></span>
+                    <span data-feather="folder-minus" class="rui-icon rui-icon-stroke-1_5 rui-jstree-icon rui-jstree-icon-close"></span>
+                    Root node
+                    <ul>
+                        <li>
+                            <span data-feather="file" class="rui-icon rui-icon-stroke-1_5"></span> Child node 1
+                        </li>
+                        <li>
+                            <span data-feather="file" class="rui-icon rui-icon-stroke-1_5"></span> Child node 2
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <span data-feather="folder-plus" class="rui-icon rui-icon-stroke-1_5 rui-jstree-icon rui-jstree-icon-open"></span>
+            <span data-feather="folder-minus" class="rui-icon rui-icon-stroke-1_5 rui-jstree-icon rui-jstree-icon-close"></span>
+            Root node 2
+            <ul>
+                <li>
+                    <span data-feather="file" class="rui-icon rui-icon-stroke-1_5"></span> Child node 1
+                </li>
+                <li>
+                    <span data-feather="file" class="rui-icon rui-icon-stroke-1_5"></span> Child node 2
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+{%- endcall %}
+
+{% endblock %}
+
+
+{% block vendor_css %}
+
+    <!-- Highlight -->
+    <link rel="stylesheet" href="./assets/vendor/highlightjs/styles/default.css">
+
+    <!-- jsTree -->
+    <link rel="stylesheet" href="./assets/vendor/jstree/dist/themes/default/style.min.css">
+
+{% endblock %}
+
+{% block vendor_js %}
+
+    <!-- Highlight -->
+    <script src="./assets/vendor/highlightjs/highlight.pack.min.js"></script>
+
+    <!-- jsTree -->
+    <script src="./assets/vendor/jstree/dist/jstree.min.js"></script>
+
+{% endblock %}

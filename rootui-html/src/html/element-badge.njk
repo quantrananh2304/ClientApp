@@ -1,0 +1,89 @@
+{% set page_title = 'Element Badges' %}
+{% set header_title = 'Badges' %}
+{% set with_sidebar = true %}
+{% extends 'layouts/layout-container.njk' %}
+
+{% set breadcrumbs = [
+    ['Home', 'dashboard.html'],
+    ['Components', '#'],
+    ['Base', '#']
+] %}
+
+{% block content %}
+
+{% from "macros/snippet.njk" import snippet %}
+{% from "macros/sidebar.njk" import sidebar %}
+
+<h2 id="badgeBase">Base</h2>
+{% call snippet('BadgeBase') %}
+<h1>Example heading <span class="badge badge-secondary">New</span></h1>
+<h2>Example heading <span class="badge badge-secondary">New</span></h2>
+<h3>Example heading <span class="badge badge-secondary">New</span></h3>
+<h4>Example heading <span class="badge badge-secondary">New</span></h4>
+<h5>Example heading <span class="badge badge-secondary">New</span></h5>
+<h6 class="mb-0">Example heading <span class="badge badge-secondary">New</span></h6>
+{%- endcall %}
+
+{% call snippet('BadgeButton') %}
+<button type="button" class="btn btn-brand">
+    <span>Notifications</span><span class="badge badge-light">4</span>
+</button>
+<button type="button" class="btn btn-brand">
+    <span>Notifications</span><span class="badge badge-circle badge-light">4</span>
+</button>
+<button type="button" class="btn btn-brand">
+    <span class="badge badge-circle badge-light">46</span><span>Notifications</span>
+</button>
+{%- endcall %}
+
+<div class="rui-gap-4" id="badgeContext"></div>
+<h2>Contextual variations</h2>
+{% call snippet('BadgeContext') %}
+<span class="badge badge-brand">Brand</span>
+<span class="badge badge-primary">Primary</span>
+<span class="badge badge-secondary">Secondary</span>
+<span class="badge badge-success">Success</span>
+<span class="badge badge-danger">Danger</span>
+<span class="badge badge-warning">Warning</span>
+<span class="badge badge-info">Info</span>
+<span class="badge badge-light">Light</span>
+<span class="badge badge-dark">Dark</span>
+{%- endcall %}
+
+<div class="rui-gap-4" id="badgePill"></div>
+<h2>Pill badges</h2>
+{% call snippet('BadgePill') %}
+<span class="badge badge-pill badge-brand">Brand</span>
+{%- endcall %}
+
+<div class="rui-gap-4" id="badgeLink"></div>
+<h2>Links</h2>
+{% call snippet('Badgelink') %}
+<a href="#" class="badge badge-brand">Brand</a>
+{%- endcall %}
+
+{% endblock %}
+
+{% block content_sidebar %}
+{% call sidebar() %}
+    <li><a class="nav-link" href="#badgeBase">Base</a></li>
+    <li><a class="nav-link" href="#badgeContext">Contextual</a></li>
+    <li><a class="nav-link" href="#badgePill">Pill</a></li>
+    <li><a class="nav-link" href="#badgeLink">Links</a></li>
+{% endcall %}
+{% endblock %}
+
+
+{% block vendor_css %}
+
+    <!-- Highlight -->
+    <link rel="stylesheet" href="./assets/vendor/highlightjs/styles/default.css">
+
+{% endblock %}
+
+{% block vendor_js %}
+
+    <!-- Highlight -->
+    <script src="./assets/vendor/highlightjs/highlight.pack.min.js"></script>
+
+{% endblock %}

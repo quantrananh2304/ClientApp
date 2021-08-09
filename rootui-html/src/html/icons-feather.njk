@@ -1,0 +1,61 @@
+{% set page_title = 'Icons Feather' %}
+{% set header_title = 'Feather' %}
+{% extends 'layouts/layout-container.njk' %}
+
+{% set breadcrumbs = [
+    ['Home', 'dashboard.html'],
+    ['Components', '#'],
+    ['Advanced', '#'],
+    ['Icons', '#']
+] %}
+
+{% block content %}
+
+<div class="row vertical-gap rui-feather-icons-demo">
+    <div class="col-12">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+{% block vendor_js %}
+    <script class="rui-page-additional-js">
+        (function($){
+            if (!window.feather) {
+                return;
+            }
+
+            var result = '';
+
+            // all Feather rui-icons
+            Object.keys(feather.icons).forEach(function(iconName) {
+                result += [
+                    '<div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">',
+                    '    <div class="demo-icons" title="' + iconName + '">',
+                    '        <span data-feather="' + iconName + '" class="rui-icon rui-icon-stroke-1_5"></span>',
+                    '       ' + iconName,
+                    '    </div>',
+                    '</div>',
+                ].join('');
+            });
+
+            // insert rui-icons on page.
+            $('.rui-feather-icons-demo').html(result);
+
+            if ( window.RootUI ) {
+                window.RootUI.initPluginFeather();
+            }
+
+            // copy element on click.
+            $(document).on('click', '.rui-feather-icons-demo [title]', function() {
+                var title = $(this).attr('title');
+                prompt('Copy Icon HTML', '<span stroke-width="1.5" data-feather="' + title + '"></span>');
+            });
+        }(jQuery));
+    </script>
+{% endblock %}
+

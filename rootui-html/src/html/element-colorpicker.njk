@@ -1,0 +1,79 @@
+{% set page_title = 'Color Picker' %}
+{% set header_title = 'Color Picker' %}
+{% extends 'layouts/layout-container.njk' %}
+
+{% set breadcrumbs = [
+    ['Home', 'dashboard.html'],
+    ['Forms', '#'],
+    ['Advanced', '#']
+] %}
+
+{% block content %}
+
+{% from "macros/snippet.njk" import snippetMacro %}
+{% from "macros/sidebar.njk" import sidebar %}
+
+{{ snippetMacro(
+    'ColorPicker',
+    '
+<div class="rui-colorpicker" data-pickr-offset="0,2" data-pickr-representation="HEXA">
+    <input type="text" class="rui-colorpicker-input form-control" value="#725ec3">
+</div>
+
+<div class="rui-colorpicker input-group mt-20" data-pickr-offset="-12,12" data-pickr-representation="HEXA">
+    <div class="input-group-prepend">
+        <div class="input-group-text">
+            <div class="rui-colorpicker-addon"></div>
+        </div>
+    </div>
+    <input type="text" class="rui-colorpicker-input form-control" value="#725ec3">
+</div>
+
+<div class="rui-colorpicker d-flex align-items-center mt-20" data-pickr-offset="0,2" data-pickr-representation="HEXA">
+    <div class="rui-colorpicker-addon">#725ec3</div>
+    <div class="rui-colorpicker-result ml-20">#725ec3</div>
+</div>
+    ',
+    '
+<div class="rui-colorpicker" data-pickr-offset="0,2" data-pickr-representation="HEXA">
+    <input type="text" class="rui-colorpicker-input form-control" value="#725ec3">
+</div>
+
+<div class="rui-colorpicker" data-pickr-offset="-12,12" data-pickr-representation="HEXA">
+    <div class="input-group-prepend">
+        <div class="input-group-text">
+            <div class="rui-colorpicker-addon"></div>
+        </div>
+    </div>
+    <input type="text" class="rui-colorpicker-input form-control" value="#725ec3">
+</div>
+
+<div class="rui-colorpicker" data-pickr-offset="0,2" data-pickr-representation="HEXA">
+    <div class="rui-colorpicker-addon">#725ec3</div>
+    <div class="rui-colorpicker-result ml-20">#725ec3</div>
+</div>
+    '
+) }}
+
+{% endblock %}
+
+
+{% block vendor_css %}
+
+    <!-- Highlight -->
+    <link rel="stylesheet" href="./assets/vendor/highlightjs/styles/default.css">
+
+    <!-- Pickr -->
+    <link rel="stylesheet" href="./assets/vendor/pickr/dist/themes/classic.min.css">
+
+{% endblock %}
+
+{% block vendor_js %}
+
+    <!-- Highlight -->
+    <script src="./assets/vendor/highlightjs/highlight.pack.min.js"></script>
+
+    <!-- Pickr -->
+    <script src="./assets/vendor/pickr/dist/pickr.min.js"></script>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% set page_title = 'Welcome to RootUI' %}
+{% set header_title = 'Dashboard' %}
+{% set night_mode = true %}
+{% extends 'layouts/layout-container.njk' %}
+
+{% set breadcrumbs = [
+    ['Home', 'dashboard.html']
+] %}
+
+{% block content %}
+
+    {% from "macros/task.njk" import task %}
+
+    {% include "shared/dashboard-content.njk" %}
+
+{% endblock %}
+
+{% block vendor_css %}
+
+    {% include "shared/dashboard-vendors-css.njk" %}
+
+{% endblock %}
+
+{% block vendor_js %}
+
+    {% include "shared/dashboard-vendors-js.njk" %}
+
+{% endblock %}

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+{{ headerComment | safe }}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>RootUI{{ ' | ' + page_title if page_title }}</title>
+
+    <meta name="description" content="RootUI - clean and powerful solution for your Dashboards, Administration areas.">
+    <meta name="keywords" content="admin, dashboard, template, react, reactjs, html, jquery, clean">
+    <meta name="author" content="nK">
+
+    <link rel="icon" type="image/png" href="${require('../../../common-assets/images/favicon.png')}">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400%7cOpen+Sans:300,400,600%7cPT+Serif:400i">
+
+    <!-- START: Vendors -->
+
+        <!-- Bootstrap Custom -->
+        <link rel="stylesheet" href="./assets/css/bootstrap-custom.css">
+
+        <!-- OverlayScrollbars -->
+        <!-- <link rel="stylesheet" href="./assets/vendor/overlayscrollbars/css/OverlayScrollbars.css"> -->
+
+        <!-- Yaybar -->
+        <!-- <link rel="stylesheet" href="./assets/css/yaybar.css"> -->
+
+        <!-- Fancybox -->
+        <!-- <link rel="stylesheet" href="./assets/vendor/fancybox/dist/jquery.fancybox.css"> -->
+
+        <!-- EmojioneArea -->
+        <!-- <link rel="stylesheet" href="./assets/vendor/emojionearea/dist/emojionearea.css"> -->
+
+    <!-- END: Vendors -->
+
+    <!-- START: Optional Vendors -->
+        {% block vendor_css %}{% endblock %}
+
+        <!-- Highlight -->
+        <!-- <link rel="stylesheet" href="./assets/vendor/highlightjs/styles/default.css"> -->
+
+        <!-- Chartist -->
+        <!-- <link rel="stylesheet" href="./assets/vendor/chartist/dist/chartist.css"> -->
+
+        <!-- Swiper -->
+        <!-- <link rel="stylesheet" href="./assets/vendor/swiper/swiper-bundle.min.css"> -->
+
+        <!-- Fullcalendar -->
+        <!-- <link rel="stylesheet" href="./assets/vendor/fullcalendar/main.min.css"> -->
+
+        <!-- jsTree -->
+        <!-- <link rel="stylesheet" href="./assets/vendor/jstree/dist/themes/default/style.min.css"> -->
+
+        <!-- SweetAlert -->
+        <!-- <link rel="stylesheet" href="./assets/vendor/sweetalert2/dist/sweetalert2.css"> -->
+
+        <!-- jqVmap -->
+        <!-- <link rel="stylesheet" href="./assets/vendor/jqvmap/dist/jqvmap.css"> -->
+
+        <!-- DateTimePicker -->
+        <!-- <link rel="stylesheet" href="./assets/vendor/jquery-datetimepicker/jquery.datetimepicker.css"> -->
+
+        <!-- DateRangePicker -->
+        <!-- <link rel="stylesheet" href="./assets/vendor/daterangepicker/daterangepicker.css"> -->
+
+        <!-- Ion Rangeslider -->
+        <!-- <link rel="stylesheet" href="./assets/vendor/ion-rangeslider/css/ion.rangeSlider.css"> -->
+
+        <!-- EasyMDE -->
+        <!-- <link rel="stylesheet" href="./assets/vendor/easymde/dist/easymde.min.css"> -->
+
+        <!-- Pickr -->
+        <!-- <link rel="stylesheet" href="./assets/vendor/pickr/dist/themes/classic.min.css"> -->
+
+        <!-- Dropzone -->
+        <!-- <link rel="stylesheet" href="./assets/vendor/dropzone/dist/dropzone.css"> -->
+
+        <!-- Selectize -->
+        <!-- <link rel="stylesheet" href="./assets/vendor/selectize/dist/css/selectize.css"> -->
+
+        <!-- Quill -->
+        <!-- <link rel="stylesheet" href="./assets/vendor/quill/dist/quill.snow.css"> -->
+
+    <!-- END: Optional Vendors -->
+
+    <!-- RootUI -->
+    <link rel="stylesheet" href="./assets/css/rootui.css">
+    <link rel="stylesheet" href="./assets/css/rootui-night.css" media="{% if night_mode %}all{% else %}(night){% endif %}" class="rui-nightmode-link">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="./assets/css/custom.css">
+    {% if custom_css %}<link rel="stylesheet" href="{{ custom_css }}">{% endif %}
+
+    {% if custom_styles %}
+    <style>{{ custom_styles | safe }}</style>
+    {% endif %}
+</head>
+
+<body>
+    {% include "shared/page-preloader.njk" %}
+
+    <div class="rui-main">
+        {% block content %}{% endblock %}
+    </div>
+
+    {% block after_content %}{% endblock %}
+
+    <!-- START: Scripts -->
+
+    <!-- START: Vendors -->
+
+        <!-- jQuery -->
+        <script src="./assets/vendor/jquery/dist/jquery.min.js"></script>
+
+        <!-- Popper -->
+        <script src="./assets/vendor/popper.js/dist/umd/popper.min.js"></script>
+
+        <!-- Bootstrap -->
+        <script src="./assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+
+        <!-- Feather Icons -->
+        <script src="./assets/vendor/feather-icons/dist/feather.min.js"></script>
+
+        <!-- OverlayScrollbars -->
+        <!-- <script src="./assets/vendor/overlayscrollbars/js/jquery.overlayScrollbars.min.js"></script> -->
+
+        <!-- Yaybar -->
+        <!-- <script src="./assets/js/yaybar.js"></script> -->
+
+        <!-- OFI -->
+        <!-- <script src="./assets/vendor/object-fit-images/dist/ofi.min.js"></script> -->
+
+        <!-- Fancybox -->
+        <!-- <script src="./assets/vendor/fancybox/dist/jquery.fancybox.min.js"></script> -->
+
+        <!-- Emojione -->
+        <!-- <script src="./assets/vendor/emojione/lib/js/emojione.min.js"></script> -->
+
+        <!-- EmojioneArea -->
+        <!-- <script src="./assets/vendor/emojionearea/dist/emojionearea.min.js"></script> -->
+
+        <!-- Moment -->
+        <!-- <script src="./assets/vendor/moment/min/moment.min.js"></script> -->
+
+    <!-- END: Vendors -->
+
+    <!-- START: Optional Vendors -->
+        {% block vendor_js %}{% endblock %}
+
+        <!-- FontAwesome -->
+        <!-- <script src="./assets/vendor/fontawesome-free/js/all.js"></script> -->
+        <!-- <script src="./assets/vendor/fontawesome-free/js/v4-shims.js"></script> -->
+
+        <!-- Highlight -->
+        <!-- <script src="./assets/vendor/highlightjs/highlight.pack.min.js"></script> -->
+
+        <!-- Sortable -->
+        <!-- <script src="./assets/vendor/sortablejs/Sortable.min.js"></script> -->
+
+        <!-- Chart.js -->
+        <!-- <script src="./assets/vendor/chart.js/dist/Chart.min.js"></script> -->
+
+        <!-- Chartist -->
+        <!-- <script src="./assets/vendor/chartist/dist/chartist.min.js"></script> -->
+
+        <!-- Peity -->
+        <!-- <script src="./assets/vendor/peity/jquery.peity.min.js"></script> -->
+
+        <!-- eCharts -->
+        <!-- <script src="./assets/vendor/echarts/dist/echarts.min.js"></script> -->
+
+        <!-- Flot -->
+        <!-- <script src="./assets/vendor/flot/dist/es5/jquery.flot.js"></script> -->
+        <!-- <script src="./assets/vendor/flot/source/jquery.flot.pie.js"></script> -->
+
+        <!-- Validator -->
+        <!-- <script src="./assets/vendor/validator/validator.min.js"></script> -->
+
+        <!-- Swiper -->
+        <!-- <script src="./assets/vendor/swiper/swiper-bundle.min.js"></script> -->
+
+        <!-- Fullcalendar -->
+        <!-- <script src="./assets/vendor/fullcalendar/main.min.js"></script> -->
+
+        <!-- jsTree -->
+        <!-- <script src="./assets/vendor/jstree/dist/jstree.min.js"></script> -->
+
+        <!-- SweetAlert -->
+        <!-- <script src="./assets/vendor/sweetalert2/dist/sweetalert2.min.js"></script> -->
+
+        <!-- jqVmap -->
+        <!-- <script src="./assets/vendor/jqvmap/dist/jquery.vmap.min.js"></script> -->
+        <!-- <script src="./assets/vendor/jqvmap/dist/maps/jquery.vmap.usa.js"></script> -->
+
+        <!-- DataTables -->
+        <!-- <script src="./assets/vendor/datatables/media/js/jquery.dataTables.min.js"></script> -->
+
+        <!-- DateTimePicker -->
+        <!-- <script src="./assets/vendor/jquery-datetimepicker/build/jquery.datetimepicker.full.min.js"></script> -->
+
+        <!-- DateRangePicker -->
+        <!-- <script src="./assets/vendor/daterangepicker/daterangepicker.js"></script> -->
+
+        <!-- Bootstrap Touchspin -->
+        <!-- <script src="./assets/vendor/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script> -->
+
+        <!-- Ion Rangeslider -->
+        <!-- <script src="./assets/vendor/ion-rangeslider/js/ion.rangeSlider.min.js"></script> -->
+
+        <!-- Inputmask -->
+        <!-- <script src="./assets/vendor/inputmask/dist/jquery.inputmask.min.js"></script> -->
+
+        <!-- EasyMDE -->
+        <!-- <script src="./assets/vendor/easymde/dist/easymde.min.js"></script> -->
+
+        <!-- Pickr -->
+        <!-- <script src="./assets/vendor/pickr/dist/pickr.min.js"></script> -->
+
+        <!-- Dropzone -->
+        <!-- <script src="./assets/vendor/dropzone/dist/min/dropzone.min.js"></script> -->
+
+        <!-- Selectize -->
+        <!-- <script src="./assets/vendor/selectize/dist/js/standalone/selectize.min.js"></script> -->
+
+        <!-- Quill -->
+        <!-- <script src="./assets/vendor/quill/dist/quill.min.js"></script> -->
+
+    <!-- END: Optional Vendors -->
+
+    <!-- RootUI -->
+    <script src="./assets/js/rootui.js"></script>
+    <script src="./assets/js/rootui-init.js"></script>
+    <!-- END: Scripts -->
+
+</body>
+</html>

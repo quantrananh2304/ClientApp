@@ -1,0 +1,12 @@
+{% macro task(icon="", title="", subtitle="", author="", class="", comment="") %}
+<div class="rui-task{% if class %} {{ class }}{% endif %}">
+    <div class="rui-task-icon"><span data-feather="{{ icon }}" class="rui-icon rui-icon-stroke-1_5"></span></div>
+    <div class="rui-task-content">
+        <a class="rui-task-title" href="task.html">{{ title }}</a>
+        <small class="rui-task-subtitle">{{ subtitle }} <a href="#">{{ author }}</a></small>
+    </div>
+    {% if comment %}
+    <a class="rui-task-icon" href="#"><span data-feather="message-circle" class="rui-icon rui-icon-stroke-1_5"></span>{{ comment }}</a>
+    {% endif %}
+</div>
+{% endmacro %}

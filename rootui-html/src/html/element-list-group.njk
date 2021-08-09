@@ -1,0 +1,116 @@
+{% set page_title = 'Element List group' %}
+{% set header_title = 'List group' %}
+{% set with_sidebar = true %}
+{% extends 'layouts/layout-container.njk' %}
+
+{% set breadcrumbs = [
+    ['Home', 'dashboard.html'],
+    ['Components', '#'],
+    ['Base', '#']
+] %}
+
+{% block content %}
+
+{% from "macros/snippet.njk" import snippet %}
+{% from "macros/sidebar.njk" import sidebar %}
+
+<h2 id="listBase">Base</h2>
+{% call snippet('ListBase', 'no-frame-preview') %}
+<ul class="list-group">
+    <li class="list-group-item active">Active</li>
+    <li class="list-group-item">Default</li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        Default Badge
+        <span class="badge badge-brand badge-circle">1</span>
+    </li>
+    <li class="list-group-item disabled">Disabled</li>
+</ul>
+{%- endcall %}
+
+{% call snippet('ListLink', 'no-frame-preview') %}
+<div class="list-group">
+    <a href="#" class="list-group-item list-group-item-action active">Link active</a>
+    <a href="#" class="list-group-item list-group-item-action">Link default</a>
+    <a href="#" class="list-group-item list-group-item-action disabled">Link disabled</a>
+</div>
+{%- endcall %}
+
+{% call snippet('ListButton', 'no-frame-preview') %}
+<div class="list-group">
+    <button type="button" class="list-group-item list-group-item-action active">Button active</button>
+    <button type="button" class="list-group-item list-group-item-action">Button default</button>
+    <button type="button" class="list-group-item list-group-item-action disabled">Button disabled</button>
+</div>
+{%- endcall %}
+
+<div class="rui-gap-4" id="listFlush"></div>
+<h2>Flush items</h2>
+{% call snippet('ListFlush', 'no-frame-preview') %}
+<ul class="list-group list-group-flush">
+    <li class="list-group-item">Cras justo odio</li>
+    <li class="list-group-item">Dapibus ac facilisis in</li>
+    <li class="list-group-item">Morbi leo risus</li>
+    <li class="list-group-item">Porta ac consectetur ac</li>
+    <li class="list-group-item">Vestibulum at eros</li>
+</ul>
+{%- endcall %}
+
+<div class="rui-gap-4" id="listContextual"></div>
+<h2>Contextual classes</h2>
+{% call snippet('ListContextual', 'no-frame-preview') %}
+<ul class="list-group">
+    <li class="list-group-item">Dapibus ac facilisis in</li>
+
+    <li class="list-group-item list-group-item-brand">A simple brand list group item</li>
+    <li class="list-group-item list-group-item-primary">A simple primary list group item</li>
+    <li class="list-group-item list-group-item-secondary">A simple secondary list group item</li>
+    <li class="list-group-item list-group-item-success">A simple success list group item</li>
+    <li class="list-group-item list-group-item-danger">A simple danger list group item</li>
+    <li class="list-group-item list-group-item-warning">A simple warning list group item</li>
+    <li class="list-group-item list-group-item-info">A simple info list group item</li>
+    <li class="list-group-item list-group-item-light">A simple light list group item</li>
+    <li class="list-group-item list-group-item-dark">A simple dark list group item</li>
+</ul>
+{%- endcall %}
+
+{% call snippet('ListContextualAction', 'no-frame-preview') %}
+<div class="list-group">
+    <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+
+    <a href="#" class="list-group-item list-group-item-action list-group-item-brand">A simple brand list group item</a>
+    <a href="#" class="list-group-item list-group-item-action list-group-item-primary">A simple primary list group item</a>
+    <a href="#" class="list-group-item list-group-item-action list-group-item-secondary">A simple secondary list group item</a>
+    <a href="#" class="list-group-item list-group-item-action list-group-item-success">A simple success list group item</a>
+    <a href="#" class="list-group-item list-group-item-action list-group-item-danger">A simple danger list group item</a>
+    <a href="#" class="list-group-item list-group-item-action list-group-item-warning">A simple warning list group item</a>
+    <a href="#" class="list-group-item list-group-item-action list-group-item-info">A simple info list group item</a>
+    <a href="#" class="list-group-item list-group-item-action list-group-item-light">A simple light list group item</a>
+    <a href="#" class="list-group-item list-group-item-action list-group-item-dark">A simple dark list group item</a>
+</div>
+{%- endcall %}
+
+{% endblock %}
+
+
+{% block content_sidebar %}
+{% call sidebar() %}
+    <li><a class="nav-link" href="#listBase">Base</a></li>
+    <li><a class="nav-link" href="#listFlush">Flush items</a></li>
+    <li><a class="nav-link" href="#listContextual">Contextual classes</a></li>
+{% endcall %}
+{% endblock %}
+
+
+{% block vendor_css %}
+
+    <!-- Highlight -->
+    <link rel="stylesheet" href="./assets/vendor/highlightjs/styles/default.css">
+
+{% endblock %}
+
+{% block vendor_js %}
+
+    <!-- Highlight -->
+    <script src="./assets/vendor/highlightjs/highlight.pack.min.js"></script>
+
+{% endblock %}

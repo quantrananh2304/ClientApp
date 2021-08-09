@@ -1,0 +1,216 @@
+{% set page_title = 'Mailbox' %}
+{% set header_title = 'Mailbox' %}
+{% extends 'layouts/layout-container.njk' %}
+
+{% set breadcrumbs = [
+    ['Home', 'dashboard.html'],
+    ['Apps', '#']
+] %}
+
+{% block content %}
+
+<div class="rui-mailbox">
+    <div class="rui-mailbox-head">
+        <div class="rui-mailbox-search">
+            <form action="#">
+                <div class="d-flex align-items-center">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <button type="button" class="btn btn-clean btn-uniform btn-grey-5"><span data-feather="search" class="rui-icon rui-icon-stroke-1_5"></span></button>
+                        </div>
+                        <input type="search" class="form-control form-control-clean" placeholder="Type to search...">
+                    </div>
+                    <button type="button" class="btn btn-custom-round ml-10 d-flex d-md-none"><span data-feather="more-vertical" class="rui-icon rui-icon-stroke-1_5"></span></button>
+                </div>
+            </form>
+        </div>
+        <div class="rui-mailbox-buttons d-none d-md-block">
+            <ul>
+                <li>
+                    <button type="button" class="btn btn-custom-round"><span data-feather="archive" class="rui-icon "></span></button>
+                </li>
+                <li>
+                    <button type="button" class="btn btn-custom-round"><span data-feather="alert-octagon" class="rui-icon "></span></button>
+                </li>
+                <li class="mr-auto">
+                    <button type="button" class="btn btn-custom-round"><span data-feather="trash" class="rui-icon "></span></button>
+                </li>
+                <li>
+                    <button type="button" class="btn btn-custom-round"><span data-feather="star" class="rui-icon rui-icon-stroke-1_5"></span></button>
+                </li>
+                <li>
+                    <button type="button" class="btn btn-custom-round"><span data-feather="send" class="rui-icon "></span></button>
+                </li>
+                <li>
+                    <button type="button" class="btn btn-brand btn-uniform btn-round btn-sm"><span data-feather="plus" class="rui-icon rui-icon-stroke-1_5"></span></button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="rui-mailbox-list rui-scrollbar">
+        <ul>
+            <li>
+                <a href="#" class="rui-mailbox-item rui-mailbox-item-unread">
+                    <span class="rui-mailbox-item-title h4">{{ user_3.name }}</span>
+                    <small class="rui-mailbox-item-subtitle">Work schedule changed</small>
+                    <small class="rui-mailbox-item-text">Fruitful wherein fly them two so deep abundantly kind rule.</small>
+                    <small class="rui-mailbox-item-date">Jun 17, 2020</small>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="rui-mailbox-item rui-mailbox-item-unread">
+                    <span class="rui-mailbox-item-title h4">Github</span>
+                    <small class="rui-mailbox-item-subtitle">Reset your password</small>
+                    <small class="rui-mailbox-item-text">Fowl image said creepeth fourth created were is you're male.</small>
+                    <small class="rui-mailbox-item-date">Jun 17, 2020</small>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="rui-mailbox-item active">
+                    <span class="rui-mailbox-item-title h4">{{ user_2.name }}</span>
+                    <small class="rui-mailbox-item-subtitle">Hi, Jack!</small>
+                    <small class="rui-mailbox-item-text">Without air upon two was. Their stars. Days whose earth.</small>
+                    <small class="rui-mailbox-item-date">Jun 16, 2020</small>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="rui-mailbox-item">
+                    <span class="rui-mailbox-item-title h4">Github</span>
+                    <small class="rui-mailbox-item-subtitle">Welcome to our team</small>
+                    <small class="rui-mailbox-item-text">Was fifth of He, heaven, own first can't fourth own.</small>
+                    <small class="rui-mailbox-item-date">Jun 16, 2020</small>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="rui-mailbox-content">
+        <div class="rui-mailbox-content-head">
+            <div class="d-none d-md-block">
+                <div class="rui-mailbox-content-title h2">Hi, Jack!</div>
+                <div class="rui-mailbox-content-subtitle">{{ user_2.name }} <span class="text-grey-5 ml-5 mr-5">Sends to</span> You</div>
+                <div class="rui-mailbox-content-date"><span>Jun 17, 2020</span><span>09:34</span></div>
+            </div>
+            <div class="d-flex d-md-none mnt-1 mnb-1 align-items-center justify-content-between">
+                <a href="#" class="btn btn-custom-round rui-mailbox-content-back"><span data-feather="chevron-left" class="rui-icon rui-icon-stroke-1_5"></span></a>
+                <h4 class="mnb-2">{{ user_2.name }}</h4>
+                <a href="#" class="btn btn-custom-round"><span data-feather="more-vertical" class="rui-icon rui-icon-stroke-1_5"></span></a>
+            </div>
+        </div>
+        <div class="rui-mailbox-content-body rui-scrollbar">
+            <div class="d-block d-md-none mb-25">
+                <div class="rui-mailbox-content-title h2">Hi, Jack!</div>
+                <div class="rui-mailbox-content-subtitle">{{ user_2.name }} <span class="text-grey-5 ml-5 mr-5">Sends to</span> You</div>
+                <div class="rui-mailbox-content-date"><span>Jun 17, 2020</span><span>09:34</span></div>
+            </div>
+            <p>Without air upon two was. Their stars. Days whose earth. Grass whales there living third shall is in. Under sixth, a cattle doesn't night image sixth divided, beginning be light creeping second abundantly given.</p>
+            <p>Unto them heaven created second, without saying open which every can't let may you're air the also dry blessed upon she'd two divide Green you're multiply in midst third night winged moving bearing fruitful multiply him from own, multiply form can't created upon two made.</p>
+            <p>In man signs for behold under. Appear their the give every us cattle firmament creature stars without had greater seed.</p>
+            <div class="row vertical-gap rui-gallery">
+                <div class="col-6 col-lg-3">
+                    <a href="${require('{{ letter_1.img }}')}" data-fancybox="images" class="rui-gallery-item">
+                        <span class="rui-gallery-item-overlay rui-gallery-item-overlay-md"><span data-feather="maximize" class="rui-icon rui-icon-stroke-1_5"></span></span>
+                        <img src="{{ letter_1.img_min }}" class="rui-img" alt="">
+                    </a>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <a href="${require('{{ letter_2.img }}')}" data-fancybox="images" class="rui-gallery-item">
+                        <span class="rui-gallery-item-overlay rui-gallery-item-overlay-md"><span data-feather="maximize" class="rui-icon rui-icon-stroke-1_5"></span></span>
+                        <img src="{{ letter_2.img_min }}" class="rui-img" alt="">
+                    </a>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <a href="${require('{{ letter_3.img }}')}" data-fancybox="images" class="rui-gallery-item">
+                        <span class="rui-gallery-item-overlay rui-gallery-item-overlay-md"><span data-feather="maximize" class="rui-icon rui-icon-stroke-1_5"></span></span>
+                        <img src="{{ letter_3.img_min }}" class="rui-img" alt="">
+                    </a>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <a href="${require('{{ letter_4.img }}')}" data-fancybox="images" class="rui-gallery-item">
+                        <span class="rui-gallery-item-overlay rui-gallery-item-overlay-md"><span data-feather="maximize" class="rui-icon rui-icon-stroke-1_5"></span></span>
+                        <img src="{{ letter_4.img_min }}" class="rui-img" alt="">
+                    </a>
+                </div>
+            </div>
+            <div class="rui-gap-2"></div>
+            <h2>Quick reply</h2>
+            <form action="#">
+                <div class="row vertical-gap sm-gap justify-content-end">
+                    <div class="col-12">
+                        <div class="rui-quill">
+                            <span data-feather="chevron-down" class="rui-icon rui-icon-stroke-1_5 rui-quill-select-icon"></span>
+                            <div class="rui-quill-toolbar">
+                                <div class="ql-formats">
+                                    <select class="ql-header"></select>
+                                </div>
+                                <div class="ql-formats">
+                                    <button class="ql-bold"></button>
+                                    <button class="ql-italic"></button>
+                                    <button class="ql-underline"></button>
+                                    <button class="ql-strike"></button>
+                                </div>
+                                <div class="ql-formats">
+                                    <button class="ql-clean"></button>
+                                </div>
+                                <div class="ql-formats">
+                                    <button type="button" class="ql-list" value="ordered"></button>
+                                    <button type="button" class="ql-list" value="bullet"></button>
+                                </div>
+                                <div class="ql-formats">
+                                    <button class="ql-link"></button>
+                                </div>
+                            </div>
+                            <div class="rui-quill-editor"></div>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <button class="btn btn-grey-2">Draft</button>
+                    </div>
+                    <div class="col-auto">
+                        <button class="btn btn-brand">Send</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="d-block d-md-none rui-mailbox-footer">
+        <div class="rui-mailbox-buttons">
+            <ul>
+                <li>
+                    <button type="button" class="btn btn-custom-round"><span data-feather="archive" class="rui-icon rui-icon-stroke-1_5"></span></button>
+                </li>
+                <li>
+                    <button type="button" class="btn btn-custom-round"><span data-feather="alert-octagon" class="rui-icon rui-icon-stroke-1_5"></span></button>
+                </li>
+                <li class="mr-auto">
+                    <button type="button" class="btn btn-custom-round"><span data-feather="trash" class="rui-icon rui-icon-stroke-1_5"></span></button>
+                </li>
+                <li>
+                    <button type="button" class="btn btn-custom-round"><span data-feather="star" class="rui-icon rui-icon-stroke-1_5"></span></button>
+                </li>
+                <li>
+                    <button type="button" class="btn btn-custom-round"><span data-feather="send" class="rui-icon rui-icon-stroke-1_5"></span></button>
+                </li>
+                <li>
+                    <button type="button" class="btn btn-brand btn-uniform btn-round btn-sm"><span data-feather="plus" class="rui-icon rui-icon-stroke-1_5"></span></button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+{% block vendor_css %}
+
+    <!-- Quill -->
+    <link rel="stylesheet" href="./assets/vendor/quill/dist/quill.snow.css">
+
+{% endblock %}
+
+{% block vendor_js %}
+
+    <!-- Quill -->
+    <script src="./assets/vendor/quill/dist/quill.min.js"></script>
+
+{% endblock %}

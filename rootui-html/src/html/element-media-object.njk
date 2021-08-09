@@ -1,0 +1,114 @@
+{% set page_title = 'Element Media object' %}
+{% set header_title = 'Media object' %}
+{% set with_sidebar = true %}
+{% extends 'layouts/layout-container.njk' %}
+
+{% set breadcrumbs = [
+    ['Home', 'dashboard.html'],
+    ['Components', '#'],
+    ['Base', '#']
+] %}
+
+{% block content %}
+
+{% from "macros/snippet.njk" import snippet %}
+{% from "macros/sidebar.njk" import sidebar %}
+
+<h2 id="mediaBase">Base</h2>
+{% call snippet('MediaBase') %}
+<div class="media media-success">
+    <div class="media-img">A</div>
+    <div class="media-body">
+        <div class="media-title">Media heading</div>
+        <small class="media-subtitle">Media subtitle</small>
+
+        <div class="media media-warning">
+            <div class="media-img">B</div>
+            <div class="media-body">
+                <div class="media-title">Media heading</div>
+                <small class="media-subtitle">Media subtitle</small>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="media media-success">
+    <div class="media-img">S</div>
+    <div class="media-body">
+        <div class="media-title">Media heading</div>
+        <small class="media-subtitle">Media subtitle</small>
+    </div>
+</div>
+{%- endcall %}
+
+<div class="rui-gap-4" id="mediaLink"></div>
+<h2>Link</h2>
+{% call snippet('MediaLink') %}
+<a href="#" class="media media-success">
+    <span class="media-img">A</span>
+    <span class="media-body">
+        <span class="media-title">Media heading</span>
+        <small class="media-subtitle">Media subtitle</small>
+    </span>
+</a>
+<a href="#" class="media media-warning">
+    <span class="media-img">S</span>
+    <span class="media-body">
+        <span class="media-title">Media heading</span>
+        <small class="media-subtitle">Media subtitle</small>
+    </span>
+</a>
+{%- endcall %}
+
+<div class="rui-gap-4" id="mediaFilled"></div>
+<h2>Filled</h2>
+{% call snippet('MediaFilled') %}
+<div class="media media-success media-filled">
+    <a href="#" class="media-link">
+        <span class="media-img">A</span>
+        <span class="media-body">
+            <span class="media-title">Media heading</span>
+            <small class="media-subtitle">Media subtitle</small>
+        </span>
+    </a>
+    <a href="#" class="media-icon">
+        <span data-feather="x" class="rui-icon rui-icon-stroke-1_5"></span>
+    </a>
+</div>
+<div class="media media-warning media-filled">
+    <a href="#" class="media-link">
+        <span class="media-img">S</span>
+        <span class="media-body">
+            <span class="media-title">Media heading</span>
+            <small class="media-subtitle">Media subtitle</small>
+        </span>
+    </a>
+    <a href="#" class="media-icon">
+        <span data-feather="x" class="rui-icon rui-icon-stroke-1_5"></span>
+    </a>
+</div>
+{%- endcall %}
+
+{% endblock %}
+
+
+{% block content_sidebar %}
+{% call sidebar() %}
+    <li><a class="nav-link" href="#mediaBase">Base</a></li>
+    <li><a class="nav-link" href="#mediaLink">Link</a></li>
+{% endcall %}
+{% endblock %}
+
+
+{% block vendor_css %}
+
+    <!-- Highlight -->
+    <link rel="stylesheet" href="./assets/vendor/highlightjs/styles/default.css">
+
+{% endblock %}
+
+{% block vendor_js %}
+
+    <!-- Highlight -->
+    <script src="./assets/vendor/highlightjs/highlight.pack.min.js"></script>
+
+{% endblock %}

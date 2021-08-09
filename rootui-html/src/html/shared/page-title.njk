@@ -1,0 +1,39 @@
+{% set crumbs_dropdowns = {} %}
+
+{% for file, item in navigation_sidebar %}
+    {%- if item.sub and item.name -%}
+        {% set crumbs_dropdowns = setObjectData(crumbs_dropdowns, item.name, item.sub) %}
+    {%- endif %}
+{%- endfor %}
+
+<div class="rui-page-title">
+    <div class="container-fluid">
+        {% if breadcrumbs %}
+        <!-- START: Breadcrumbs -->
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+            {% for item, link in breadcrumbs %}
+                <li class="breadcrumb-item{% if crumbs_dropdowns[item] %} dropdown dropdown-hover{{ ' dropdown-triangle' if dropdown_triangle }} dropdown-keep-open{% endif %}">
+                    {% if link %}<a href="{{ link }}"{% if crumbs_dropdowns[item] %} class="dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"{% endif %}>{% endif %}
+                        {{ item | safe }}
+                    {% if link %}</a>{% endif %}
+                    {% if link and crumbs_dropdowns[item] %}
+                        <div class="dropdown-menu dropdown-menu-sm">
+                            <ul class="dropdown-menu-scroll">
+                                {% for file, item in crumbs_dropdowns[item] %}
+                                    <li><a class="dropdown-item{% if isActiveMenuItem(file, item, filename) %} active{% endif %}" href="{{ file }}">{{ item.name }}</a></li>
+                                {%- endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                </li>
+            {% endfor %}
+            </ol>
+        </nav>
+        <!-- END: Breadcrumbs -->
+        {% endif %}
+        {% if header_title %}
+        <h1>{{ header_title }}</h1>
+        {% endif %}
+    </div>
+</div>

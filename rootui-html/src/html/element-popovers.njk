@@ -1,0 +1,65 @@
+{% set page_title = 'Element Popovers' %}
+{% set header_title = 'Popovers' %}
+{% set with_sidebar = true %}
+{% extends 'layouts/layout-container.njk' %}
+
+{% set breadcrumbs = [
+    ['Home', 'dashboard.html'],
+    ['Components', '#'],
+    ['Base', '#']
+] %}
+
+{% block content %}
+
+{% from "macros/snippet.njk" import snippet %}
+{% from "macros/sidebar.njk" import sidebar %}
+
+<h2 id="popoverBase">Base</h2>
+{% call snippet('PopoverBase') %}
+<button type="button" class="btn btn-danger rui-popover" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
+{%- endcall %}
+
+<div class="rui-gap-4" id="popoverDirections"></div>
+<h2>Four directions</h2>
+{% call snippet('PopoverDirections') %}
+<button type="button" class="btn btn-secondary rui-popover" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+    Popover on top
+</button>&nbsp;
+
+<button type="button" class="btn btn-secondary rui-popover" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+    Popover on right
+</button>&nbsp;
+
+<button type="button" class="btn btn-secondary rui-popover" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+    Popover on bottom
+</button>&nbsp;
+
+<button type="button" class="btn btn-secondary rui-popover" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+    Popover on left
+</button>
+{%- endcall %}
+
+{% endblock %}
+
+
+{% block content_sidebar %}
+{% call sidebar() %}
+    <li><a class="nav-link" href="#popoverBase">Base</a></li>
+    <li><a class="nav-link" href="#popoverDirections">Four directions</a></li>
+{% endcall %}
+{% endblock %}
+
+
+{% block vendor_css %}
+
+    <!-- Highlight -->
+    <link rel="stylesheet" href="./assets/vendor/highlightjs/styles/default.css">
+
+{% endblock %}
+
+{% block vendor_js %}
+
+    <!-- Highlight -->
+    <script src="./assets/vendor/highlightjs/highlight.pack.min.js"></script>
+
+{% endblock %}

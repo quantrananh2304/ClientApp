@@ -1,0 +1,322 @@
+{% set page_title = 'Profile' %}
+{% set header_title = 'Profile' %}
+{% extends 'layouts/layout-container.njk' %}
+
+{% set breadcrumbs = [
+    ['Home', 'dashboard.html'],
+    ['Apps', '#']
+] %}
+
+{% block content %}
+
+{% from "macros/task.njk" import task %}
+
+<div class="rui-profile row vertical-gap">
+    <div class="col-lg-6 col-xl-5">
+        <div class="card">
+            <div class="card-body">
+                <div class="row vertical-gap">
+                    <div class="col-auto">
+                        <div class="rui-profile-img">
+                            <img src="{{ user_1.img_profile }}" alt="">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="rui-profile-info">
+                            <h3 class="rui-profile-info-title h4">{{ user_1.name }}</h3>
+                            <small class="text-grey-6 mt-2 mb-15">Senior account manager</small>
+                            <a class="rui-profile-info-mail" href="#">info@example.com</a>
+                            <a class="rui-profile-info-phone" href="#">+44 987 065 909</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="rui-profile-numbers">
+                    <div class="row justify-content-center">
+                        <div class="col"></div>
+                        <div class="col-auto">
+                            <div class="rui-profile-number text-center">
+                                <h4 class="rui-profile-number-title h2">218</h4>
+                                <small class="text-grey-6">Comment</small>
+                            </div>
+                        </div>
+                        <div class="col p-0"></div>
+                        <div class="col-auto">
+                            <div class="rui-profile-number text-center">
+                                <h4 class="rui-profile-number-title h2">2125</h4>
+                                <small class="text-grey-6">Followers</small>
+                            </div>
+                        </div>
+                        <div class="col p-0"></div>
+                        <div class="col-auto">
+                            <div class="rui-profile-number text-center">
+                                <h4 class="rui-profile-number-title h2">419</h4>
+                                <small class="text-grey-6">Following</small>
+                            </div>
+                        </div>
+                        <div class="col"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 col-xl-7">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex align-items-center">
+                    <h2 class="card-title mnb-6 mr-auto">Current tasks</h2>
+                    <button class="btn btn-custom-round mr-20" type="button"><span data-feather="link-2" class="rui-icon rui-icon-stroke-1_5"></span></button>
+                    <button class="btn btn-brand btn-uniform btn-round btn-sm mnt-8 mnb-8" type="button"><span data-feather="plus" class="rui-icon rui-icon-stroke-1_5"></span></button>
+                </div>
+                <ul class="list-group list-group-flush rui-profile-task-list">
+                    <li class="list-group-item">
+                        {{ task("alert-circle","Cattle whose. There isn't cattle rule said saying you divided","#12 opened 4 days ago by","Henry","rui-task-success")}}
+                    </li>
+                    <li class="list-group-item">
+                        {{ task("alert-circle","Was living rule Him created a to. Light of itself","#11 opened 21 days ago by","Neil","rui-task-success")}}
+                    </li>
+                    <li class="list-group-item">
+                        {{ task("check-circle","The problem with the Media object","#10 closed on 12 Mar by","Anna","rui-task-danger", "2")}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-12">
+        <ul class="nav nav-tabs rui-tabs-sliding" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link rui-tabs-link active" id="activity-tab" data-toggle="tab" href="#activity" role="tab" aria-controls="activity" aria-selected="true">Activity</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link rui-tabs-link" id="timeline-tab" data-toggle="tab" href="#timeline" role="tab" aria-controls="timeline" aria-selected="false">Timeline</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link rui-tabs-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab" aria-controls="settings" aria-selected="false">Settings</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane fade show active" id="activity" role="tabpanel" aria-labelledby="activity-tab">
+                <ul class="list-group list-group-flush rui-profile-activity-list">
+                    <li class="list-group-item">
+                        <div class="media media-success media-retiring">
+                            <a href="#" class="media-link">
+                                <span class="media-img"><img src="{{ user_2.img }}" alt=""></span>
+                                <span class="media-body">
+                                    <span class="media-title">{{ user_2.name }}<span class="media-time">09:34</span></span>
+                                    <small class="media-subtitle">Without air upon two was. Their stars. Days whose earth. Grass whales there living third shall is...</small>
+                                </span>
+                            </a>
+                            <div class="media-content">
+                                <div class="row vertical-gap sm-gap rui-gallery">
+                                    <div class="col-6 col-md-3 col-lg-2">
+                                        <a href="${require('{{ letter_1.img }}')}" data-fancybox="images" class="rui-gallery-item">
+                                            <span class="rui-gallery-item-overlay rui-gallery-item-overlay-md"><span data-feather="maximize" class="rui-icon rui-icon-stroke-1_5"></span></span>
+                                            <img src="{{ letter_1.img_min }}" class="rui-img" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="col-6 col-md-3 col-lg-2">
+                                        <a href="${require('{{ letter_2.img }}')}" data-fancybox="images" class="rui-gallery-item">
+                                            <span class="rui-gallery-item-overlay rui-gallery-item-overlay-md"><span data-feather="maximize" class="rui-icon rui-icon-stroke-1_5"></span></span>
+                                            <img src="{{ letter_2.img_min }}" class="rui-img" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="col-6 col-md-3 col-lg-2">
+                                        <a href="${require('{{ letter_3.img }}')}" data-fancybox="images" class="rui-gallery-item">
+                                            <span class="rui-gallery-item-overlay rui-gallery-item-overlay-md"><span data-feather="maximize" class="rui-icon rui-icon-stroke-1_5"></span></span>
+                                            <img src="{{ letter_3.img_min }}" class="rui-img" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="col-6 col-md-3 col-lg-2">
+                                        <a href="${require('{{ letter_4.img }}')}" data-fancybox="images" class="rui-gallery-item">
+                                            <span class="rui-gallery-item-overlay rui-gallery-item-overlay-md"><span data-feather="maximize" class="rui-icon rui-icon-stroke-1_5"></span></span>
+                                            <img src="{{ letter_4.img_min }}" class="rui-img" alt="">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#" class="media-icon"><span data-feather="x" class="rui-icon rui-icon-stroke-1_5"></span></a>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="media media-success media-retiring">
+                            <a href="#" class="media-link">
+                                <span class="media-img"><img src="{{ user_5.img }}" alt=""></span>
+                                <span class="media-body">
+                                    <span class="media-title">{{ user_5.name }}<span class="media-time">09:10</span></span>
+                                    <small class="media-subtitle">Amet viverra dolor per mollis morbi sagittis cursus sollicitudin cubilia.</small>
+                                </span>
+                            </a>
+                            <a href="#" class="media-icon"><span data-feather="x" class="rui-icon rui-icon-stroke-1_5"></span></a>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="media media-warning media-retiring">
+                            <a href="#" class="media-link">
+                                <span class="media-img"><img src="{{ user_3.img }}" alt=""></span>
+                                <span class="media-body">
+                                    <span class="media-title">{{ user_3.name }}<span class="media-time">09:02</span></span>
+                                    <small class="media-subtitle">Conubia porta Fusce sollicitudin ullamcorper fringilla. Varius id egestas magna.</small>
+                                </span>
+                            </a>
+                            <a href="#" class="media-icon"><span data-feather="x" class="rui-icon rui-icon-stroke-1_5"></span></a>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="media media-danger media-retiring">
+                            <a href="#" class="media-link">
+                                <span class="media-img"><img src="{{ user_4.img }}" alt=""></span>
+                                <span class="media-body">
+                                    <span class="media-title">{{ user_4.name }}<span class="media-time">08:46</span></span>
+                                    <small class="media-subtitle">Ultricies convallis class Ornare cum ligula aenean. Leo dictum aliquam.</small>
+                                </span>
+                            </a>
+                            <a href="#" class="media-icon"><span data-feather="x" class="rui-icon rui-icon-stroke-1_5"></span></a>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="media media-retiring">
+                            <a href="#" class="media-link">
+                                <span class="media-img">C</span>
+                                <span class="media-body">
+                                    <span class="media-title">Change Design<span class="media-time">08:53</span></span>
+                                    <small class="media-subtitle">Design</small>
+                                </span>
+                            </a>
+                            <a href="#" class="media-icon"><span data-feather="x" class="rui-icon rui-icon-stroke-1_5"></span></a>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="media media-retiring">
+                            <a href="#" class="media-link">
+                                <span class="media-img bg-transparent"><img src="../../../common-assets/images/icon-zip.svg" class="icon-file" alt=""></span>
+                                <span class="media-body">
+                                    <span class="media-title">Added banner archive<span class="media-time">08:31</span></span>
+                                    <small class="media-subtitle">Commerce</small>
+                                </span>
+                            </a>
+                            <a href="#" class="media-icon"><span data-feather="x" class="rui-icon rui-icon-stroke-1_5"></span></a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="tab-pane fade" id="timeline" role="tabpanel" aria-labelledby="timeline-tab">
+                <div class="rui-timeline rui-timeline-left-lg">
+                    <div class="rui-timeline-line"></div>
+                    <div class="rui-timeline-item">
+                        <div class="rui-timeline-icon">
+                            <span data-feather="check-circle" class="rui-icon rui-icon-stroke-1_5"></span>
+                        </div>
+                        <div class="rui-timeline-content">
+                            <h3>Fifth moveth, void second.</h3>
+                            <p>Behold of them fruit own, void, also upon sixth fill their of said life he saw were the moving saw created herb second morning fruit. Doesn't second place gathering forth.</p>
+                            <button type="button" class="btn btn-brand">Read More</button>
+                        </div>
+                        <div class="rui-timeline-date">
+                            Jan 14
+                        </div>
+                    </div>
+                    <div class="rui-timeline-item rui-timeline-item-swap">
+                        <div class="rui-timeline-icon">
+                            <span data-feather="award" class="rui-icon rui-icon-stroke-1_5"></span>
+                        </div>
+                        <div class="rui-timeline-content">
+                            <h3>Can't dry fly.</h3>
+                            <p>Likeness they're every give moved above moveth, herb days a rule behold seed is second night behold sea. Under given waters made wherein behold void form land.</p>
+                            <button type="button" class="btn btn-brand">Read More</button>
+                        </div>
+                        <div class="rui-timeline-date">
+                            Jan 15
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+                <form action="#">
+                    <div class="row vertical-gap">
+                        <div class="col-12 col-lg-auto">
+                            <div class="card">
+                                <div class="card-body pt-20 pr-10 pb-20 pl-10">
+                                    <ul class="nav flex-column mnt-3">
+                                        <li>
+                                            <a class="nav-link active" href="#">
+                                                <span data-feather="user" class="rui-icon rui-icon-stroke-1_5"></span>
+                                                <span>Personal information</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="nav-link" href="#">
+                                                <span data-feather="user-check" class="rui-icon rui-icon-stroke-1_5"></span>
+                                                <span>Account information</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="nav-link" href="#">
+                                                <span data-feather="mail" class="rui-icon rui-icon-stroke-1_5"></span>
+                                                <span>Email settings</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="nav-link" href="#">
+                                                <span data-feather="lock" class="rui-icon rui-icon-stroke-1_5"></span>
+                                                <span>Security</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="nav-link" href="#">
+                                                <span data-feather="bar-chart-2" class="rui-icon rui-icon-stroke-1_5"></span>
+                                                <span>Statistics</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="nav-link" href="#">
+                                                <span data-feather="shopping-cart" class="rui-icon rui-icon-stroke-1_5"></span>
+                                                <span>Purchases</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-8">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row vertical-gap sm-gap justify-content-end">
+                                        <div class="col-12">
+                                            <label>Avatar</label>
+                                            <a class="rui-profile-img" href="#">
+                                                <img src="{{ user_1.img_profile }}" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="firstName">First Name</label>
+                                            <input class="form-control" type="text" id="firstName" value="Jack" placeholder="Your First Name">
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="lastName">Last Name</label>
+                                            <input type="email" class="form-control" id="lastName" value="Boyd" placeholder="Your Last Name">
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="profileEmail">Email</label>
+                                            <input type="email" class="form-control" id="profileEmail" value="info@example.com" placeholder="Your Email">
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="phone">Contact Phone</label>
+                                            <input class="form-control" type="text" id="phone" value="+44 987 065 909" placeholder="Your Phone">
+                                        </div>
+                                        <div class="col-auto">
+                                            <button class="btn btn-grey-2" type="button">Cancel</button>
+                                        </div>
+                                        <div class="col-auto">
+                                            <button class="btn btn-brand" type="button">Save</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
